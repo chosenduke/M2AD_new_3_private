@@ -84,6 +84,7 @@ CUDA_VISIBLE_DEVICES=0 python run_dataset.py --cfg_path configs/benchmark/msflow
 - `-s M2AD-Synergy`: Evaluate multi-view/illumination fusion.  
 - `-s M2AD-Invariant`: Test single-image robustness.  
 
+Note: If needed, you can download [dinov2_vitb14_reg4_pretrain.pth](https://pan.baidu.com/s/1tJGHPlSYdtbF0fEZXnFhPg?pwd=fg9h) here.
 
 ## 🧩 Trainer Framework  
 Our modular trainer (extended from [ADer](https://github.com/zhangzjn/ADer)) simplifies VAD development:  
