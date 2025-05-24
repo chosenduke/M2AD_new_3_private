@@ -31,9 +31,6 @@ Introducing **M2AD** (Multi-View Multi-Illumination Anomaly Detection), a large-
 ### 10 Anomaly Categories  
 <img src="./Imgs/Objects.png" width="800px">  
 
-### Multi-Illumination & Multi-View Setup  
-<img src="./Imgs/F5.png" width="800px">  
-
 
 ## 🛠️ Getting Started  
 ### 📦 Environment Setup  
@@ -56,10 +53,10 @@ pip install mmdet==2.25.3 adeval torch==2.1.2 --index-url https://download.pytor
 ### 📂 Dataset Preparation  
 Our dataset is hosted on [Hugging Face](https://huggingface.co/datasets/ChengYuQi99/M2AD). You can also download via:  
 
-| Dataset       | Google Drive       | Baidu Drive (🔑: flg9/pwus)       | Resolution  
+| Dataset       | Google Drive       | Baidu Drive (🔑: soon!)       | Resolution  
 |---------------|--------------------|-----------------------------------|------------|  
-| M2AD-1024     | [Download]         | [Baidu]() | 1024x1024  |  
-| M2AD-256      | [Download]         | [Baidu]() | 256x256    |  
+| M2AD-1024     | [Download]()         | [Download]() | 1024x1024  |  
+| M2AD-256      | [Download]()         | [Download]() | 256x256    |  
 
 **Data Structure**:  
 ```  
