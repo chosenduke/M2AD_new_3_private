@@ -161,7 +161,7 @@ class DRAEMGenerator(_Base_Anomaly_Generator):
         augmented_image, anomaly_mask, has_anomaly = self.augment_image(image, anomaly_source_path)
         augmented_image = augmented_image * 255.0
         augmented_image = augmented_image.astype(np.uint8)
-        augmented_image = Image.fromarray(cv2.cvtColor(augmented_image, cv2.COLOR_BGR2RGB))
+        augmented_image = Image.fromarray(augmented_image)
         anomaly_mask = Image.fromarray(anomaly_mask[:, :, 0].astype(np.uint8) * 255, mode='L')
         return augmented_image, anomaly_mask, has_anomaly
 
