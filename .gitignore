@@ -42,3 +42,6 @@ Thumbs.db
 *.pickle
 *.npy
 *.npz
+
+# 排除实验输出文件夹
+only_birds_12_data_augment/
