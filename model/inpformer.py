@@ -19,9 +19,10 @@ class INP_Former_Model(BaseModel):
 
         # Adopting a grouping-based reconstruction strategy similar to Dinomaly
         target_layers = [2, 3, 4, 5, 6, 7, 8, 9]
+        #target_layers = [2, 3, 4, 5, 6, 7, 8, 9,10,11]
         fuse_layer_encoder = [[0, 1, 2, 3], [4, 5, 6, 7]]
-        fuse_layer_decoder = [[0, 1, 2, 3], [4, 5, 6, 7]]
-
+        #fuse_layer_decoder = [[0, 1, 2, 3, 4], [5, 6, 7, 8, 9]]
+        fuse_layer_decoder = [[0,1,2,3],[4,5,6,7]]
         # Encoder info
         self.encoder = vit_encoder.load(encoder_arch)
         if 'small' in encoder_arch:
@@ -48,10 +49,26 @@ class INP_Former_Model(BaseModel):
                         [nn.Parameter(torch.randn(INP_num, embed_dim))
                          for _ in range(1)])
 
+        # # INP Extractor
+        # for i in range(1):
+        #     blk = Aggregation_Block(dim=embed_dim, num_heads=num_heads, mlp_ratio=4.,
+        #                             qkv_bias=True, norm_layer=partial(nn.LayerNorm, eps=1e-8))
+        #     INP_Extractor.append(blk)
+        # self.INP_Extractor = nn.ModuleList(INP_Extractor)
+
+        # # INP_Guided_Decoder
+        # for i in range(8):
+        #     blk = Prototype_Block(dim=embed_dim, num_heads=num_heads, mlp_ratio=4.,
+        #                           qkv_bias=True, norm_layer=partial(nn.LayerNorm, eps=1e-8))
+        #     INP_Guided_Decoder.append(blk)
+        # self.INP_Guided_Decoder = nn.ModuleList(INP_Guided_Decoder)
+
+        #加深聚合与解码堆叠，并加入轻度正则（dropout/drop_path）
         # INP Extractor
         for i in range(1):
             blk = Aggregation_Block(dim=embed_dim, num_heads=num_heads, mlp_ratio=4.,
                                     qkv_bias=True, norm_layer=partial(nn.LayerNorm, eps=1e-8))
+                                    # drop = 0.1,drop_path = 0.1)
             INP_Extractor.append(blk)
         self.INP_Extractor = nn.ModuleList(INP_Extractor)
 
@@ -59,6 +76,7 @@ class INP_Former_Model(BaseModel):
         for i in range(8):
             blk = Prototype_Block(dim=embed_dim, num_heads=num_heads, mlp_ratio=4.,
                                   qkv_bias=True, norm_layer=partial(nn.LayerNorm, eps=1e-8))
+                                #   drop = 0.1,drop_path = 0.1)
             INP_Guided_Decoder.append(blk)
         self.INP_Guided_Decoder = nn.ModuleList(INP_Guided_Decoder)
 

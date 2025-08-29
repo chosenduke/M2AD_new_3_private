@@ -11,17 +11,22 @@ import socket
 import os
 
 
-DATA_ROOT = '/data/download'
+DATA_ROOT = '/root/autodl-tmp/mydata'
 
 DATA_SUBDIR = {
     # 'm2ad': 'M2AD_256',
-    'm2ad': 'M2AD_1024_new',
+    'm2ad': 'M2AD',
 
 }
+
+# CLASS_NAMES = {
+#     'm2ad': ['Bird', 'Car', 'Cube', 'Dice', 'Doll', 'Holder', 'Motor', 'Ring', 'Teapot', 'Tube']
+# }
 
 CLASS_NAMES = {
-    'm2ad': ['Bird', 'Car', 'Cube', 'Dice', 'Doll', 'Holder', 'Motor', 'Ring', 'Teapot', 'Tube']
+    'm2ad': ['Bird']
 }
+
 
 ANOMALY_GENERATOR = {
     'white_noise': WhiteNoiseGenerator,

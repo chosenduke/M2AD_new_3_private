@@ -14,9 +14,9 @@ def main():
 	parser = argparse.ArgumentParser()
 
 	# parser.add_argument('-c', '--cfg_path', default='configs/benchmark/cdo/cdo_100e.py')
-	parser.add_argument('-c', '--cfg_path', default='configs/benchmark/msflow/msflow_100e.py')
+	# parser.add_argument('-c', '--cfg_path', default='configs/benchmark/msflow/msflow_100e.py')
 	# parser.add_argument('-c', '--cfg_path', default='configs/benchmark/dinomaly/dinomaly_100e.py')
-	# parser.add_argument('-c', '--cfg_path', default='configs/benchmark/inpformer/inpformer_100e.py')
+	parser.add_argument('-c', '--cfg_path', default='configs/benchmark/inpformer/inpformer_100e.py')
 	# parser.add_argument('-c', '--cfg_path', default='configs/benchmark/rdpp/rdpp_256_100e.py')
 
 	parser.add_argument('-m', '--mode', default='train', choices=['train', 'test'])
@@ -25,10 +25,15 @@ def main():
 	parser.add_argument('--sleep', type=int, default=-1)
 	parser.add_argument('--memory', type=int, default=-1)
 
+	parser.add_argument('--checkpoint', default='runs', type=str)
+
 	for cls in CLASS_NAMES['m2ad']:
 
 		cfg_terminal = parser.parse_args()
 		cfg = get_cfg(cfg_terminal)
+		if cfg_terminal.checkpoint:
+			cfg.trainer.checkpoint = cfg_terminal.checkpoint
+			print(f"本次训练的checkpoint路径为：{cfg_terminal.checkpoint}")
 		cfg = setup_cfg(cfg, cfg.setup, cls)
 		run_pre(cfg)
 		init_training(cfg)

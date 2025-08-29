@@ -37,6 +37,8 @@ class cfg(cfg_common, cfg_dataset_default, cfg_model_dinomaly):
             self.size = 448
 
         self.model.name = 'inpformer'
+        # self.model.kwargs = dict(pretrained=False, checkpoint_path='', strict=False,
+        #                          encoder_arch='dinov2reg_vit_base_14', INP_num=6)
         self.model.kwargs = dict(pretrained=False, checkpoint_path='', strict=False,
                                  encoder_arch='dinov2reg_vit_base_14', INP_num=6)
         # encoder: ['dinov2reg_vit_base_14', 'dinov2reg_vit_small_14', 'dinov2reg_vit_large_14']
@@ -65,6 +67,7 @@ class cfg(cfg_common, cfg_dataset_default, cfg_model_dinomaly):
         self.train_data.train_transforms = [
             dict(type='Resize', size=(self.size, self.size), interpolation=F.InterpolationMode.BILINEAR),
             dict(type='CenterCrop', size=(self.size, self.size)),
+            #dict(type='ColorJitter', brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),
             dict(type='ToTensor'),
             dict(type='Normalize', mean=IMAGENET_DEFAULT_MEAN, std=IMAGENET_DEFAULT_STD, inplace=True),
         ]

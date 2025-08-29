@@ -65,6 +65,13 @@ class INP_Former(nn.Module):
         agg_prototype = self.prototype_token
         for i, blk in enumerate(self.aggregation):
             agg_prototype = blk(agg_prototype.unsqueeze(0).repeat((B, 1, 1)), x)
+        # for i, blk in enumerate(self.aggregation):
+        #     if agg_prototype.dim() == 2:              # (T, C) 第一次聚合
+        #         agg_input = agg_prototype.unsqueeze(0).repeat(B, 1, 1)  # → (B, T, C)
+        #     else:                                     # (B, T, C) 第二次及以后
+        #         agg_input = agg_prototype
+        #     agg_prototype = blk(agg_input, x)
+
         g_loss = self.gather_loss(x, agg_prototype)
 
         for i, blk in enumerate(self.bottleneck):
@@ -90,7 +97,12 @@ class INP_Former(nn.Module):
     def fuse_feature(self, feat_list):
         return torch.stack(feat_list, dim=1).mean(dim=1)
 
-
+    # def fuse_feature(self, feat_list):
+    #     x = torch.stack(feat_list, dim=1)                  # (B, K, N, C)
+    #     K = x.size(1)
+    #     w = torch.linspace(1.0, 2.0, steps=K, device=x.device)  # 后层更大
+    #     w = w / w.sum()
+    #     return (x * w.view(1, K, 1, 1)).sum(dim=1)
 
 
 

@@ -1,0 +1,1 @@
+cd /root/autodl-tmp/M2AD && CUDA_VISIBLE_DEVICES=0 nohup python -u run_dataset.py --cfg_path configs/benchmark/inpformer/inpformer_100e.py -m train -s M2AD-Synergy --checkpoint only_birds_12_data_augment > my_logs/run_inpformer_synergy_only_birds_12_data_augment_0825_0600.log 2>&1 &

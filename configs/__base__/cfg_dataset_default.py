@@ -17,6 +17,7 @@ class cfg_dataset_default(Namespace):
 		self.train_data.anomaly_generator = Namespace()
 		self.train_data.sampler = Namespace()
 		self.train_data.sampler.name = 'naive'
+		# self.train_data.sampler.name = 'balanced'
 		self.train_data.sampler.kwargs = dict()
 		self.train_data.loader_type = 'pil'
 		self.train_data.loader_type_target = 'pil_L'
