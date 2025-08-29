@@ -1,0 +1,867 @@
+2025-08-25 10:30:40,196 - ==> Running Trainer: INPFormerTrainer
+2025-08-25 10:30:40,196 - ==> Loading training dataset: M2AD
+2025-08-25 10:30:40,196 - ==> Loading testing dataset: M2AD
+2025-08-25 10:30:40,928 - ==> Dataset info: Training: True, Class: Bird, #Normal: 3600, #Abnormal: 0, #Total: 3600
+2025-08-25 10:30:40,928 - ==> Dataset info: Training: False, Class: Bird, #Normal: 3850, #Abnormal: 4550, #Total: 8400
+2025-08-25 10:30:40,928 - ==> Using GPU: [0] for Training
+2025-08-25 10:30:40,928 - ==> Building model
+2025-08-25 10:30:42,760 - using MLP layer as FFN
+2025-08-25 10:30:46,837 - ==> Creating optimizer
+2025-08-25 10:30:46,841 - ==> ********** cfg ********** 
+fvcore_is                            : True                                
+fvcore_b                             : 1                                   
+fvcore_c                             : 3                                   
+epoch_full                           : 100                                 
+m2ad_synergy_metrics                 : ['AUROC_obj_sp', 'AUROC_view_sp', 'AUROC_view_px', 'mF1_obj_sp', 'mF1_view_sp', 'mF1_view_px', 'AP_obj_sp', 'AP_view_sp', 'AP_view_px', 'AUPRO_view']
+m2ad_invariant_metrics               : ['AUROC_img_sp', 'AUROC_img_px', 'mF1_img_sp', 'mF1_img_px', 'AP_img_sp', 'AP_img_px', 'AUPRO_img']
+metrics                              : ['AUROC_obj_sp', 'AUROC_view_sp', 'AUROC_view_px', 'mF1_obj_sp', 'mF1_view_sp', 'mF1_view_px', 'AP_obj_sp', 'AP_view_sp', 'AP_view_px', 'AUPRO_view']
+use_adeval                           : True                                
+evaluator.kwargs                     : {'metrics': ['AUROC_obj_sp', 'AUROC_view_sp', 'AUROC_view_px', 'mF1_obj_sp', 'mF1_view_sp', 'mF1_view_px', 'AP_obj_sp', 'AP_view_sp', 'AP_view_px', 'AUPRO_view'], 'pooling_ks': None, 'max_step_aupro': 100, 'use_adeval': True}
+vis                                  : True                                
+vis_dir                              : None                                
+optim.lr                             : 0.00375                             
+optim.kwargs                         : {'name': 'adam', 'betas': (0.5, 0.999)}
+trainer.name                         : INPFormerTrainer                    
+trainer.checkpoint                   : only_birds_12_base2_runs            
+trainer.logdir_sub                   : exp1                                
+trainer.resume_dir                   :                                     
+trainer.cuda_deterministic           : False                               
+trainer.epoch_full                   : 100                                 
+trainer.scheduler_kwargs             : {'name': 'step', 'lr_noise': None, 'noise_pct': 0.67, 'noise_std': 1.0, 'noise_seed': 42, 'lr_min': 3.75e-05, 'warmup_lr': 3.7499999999999997e-06, 'warmup_iters': -1, 'cooldown_iters': 0, 'warmup_epochs': 0, 'cooldown_epochs': 0, 'use_iters': True, 'patience_iters': 0, 'patience_epochs': 0, 'decay_iters': 0, 'decay_epochs': 80, 'cycle_decay': 0.1, 'decay_rate': 0.1}
+trainer.test_start_epoch             : 100                                 
+trainer.test_per_epoch               : 50                                  
+trainer.find_unused_parameters       : False                               
+trainer.sync_BN                      : apex                                
+trainer.dist_BN                      :                                     
+trainer.scaler                       : none                                
+trainer.data.batch_size              : 12                                  
+trainer.data.batch_size_per_gpu      : 12                                  
+trainer.data.batch_size_test         : 12                                  
+trainer.data.batch_size_per_gpu_test : 12                                  
+trainer.data.num_workers_per_gpu     : 8                                   
+trainer.data.drop_last               : False                               
+trainer.data.pin_memory              : True                                
+trainer.data.persistent_workers      : False                               
+trainer.data.num_workers             : 8                                   
+trainer.iter                         : 0                                   
+trainer.epoch                        : 0                                   
+trainer.iter_full                    : 30000                               
+trainer.metric_recorder              : {'AUROC_obj_sp_Bird': [], 'AUROC_view_sp_Bird': [], 'AUROC_view_px_Bird': [], 'mF1_obj_sp_Bird': [], 'mF1_view_sp_Bird': [], 'mF1_view_px_Bird': [], 'AP_obj_sp_Bird': [], 'AP_view_sp_Bird': [], 'AP_view_px_Bird': [], 'AUPRO_view_Bird': []}
+loss.loss_terms                      : [{'type': 'INPFormerLoss', 'name': 'inpformer_loss', 'y': 3}]
+loss.clip_grad                       : 5.0                                 
+loss.create_graph                    : False                               
+loss.retain_graph                    : False                               
+adv                                  : False                               
+logging.log_terms_train              : [{'name': 'batch_t', 'fmt': ':>5.3f', 'add_name': 'avg'}, {'name': 'data_t', 'fmt': ':>5.3f'}, {'name': 'optim_t', 'fmt': ':>5.3f'}, {'name': 'lr', 'fmt': ':>7.6f'}, {'name': 'inpformer_loss', 'suffixes': [''], 'fmt': ':>5.3f', 'add_name': 'avg'}]
+logging.log_terms_test               : [{'name': 'batch_t', 'fmt': ':>5.3f', 'add_name': 'avg'}, {'name': 'inpformer_loss', 'suffixes': [''], 'fmt': ':>5.3f', 'add_name': 'avg'}]
+logging.train_reset_log_per          : 50                                  
+logging.train_log_per                : 50                                  
+logging.test_log_per                 : 50                                  
+size                                 : 224                                 
+setup                                : M2AD-Synergy                        
+train_data.anomaly_generator.name    : white_noise                         
+train_data.anomaly_generator.enable  : False                               
+train_data.anomaly_generator.kwargs  : {}                                  
+train_data.sampler.name              : naive                               
+train_data.sampler.kwargs            : {}                                  
+train_data.loader_type               : pil                                 
+train_data.loader_type_target        : pil_L                               
+train_data.type                      : M2AD                                
+train_data.name                      : m2ad                                
+train_data.mode                      : unsupervised                        
+train_data.cls_names                 : Bird                                
+train_data.train_transforms          : [{'type': 'Resize', 'size': (224, 224), 'interpolation': <InterpolationMode.BILINEAR: 'bilinear'>}, {'type': 'CenterCrop', 'size': (224, 224)}, {'type': 'ToTensor'}, {'type': 'Normalize', 'mean': (0.485, 0.456, 0.406), 'std': (0.229, 0.224, 0.225), 'inplace': True}]
+train_data.test_transforms           : [{'type': 'Resize', 'size': (224, 224), 'interpolation': <InterpolationMode.BILINEAR: 'bilinear'>}, {'type': 'CenterCrop', 'size': (224, 224)}, {'type': 'ToTensor'}, {'type': 'Normalize', 'mean': (0.485, 0.456, 0.406), 'std': (0.229, 0.224, 0.225), 'inplace': True}]
+train_data.target_transforms         : [{'type': 'Resize', 'size': (224, 224), 'interpolation': <InterpolationMode.BILINEAR: 'bilinear'>}, {'type': 'CenterCrop', 'size': (224, 224)}, {'type': 'ToTensor'}]
+train_data.train_size                : 300                                 
+train_data.train_length              : 3600                                
+test_data.anomaly_generator.name     : white_noise                         
+test_data.anomaly_generator.enable   : False                               
+test_data.anomaly_generator.kwargs   : {}                                  
+test_data.sampler.name               : naive                               
+test_data.sampler.kwargs             : {}                                  
+test_data.loader_type                : pil                                 
+test_data.loader_type_target         : pil_L                               
+test_data.type                       : M2AD                                
+test_data.name                       : m2ad                                
+test_data.mode                       : unsupervised                        
+test_data.cls_names                  : Bird                                
+test_data.train_transforms           : [{'type': 'Resize', 'size': (224, 224), 'interpolation': <InterpolationMode.BILINEAR: 'bilinear'>}, {'type': 'CenterCrop', 'size': (224, 224)}, {'type': 'ToTensor'}, {'type': 'Normalize', 'mean': (0.485, 0.456, 0.406), 'std': (0.229, 0.224, 0.225), 'inplace': True}]
+test_data.test_transforms            : [{'type': 'Resize', 'size': (224, 224), 'interpolation': <InterpolationMode.BILINEAR: 'bilinear'>}, {'type': 'CenterCrop', 'size': (224, 224)}, {'type': 'ToTensor'}, {'type': 'Normalize', 'mean': (0.485, 0.456, 0.406), 'std': (0.229, 0.224, 0.225), 'inplace': True}]
+test_data.target_transforms          : [{'type': 'Resize', 'size': (224, 224), 'interpolation': <InterpolationMode.BILINEAR: 'bilinear'>}, {'type': 'CenterCrop', 'size': (224, 224)}, {'type': 'ToTensor'}]
+test_data.test_size                  : 700                                 
+test_data.test_length                : 8400                                
+model.name                           : inpformer                           
+model.kwargs                         : {'pretrained': False, 'checkpoint_path': '', 'strict': False, 'encoder_arch': 'dinov2reg_vit_base_14', 'INP_num': 6}
+seed                                 : 42                                  
+warmup_epochs                        : 0                                   
+test_start_epoch                     : 100                                 
+test_per_epoch                       : 50                                  
+batch_train                          : 12                                  
+batch_test_per                       : 12                                  
+lr                                   : 0.00375                             
+weight_decay                         : 0.05                                
+cfg_path                             : configs.benchmark.inpformer.inpformer_100e
+mode                                 : train                               
+sleep                                : -1                                  
+memory                               : -1                                  
+checkpoint                           : only_birds_12_base2_runs            
+command                              : python3 -m torch.distributed.launch --nproc_per_node=$nproc_per_node --nnodes=$nnodes --node_rank=$node_rank --master_addr=$master_addr --master_port=$master_port --use_env run.py -c configs.benchmark.inpformer.inpformer_100e -m train --sleep -1 --memory -1
+task_start_time                      : 19013035.29073934                   
+world_size                           : 1                                   
+rank                                 : 0                                   
+local_rank                           : 0                                   
+ngpus_per_node                       : 1                                   
+master                               : True                                
+logdir                               : only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1
+tb_dir                               : only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/20250825-103040
+logger.filters                       : []                                  
+logger.name                          : root                                
+logger.level                         : 20                                  
+logger.parent                        : None                                
+logger.propagate                     : True                                
+logger.disabled                      : False
+2025-08-25 10:30:46,841 - ==> Starting training
+2025-08-25 10:31:10,122 - Train: 0.17% [50/30000]  [0.2/100.0] [batch_t 0.060 (0.460)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.535 (0.549)]
+2025-08-25 10:31:28,530 - Train: 0.33% [100/30000]  [0.3/100.0] [batch_t 0.062 (0.368)] [data_t 0.001] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.424 (0.460)]
+2025-08-25 10:31:46,788 - Train: 0.50% [150/30000]  [0.5/100.0] [batch_t 0.061 (0.365)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.409 (0.442)]
+2025-08-25 10:32:05,146 - Train: 0.67% [200/30000]  [0.7/100.0] [batch_t 0.059 (0.367)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.396 (0.420)]
+2025-08-25 10:32:25,914 - Train: 0.83% [250/30000]  [0.8/100.0] [batch_t 0.062 (0.415)] [data_t 0.001] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.395 (0.398)]
+2025-08-25 10:32:42,744 - Train: 1.00% [300/30000]  [1.0/100.0] [batch_t 0.060 (0.336)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.386 (0.419)]
+2025-08-25 10:32:42,750 - ==> Total time: 0:02:02	 Eta: 3:22:14 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 10:33:06,151 - Train: 1.17% [350/30000]  [1.2/100.0] [batch_t 0.071 (0.431)] [data_t 0.001] [optim_t 0.071] [lr 0.003750] [inpformer_loss 0.388 (0.373)]
+2025-08-25 10:33:24,683 - Train: 1.33% [400/30000]  [1.3/100.0] [batch_t 0.060 (0.370)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.397 (0.387)]
+2025-08-25 10:33:43,091 - Train: 1.50% [450/30000]  [1.5/100.0] [batch_t 0.060 (0.368)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.376 (0.439)]
+2025-08-25 10:34:01,638 - Train: 1.67% [500/30000]  [1.7/100.0] [batch_t 0.060 (0.371)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.353 (0.371)]
+2025-08-25 10:34:22,691 - Train: 1.83% [550/30000]  [1.8/100.0] [batch_t 0.061 (0.421)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.365 (0.341)]
+2025-08-25 10:34:39,354 - Train: 2.00% [600/30000]  [2.0/100.0] [batch_t 0.060 (0.333)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.335 (0.355)]
+2025-08-25 10:34:39,358 - ==> Total time: 0:03:59	 Eta: 3:15:19 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 10:35:03,416 - Train: 2.17% [650/30000]  [2.2/100.0] [batch_t 0.199 (0.434)] [data_t 0.140] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.325 (0.339)]
+2025-08-25 10:35:22,095 - Train: 2.33% [700/30000]  [2.3/100.0] [batch_t 0.060 (0.373)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.360 (0.327)]
+2025-08-25 10:35:40,449 - Train: 2.50% [750/30000]  [2.5/100.0] [batch_t 0.059 (0.367)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.317 (0.333)]
+2025-08-25 10:35:58,994 - Train: 2.67% [800/30000]  [2.7/100.0] [batch_t 0.070 (0.371)] [data_t 0.001] [optim_t 0.069] [lr 0.003750] [inpformer_loss 0.311 (0.327)]
+2025-08-25 10:36:20,075 - Train: 2.83% [850/30000]  [2.8/100.0] [batch_t 0.736 (0.421)] [data_t 0.677] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.337 (0.321)]
+2025-08-25 10:36:36,495 - Train: 3.00% [900/30000]  [3.0/100.0] [batch_t 0.060 (0.328)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.315 (0.330)]
+2025-08-25 10:36:36,500 - ==> Total time: 0:05:56	 Eta: 3:12:01 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 10:37:00,811 - Train: 3.17% [950/30000]  [3.2/100.0] [batch_t 0.080 (0.440)] [data_t 0.021] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.327 (0.411)]
+2025-08-25 10:37:19,631 - Train: 3.33% [1000/30000]  [3.3/100.0] [batch_t 0.060 (0.376)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.309 (0.326)]
+2025-08-25 10:37:38,408 - Train: 3.50% [1050/30000]  [3.5/100.0] [batch_t 0.061 (0.375)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.326 (0.353)]
+2025-08-25 10:37:56,821 - Train: 3.67% [1100/30000]  [3.7/100.0] [batch_t 0.060 (0.368)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.312 (0.329)]
+2025-08-25 10:38:17,419 - Train: 3.83% [1150/30000]  [3.8/100.0] [batch_t 0.072 (0.412)] [data_t 0.010] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.390 (0.319)]
+2025-08-25 10:38:33,962 - Train: 4.00% [1200/30000]  [4.0/100.0] [batch_t 0.060 (0.331)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.320 (0.321)]
+2025-08-25 10:38:33,966 - ==> Total time: 0:07:53	 Eta: 3:09:30 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 10:38:57,537 - Train: 4.17% [1250/30000]  [4.2/100.0] [batch_t 0.257 (0.425)] [data_t 0.196] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.299 (0.312)]
+2025-08-25 10:39:15,625 - Train: 4.33% [1300/30000]  [4.3/100.0] [batch_t 0.060 (0.362)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.317 (0.321)]
+2025-08-25 10:39:33,871 - Train: 4.50% [1350/30000]  [4.5/100.0] [batch_t 0.074 (0.365)] [data_t 0.001] [optim_t 0.073] [lr 0.003750] [inpformer_loss 0.303 (0.317)]
+2025-08-25 10:39:52,109 - Train: 4.67% [1400/30000]  [4.7/100.0] [batch_t 0.060 (0.365)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.297 (0.303)]
+2025-08-25 10:40:12,873 - Train: 4.83% [1450/30000]  [4.8/100.0] [batch_t 0.766 (0.415)] [data_t 0.707] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.298 (0.305)]
+2025-08-25 10:40:29,103 - Train: 5.00% [1500/30000]  [5.0/100.0] [batch_t 0.059 (0.324)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.327 (0.325)]
+2025-08-25 10:40:29,108 - ==> Total time: 0:09:48	 Eta: 3:06:29 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 10:40:52,712 - Train: 5.17% [1550/30000]  [5.2/100.0] [batch_t 0.089 (0.426)] [data_t 0.029] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.290 (0.300)]
+2025-08-25 10:41:11,042 - Train: 5.33% [1600/30000]  [5.3/100.0] [batch_t 0.060 (0.366)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.299 (0.310)]
+2025-08-25 10:41:29,067 - Train: 5.50% [1650/30000]  [5.5/100.0] [batch_t 0.059 (0.360)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.291 (0.299)]
+2025-08-25 10:41:47,074 - Train: 5.67% [1700/30000]  [5.7/100.0] [batch_t 0.062 (0.360)] [data_t 0.003] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.281 (0.296)]
+2025-08-25 10:42:07,410 - Train: 5.83% [1750/30000]  [5.8/100.0] [batch_t 0.059 (0.407)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.284 (0.297)]
+2025-08-25 10:42:24,062 - Train: 6.00% [1800/30000]  [6.0/100.0] [batch_t 0.059 (0.333)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.297 (0.302)]
+2025-08-25 10:42:24,065 - ==> Total time: 0:11:43	 Eta: 3:03:47 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 10:42:47,562 - Train: 6.17% [1850/30000]  [6.2/100.0] [batch_t 0.065 (0.425)] [data_t 0.004] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.298 (0.294)]
+2025-08-25 10:43:05,747 - Train: 6.33% [1900/30000]  [6.3/100.0] [batch_t 0.060 (0.364)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.286 (0.292)]
+2025-08-25 10:43:23,902 - Train: 6.50% [1950/30000]  [6.5/100.0] [batch_t 0.060 (0.363)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.350 (0.320)]
+2025-08-25 10:43:42,006 - Train: 6.67% [2000/30000]  [6.7/100.0] [batch_t 0.060 (0.362)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.291 (0.306)]
+2025-08-25 10:44:02,460 - Train: 6.83% [2050/30000]  [6.8/100.0] [batch_t 0.114 (0.409)] [data_t 0.037] [optim_t 0.077] [lr 0.003750] [inpformer_loss 0.285 (0.297)]
+2025-08-25 10:44:19,128 - Train: 7.00% [2100/30000]  [7.0/100.0] [batch_t 0.060 (0.333)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.287 (0.294)]
+2025-08-25 10:44:19,136 - ==> Total time: 0:13:38	 Eta: 3:01:20 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 10:44:42,674 - Train: 7.17% [2150/30000]  [7.2/100.0] [batch_t 0.062 (0.426)] [data_t 0.001] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.302 (0.292)]
+2025-08-25 10:45:00,726 - Train: 7.33% [2200/30000]  [7.3/100.0] [batch_t 0.060 (0.361)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.287 (0.288)]
+2025-08-25 10:45:18,826 - Train: 7.50% [2250/30000]  [7.5/100.0] [batch_t 0.059 (0.362)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.287 (0.290)]
+2025-08-25 10:45:36,956 - Train: 7.67% [2300/30000]  [7.7/100.0] [batch_t 0.060 (0.362)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.282 (0.293)]
+2025-08-25 10:45:57,583 - Train: 7.83% [2350/30000]  [7.8/100.0] [batch_t 0.071 (0.412)] [data_t 0.012] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.315 (0.311)]
+2025-08-25 10:46:13,840 - Train: 8.00% [2400/30000]  [8.0/100.0] [batch_t 0.060 (0.325)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.283 (0.298)]
+2025-08-25 10:46:13,846 - ==> Total time: 0:15:33	 Eta: 2:58:57 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 10:46:37,412 - Train: 8.17% [2450/30000]  [8.2/100.0] [batch_t 0.117 (0.425)] [data_t 0.058] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.304 (0.329)]
+2025-08-25 10:46:55,519 - Train: 8.33% [2500/30000]  [8.3/100.0] [batch_t 0.059 (0.362)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.294 (0.303)]
+2025-08-25 10:47:13,595 - Train: 8.50% [2550/30000]  [8.5/100.0] [batch_t 0.060 (0.361)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.337 (0.313)]
+2025-08-25 10:47:31,685 - Train: 8.67% [2600/30000]  [8.7/100.0] [batch_t 0.059 (0.362)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.307 (0.318)]
+2025-08-25 10:47:52,268 - Train: 8.83% [2650/30000]  [8.8/100.0] [batch_t 0.487 (0.411)] [data_t 0.415] [optim_t 0.072] [lr 0.003750] [inpformer_loss 0.285 (0.299)]
+2025-08-25 10:48:08,829 - Train: 9.00% [2700/30000]  [9.0/100.0] [batch_t 0.060 (0.331)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.338 (0.292)]
+2025-08-25 10:48:08,836 - ==> Total time: 0:17:28	 Eta: 2:56:43 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 10:48:32,294 - Train: 9.17% [2750/30000]  [9.2/100.0] [batch_t 0.060 (0.421)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.288 (0.299)]
+2025-08-25 10:48:50,437 - Train: 9.33% [2800/30000]  [9.3/100.0] [batch_t 0.059 (0.363)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.288 (0.294)]
+2025-08-25 10:49:08,466 - Train: 9.50% [2850/30000]  [9.5/100.0] [batch_t 0.060 (0.360)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.283 (0.288)]
+2025-08-25 10:49:26,534 - Train: 9.67% [2900/30000]  [9.7/100.0] [batch_t 0.059 (0.361)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.333 (0.299)]
+2025-08-25 10:49:46,922 - Train: 9.83% [2950/30000]  [9.8/100.0] [batch_t 0.061 (0.407)] [data_t 0.002] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.287 (0.305)]
+2025-08-25 10:50:03,470 - Train: 10.00% [3000/30000]  [10.0/100.0] [batch_t 0.059 (0.331)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.283 (0.289)]
+2025-08-25 10:50:03,474 - ==> Total time: 0:19:23	 Eta: 2:54:29 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 10:50:27,102 - Train: 10.17% [3050/30000]  [10.2/100.0] [batch_t 0.060 (0.427)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.282 (0.291)]
+2025-08-25 10:50:45,205 - Train: 10.33% [3100/30000]  [10.3/100.0] [batch_t 0.062 (0.362)] [data_t 0.001] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.280 (0.289)]
+2025-08-25 10:51:03,476 - Train: 10.50% [3150/30000]  [10.5/100.0] [batch_t 0.059 (0.365)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.283 (0.286)]
+2025-08-25 10:51:21,546 - Train: 10.67% [3200/30000]  [10.7/100.0] [batch_t 0.060 (0.361)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.290 (0.290)]
+2025-08-25 10:51:42,318 - Train: 10.83% [3250/30000]  [10.8/100.0] [batch_t 0.059 (0.415)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.276 (0.285)]
+2025-08-25 10:51:58,782 - Train: 11.00% [3300/30000]  [11.0/100.0] [batch_t 0.059 (0.329)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.281 (0.287)]
+2025-08-25 10:51:58,785 - ==> Total time: 0:21:18	 Eta: 2:52:25 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 10:52:22,542 - Train: 11.17% [3350/30000]  [11.2/100.0] [batch_t 0.060 (0.427)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.277 (0.285)]
+2025-08-25 10:52:40,864 - Train: 11.33% [3400/30000]  [11.3/100.0] [batch_t 0.060 (0.366)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.289 (0.292)]
+2025-08-25 10:52:59,182 - Train: 11.50% [3450/30000]  [11.5/100.0] [batch_t 0.059 (0.366)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.308 (0.345)]
+2025-08-25 10:53:17,386 - Train: 11.67% [3500/30000]  [11.7/100.0] [batch_t 0.059 (0.364)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.284 (0.292)]
+2025-08-25 10:53:37,989 - Train: 11.83% [3550/30000]  [11.8/100.0] [batch_t 0.060 (0.412)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.281 (0.292)]
+2025-08-25 10:53:54,517 - Train: 12.00% [3600/30000]  [12.0/100.0] [batch_t 0.059 (0.330)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.280 (0.293)]
+2025-08-25 10:53:54,521 - ==> Total time: 0:23:14	 Eta: 2:50:25 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 10:54:17,926 - Train: 12.17% [3650/30000]  [12.2/100.0] [batch_t 0.065 (0.424)] [data_t 0.006] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.275 (0.284)]
+2025-08-25 10:54:36,239 - Train: 12.33% [3700/30000]  [12.3/100.0] [batch_t 0.068 (0.366)] [data_t 0.001] [optim_t 0.067] [lr 0.003750] [inpformer_loss 0.271 (0.281)]
+2025-08-25 10:54:54,405 - Train: 12.50% [3750/30000]  [12.5/100.0] [batch_t 0.059 (0.363)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.322 (0.282)]
+2025-08-25 10:55:12,568 - Train: 12.67% [3800/30000]  [12.7/100.0] [batch_t 0.060 (0.363)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.278 (0.300)]
+2025-08-25 10:55:33,079 - Train: 12.83% [3850/30000]  [12.8/100.0] [batch_t 0.481 (0.410)] [data_t 0.421] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.308 (0.281)]
+2025-08-25 10:55:49,596 - Train: 13.00% [3900/30000]  [13.0/100.0] [batch_t 0.060 (0.330)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.280 (0.301)]
+2025-08-25 10:55:49,601 - ==> Total time: 0:25:09	 Eta: 2:48:21 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 10:56:13,064 - Train: 13.17% [3950/30000]  [13.2/100.0] [batch_t 0.059 (0.424)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.283 (0.283)]
+2025-08-25 10:56:31,350 - Train: 13.33% [4000/30000]  [13.3/100.0] [batch_t 0.072 (0.366)] [data_t 0.001] [optim_t 0.071] [lr 0.003750] [inpformer_loss 0.275 (0.282)]
+2025-08-25 10:56:49,475 - Train: 13.50% [4050/30000]  [13.5/100.0] [batch_t 0.060 (0.362)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.281 (0.294)]
+2025-08-25 10:57:07,508 - Train: 13.67% [4100/30000]  [13.7/100.0] [batch_t 0.060 (0.361)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.278 (0.281)]
+2025-08-25 10:57:27,983 - Train: 13.83% [4150/30000]  [13.8/100.0] [batch_t 0.060 (0.409)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.274 (0.284)]
+2025-08-25 10:57:44,394 - Train: 14.00% [4200/30000]  [14.0/100.0] [batch_t 0.060 (0.328)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.281 (0.279)]
+2025-08-25 10:57:44,398 - ==> Total time: 0:27:04	 Eta: 2:46:17 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 10:58:08,011 - Train: 14.17% [4250/30000]  [14.2/100.0] [batch_t 0.060 (0.426)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.273 (0.284)]
+2025-08-25 10:58:26,420 - Train: 14.33% [4300/30000]  [14.3/100.0] [batch_t 0.060 (0.368)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.276 (0.277)]
+2025-08-25 10:58:44,795 - Train: 14.50% [4350/30000]  [14.5/100.0] [batch_t 0.060 (0.367)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.287 (0.286)]
+2025-08-25 10:59:03,128 - Train: 14.67% [4400/30000]  [14.7/100.0] [batch_t 0.060 (0.367)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.359 (0.410)]
+2025-08-25 10:59:24,019 - Train: 14.83% [4450/30000]  [14.8/100.0] [batch_t 0.059 (0.418)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.341 (0.340)]
+2025-08-25 10:59:40,756 - Train: 15.00% [4500/30000]  [15.0/100.0] [batch_t 0.059 (0.335)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.296 (0.316)]
+2025-08-25 10:59:40,759 - ==> Total time: 0:29:00	 Eta: 2:44:23 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:00:04,334 - Train: 15.17% [4550/30000]  [15.2/100.0] [batch_t 0.059 (0.427)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.288 (0.298)]
+2025-08-25 11:00:22,878 - Train: 15.33% [4600/30000]  [15.3/100.0] [batch_t 0.059 (0.371)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.279 (0.293)]
+2025-08-25 11:00:41,296 - Train: 15.50% [4650/30000]  [15.5/100.0] [batch_t 0.060 (0.368)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.279 (0.289)]
+2025-08-25 11:00:59,854 - Train: 15.67% [4700/30000]  [15.7/100.0] [batch_t 0.066 (0.371)] [data_t 0.003] [optim_t 0.063] [lr 0.003750] [inpformer_loss 0.290 (0.311)]
+2025-08-25 11:01:20,413 - Train: 15.83% [4750/30000]  [15.8/100.0] [batch_t 0.209 (0.411)] [data_t 0.149] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.304 (0.288)]
+2025-08-25 11:01:37,655 - Train: 16.00% [4800/30000]  [16.0/100.0] [batch_t 0.059 (0.345)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.279 (0.283)]
+2025-08-25 11:01:37,660 - ==> Total time: 0:30:57	 Eta: 2:42:31 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:02:02,074 - Train: 16.17% [4850/30000]  [16.2/100.0] [batch_t 0.059 (0.438)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.275 (0.282)]
+2025-08-25 11:02:20,713 - Train: 16.33% [4900/30000]  [16.3/100.0] [batch_t 0.061 (0.373)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.276 (0.284)]
+2025-08-25 11:02:39,225 - Train: 16.50% [4950/30000]  [16.5/100.0] [batch_t 0.060 (0.370)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.273 (0.293)]
+2025-08-25 11:02:57,826 - Train: 16.67% [5000/30000]  [16.7/100.0] [batch_t 0.060 (0.372)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.274 (0.282)]
+2025-08-25 11:03:18,978 - Train: 16.83% [5050/30000]  [16.8/100.0] [batch_t 0.060 (0.423)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.291 (0.285)]
+2025-08-25 11:03:35,883 - Train: 17.00% [5100/30000]  [17.0/100.0] [batch_t 0.060 (0.338)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.283 (0.276)]
+2025-08-25 11:03:35,887 - ==> Total time: 0:32:55	 Eta: 2:40:46 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:03:59,975 - Train: 17.17% [5150/30000]  [17.2/100.0] [batch_t 0.062 (0.435)] [data_t 0.003] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.306 (0.281)]
+2025-08-25 11:04:18,593 - Train: 17.33% [5200/30000]  [17.3/100.0] [batch_t 0.060 (0.372)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.271 (0.283)]
+2025-08-25 11:04:37,090 - Train: 17.50% [5250/30000]  [17.5/100.0] [batch_t 0.060 (0.370)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.266 (0.277)]
+2025-08-25 11:04:55,525 - Train: 17.67% [5300/30000]  [17.7/100.0] [batch_t 0.059 (0.368)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.275 (0.279)]
+2025-08-25 11:05:16,649 - Train: 17.83% [5350/30000]  [17.8/100.0] [batch_t 0.439 (0.422)] [data_t 0.359] [optim_t 0.081] [lr 0.003750] [inpformer_loss 0.273 (0.279)]
+2025-08-25 11:05:33,300 - Train: 18.00% [5400/30000]  [18.0/100.0] [batch_t 0.060 (0.333)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.267 (0.277)]
+2025-08-25 11:05:33,304 - ==> Total time: 0:34:53	 Eta: 2:38:55 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:05:57,449 - Train: 18.17% [5450/30000]  [18.2/100.0] [batch_t 0.072 (0.432)] [data_t 0.001] [optim_t 0.071] [lr 0.003750] [inpformer_loss 0.327 (0.356)]
+2025-08-25 11:06:15,589 - Train: 18.33% [5500/30000]  [18.3/100.0] [batch_t 0.063 (0.363)] [data_t 0.004] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.304 (0.296)]
+2025-08-25 11:06:34,060 - Train: 18.50% [5550/30000]  [18.5/100.0] [batch_t 0.060 (0.369)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.285 (0.286)]
+2025-08-25 11:06:52,337 - Train: 18.67% [5600/30000]  [18.7/100.0] [batch_t 0.060 (0.365)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.281 (0.284)]
+2025-08-25 11:07:12,912 - Train: 18.83% [5650/30000]  [18.8/100.0] [batch_t 0.095 (0.411)] [data_t 0.036] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.275 (0.281)]
+2025-08-25 11:07:29,701 - Train: 19.00% [5700/30000]  [19.0/100.0] [batch_t 0.060 (0.336)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.275 (0.280)]
+2025-08-25 11:07:29,707 - ==> Total time: 0:36:49	 Eta: 2:36:59 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:07:53,394 - Train: 19.17% [5750/30000]  [19.2/100.0] [batch_t 0.059 (0.428)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.274 (0.285)]
+2025-08-25 11:08:11,896 - Train: 19.33% [5800/30000]  [19.3/100.0] [batch_t 0.060 (0.370)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.282 (0.279)]
+2025-08-25 11:08:30,141 - Train: 19.50% [5850/30000]  [19.5/100.0] [batch_t 0.065 (0.365)] [data_t 0.001] [optim_t 0.064] [lr 0.003750] [inpformer_loss 0.275 (0.279)]
+2025-08-25 11:08:48,566 - Train: 19.67% [5900/30000]  [19.7/100.0] [batch_t 0.060 (0.368)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.277 (0.279)]
+2025-08-25 11:09:09,383 - Train: 19.83% [5950/30000]  [19.8/100.0] [batch_t 0.065 (0.416)] [data_t 0.001] [optim_t 0.064] [lr 0.003750] [inpformer_loss 0.267 (0.278)]
+2025-08-25 11:09:26,067 - Train: 20.00% [6000/30000]  [20.0/100.0] [batch_t 0.087 (0.334)] [data_t 0.001] [optim_t 0.086] [lr 0.003750] [inpformer_loss 0.273 (0.278)]
+2025-08-25 11:09:26,074 - ==> Total time: 0:38:45	 Eta: 2:35:03 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:09:49,960 - Train: 20.17% [6050/30000]  [20.2/100.0] [batch_t 0.243 (0.432)] [data_t 0.167] [optim_t 0.076] [lr 0.003750] [inpformer_loss 0.272 (0.277)]
+2025-08-25 11:10:08,328 - Train: 20.33% [6100/30000]  [20.3/100.0] [batch_t 0.059 (0.367)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.274 (0.277)]
+2025-08-25 11:10:26,659 - Train: 20.50% [6150/30000]  [20.5/100.0] [batch_t 0.060 (0.366)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.265 (0.283)]
+2025-08-25 11:10:44,996 - Train: 20.67% [6200/30000]  [20.7/100.0] [batch_t 0.060 (0.367)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.282 (0.277)]
+2025-08-25 11:11:05,817 - Train: 20.83% [6250/30000]  [20.8/100.0] [batch_t 0.703 (0.416)] [data_t 0.645] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.289 (0.276)]
+2025-08-25 11:11:22,528 - Train: 21.00% [6300/30000]  [21.0/100.0] [batch_t 0.059 (0.334)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.267 (0.276)]
+2025-08-25 11:11:22,534 - ==> Total time: 0:40:42	 Eta: 2:33:07 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:11:46,324 - Train: 21.17% [6350/30000]  [21.2/100.0] [batch_t 0.064 (0.429)] [data_t 0.005] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.277 (0.276)]
+2025-08-25 11:12:04,719 - Train: 21.33% [6400/30000]  [21.3/100.0] [batch_t 0.059 (0.368)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.268 (0.276)]
+2025-08-25 11:12:23,158 - Train: 21.50% [6450/30000]  [21.5/100.0] [batch_t 0.059 (0.369)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.274 (0.276)]
+2025-08-25 11:12:41,474 - Train: 21.67% [6500/30000]  [21.7/100.0] [batch_t 0.059 (0.366)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.275 (0.276)]
+2025-08-25 11:13:02,189 - Train: 21.83% [6550/30000]  [21.8/100.0] [batch_t 0.060 (0.414)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.265 (0.274)]
+2025-08-25 11:13:18,756 - Train: 22.00% [6600/30000]  [22.0/100.0] [batch_t 0.060 (0.331)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.262 (0.276)]
+2025-08-25 11:13:18,762 - ==> Total time: 0:42:38	 Eta: 2:31:11 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:13:42,572 - Train: 22.17% [6650/30000]  [22.2/100.0] [batch_t 0.059 (0.430)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.296 (0.274)]
+2025-08-25 11:14:00,842 - Train: 22.33% [6700/30000]  [22.3/100.0] [batch_t 0.060 (0.365)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.267 (0.274)]
+2025-08-25 11:14:19,092 - Train: 22.50% [6750/30000]  [22.5/100.0] [batch_t 0.060 (0.365)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.276 (0.273)]
+2025-08-25 11:14:37,454 - Train: 22.67% [6800/30000]  [22.7/100.0] [batch_t 0.060 (0.367)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.266 (0.274)]
+2025-08-25 11:14:58,185 - Train: 22.83% [6850/30000]  [22.8/100.0] [batch_t 0.060 (0.414)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.275 (0.277)]
+2025-08-25 11:15:14,764 - Train: 23.00% [6900/30000]  [23.0/100.0] [batch_t 0.059 (0.331)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.264 (0.274)]
+2025-08-25 11:15:14,768 - ==> Total time: 0:44:34	 Eta: 2:29:14 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:15:38,552 - Train: 23.17% [6950/30000]  [23.2/100.0] [batch_t 0.059 (0.429)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.283 (0.273)]
+2025-08-25 11:15:56,897 - Train: 23.33% [7000/30000]  [23.3/100.0] [batch_t 0.059 (0.367)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.274 (0.275)]
+2025-08-25 11:16:15,321 - Train: 23.50% [7050/30000]  [23.5/100.0] [batch_t 0.059 (0.368)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.275 (0.274)]
+2025-08-25 11:16:33,437 - Train: 23.67% [7100/30000]  [23.7/100.0] [batch_t 0.059 (0.362)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.368 (0.368)]
+2025-08-25 11:16:54,254 - Train: 23.83% [7150/30000]  [23.8/100.0] [batch_t 0.063 (0.416)] [data_t 0.001] [optim_t 0.062] [lr 0.003750] [inpformer_loss 0.502 (0.334)]
+2025-08-25 11:17:11,090 - Train: 24.00% [7200/30000]  [24.0/100.0] [batch_t 0.060 (0.337)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.293 (0.290)]
+2025-08-25 11:17:11,094 - ==> Total time: 0:46:30	 Eta: 2:27:17 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:17:34,761 - Train: 24.17% [7250/30000]  [24.2/100.0] [batch_t 0.069 (0.426)] [data_t 0.010] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.278 (0.284)]
+2025-08-25 11:17:53,189 - Train: 24.33% [7300/30000]  [24.3/100.0] [batch_t 0.074 (0.368)] [data_t 0.001] [optim_t 0.074] [lr 0.003750] [inpformer_loss 0.267 (0.281)]
+2025-08-25 11:18:11,398 - Train: 24.50% [7350/30000]  [24.5/100.0] [batch_t 0.059 (0.364)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.281 (0.293)]
+2025-08-25 11:18:29,827 - Train: 24.67% [7400/30000]  [24.7/100.0] [batch_t 0.059 (0.368)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.277 (0.283)]
+2025-08-25 11:18:50,443 - Train: 24.83% [7450/30000]  [24.8/100.0] [batch_t 0.059 (0.412)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.277 (0.284)]
+2025-08-25 11:19:07,187 - Train: 25.00% [7500/30000]  [25.0/100.0] [batch_t 0.059 (0.335)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.275 (0.288)]
+2025-08-25 11:19:07,191 - ==> Total time: 0:48:27	 Eta: 2:25:21 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:19:31,240 - Train: 25.17% [7550/30000]  [25.2/100.0] [batch_t 0.059 (0.432)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.268 (0.277)]
+2025-08-25 11:19:49,596 - Train: 25.33% [7600/30000]  [25.3/100.0] [batch_t 0.059 (0.367)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.371 (0.286)]
+2025-08-25 11:20:07,957 - Train: 25.50% [7650/30000]  [25.5/100.0] [batch_t 0.061 (0.367)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.482 (0.289)]
+2025-08-25 11:20:26,425 - Train: 25.67% [7700/30000]  [25.7/100.0] [batch_t 0.059 (0.369)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.288 (0.283)]
+2025-08-25 11:20:47,298 - Train: 25.83% [7750/30000]  [25.8/100.0] [batch_t 0.060 (0.417)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.264 (0.275)]
+2025-08-25 11:21:03,751 - Train: 26.00% [7800/30000]  [26.0/100.0] [batch_t 0.063 (0.329)] [data_t 0.001] [optim_t 0.062] [lr 0.003750] [inpformer_loss 0.271 (0.279)]
+2025-08-25 11:21:03,756 - ==> Total time: 0:50:23	 Eta: 2:23:25 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:21:27,553 - Train: 26.17% [7850/30000]  [26.2/100.0] [batch_t 0.059 (0.429)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.320 (0.274)]
+2025-08-25 11:21:46,008 - Train: 26.33% [7900/30000]  [26.3/100.0] [batch_t 0.059 (0.369)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.269 (0.273)]
+2025-08-25 11:22:03,273 - Train: 26.50% [7950/30000]  [26.5/100.0] [batch_t 0.062 (0.345)] [data_t 0.001] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.259 (0.273)]
+2025-08-25 11:22:22,089 - Train: 26.67% [8000/30000]  [26.7/100.0] [batch_t 0.076 (0.376)] [data_t 0.001] [optim_t 0.075] [lr 0.003750] [inpformer_loss 0.304 (0.272)]
+2025-08-25 11:22:44,922 - Train: 26.83% [8050/30000]  [26.8/100.0] [batch_t 0.098 (0.456)] [data_t 0.030] [optim_t 0.068] [lr 0.003750] [inpformer_loss 0.261 (0.273)]
+2025-08-25 11:23:03,502 - Train: 27.00% [8100/30000]  [27.0/100.0] [batch_t 0.059 (0.371)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.282 (0.272)]
+2025-08-25 11:23:03,509 - ==> Total time: 0:52:23	 Eta: 2:21:38 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:23:30,111 - Train: 27.17% [8150/30000]  [27.2/100.0] [batch_t 0.083 (0.478)] [data_t 0.001] [optim_t 0.082] [lr 0.003750] [inpformer_loss 0.266 (0.280)]
+2025-08-25 11:23:50,507 - Train: 27.33% [8200/30000]  [27.3/100.0] [batch_t 0.060 (0.408)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.290 (0.273)]
+2025-08-25 11:24:10,688 - Train: 27.50% [8250/30000]  [27.5/100.0] [batch_t 0.060 (0.403)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.268 (0.271)]
+2025-08-25 11:24:30,666 - Train: 27.67% [8300/30000]  [27.7/100.0] [batch_t 0.059 (0.399)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.263 (0.272)]
+2025-08-25 11:24:53,478 - Train: 27.83% [8350/30000]  [27.8/100.0] [batch_t 0.060 (0.456)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.325 (0.271)]
+2025-08-25 11:25:11,994 - Train: 28.00% [8400/30000]  [28.0/100.0] [batch_t 0.059 (0.370)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.270 (0.270)]
+2025-08-25 11:25:11,999 - ==> Total time: 0:54:31	 Eta: 2:20:13 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:25:38,267 - Train: 28.17% [8450/30000]  [28.2/100.0] [batch_t 0.060 (0.473)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.262 (0.270)]
+2025-08-25 11:25:58,193 - Train: 28.33% [8500/30000]  [28.3/100.0] [batch_t 0.061 (0.398)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.266 (0.271)]
+2025-08-25 11:26:18,085 - Train: 28.50% [8550/30000]  [28.5/100.0] [batch_t 0.060 (0.398)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.268 (0.269)]
+2025-08-25 11:26:38,215 - Train: 28.67% [8600/30000]  [28.7/100.0] [batch_t 0.060 (0.402)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.345 (0.272)]
+2025-08-25 11:27:00,834 - Train: 28.83% [8650/30000]  [28.8/100.0] [batch_t 0.064 (0.452)] [data_t 0.001] [optim_t 0.063] [lr 0.003750] [inpformer_loss 0.262 (0.270)]
+2025-08-25 11:27:18,940 - Train: 29.00% [8700/30000]  [29.0/100.0] [batch_t 0.059 (0.362)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.259 (0.270)]
+2025-08-25 11:27:18,946 - ==> Total time: 0:56:38	 Eta: 2:18:41 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:27:44,763 - Train: 29.17% [8750/30000]  [29.2/100.0] [batch_t 0.060 (0.465)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.276 (0.270)]
+2025-08-25 11:28:04,759 - Train: 29.33% [8800/30000]  [29.3/100.0] [batch_t 0.059 (0.400)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.267 (0.269)]
+2025-08-25 11:28:24,855 - Train: 29.50% [8850/30000]  [29.5/100.0] [batch_t 0.060 (0.402)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.259 (0.270)]
+2025-08-25 11:28:44,290 - Train: 29.67% [8900/30000]  [29.7/100.0] [batch_t 0.060 (0.389)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.260 (0.269)]
+2025-08-25 11:29:06,807 - Train: 29.83% [8950/30000]  [29.8/100.0] [batch_t 0.060 (0.450)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.334 (0.271)]
+2025-08-25 11:29:25,113 - Train: 30.00% [9000/30000]  [30.0/100.0] [batch_t 0.059 (0.366)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.288 (0.268)]
+2025-08-25 11:29:25,118 - ==> Total time: 0:58:44	 Eta: 2:17:04 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:29:51,272 - Train: 30.17% [9050/30000]  [30.2/100.0] [batch_t 0.060 (0.471)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.284 (0.270)]
+2025-08-25 11:30:10,945 - Train: 30.33% [9100/30000]  [30.3/100.0] [batch_t 0.060 (0.393)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.268 (0.269)]
+2025-08-25 11:30:30,500 - Train: 30.50% [9150/30000]  [30.5/100.0] [batch_t 0.060 (0.391)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.251 (0.268)]
+2025-08-25 11:30:50,545 - Train: 30.67% [9200/30000]  [30.7/100.0] [batch_t 0.060 (0.401)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.261 (0.268)]
+2025-08-25 11:31:13,068 - Train: 30.83% [9250/30000]  [30.8/100.0] [batch_t 0.060 (0.450)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.259 (0.275)]
+2025-08-25 11:31:31,245 - Train: 31.00% [9300/30000]  [31.0/100.0] [batch_t 0.060 (0.363)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.259 (0.272)]
+2025-08-25 11:31:31,249 - ==> Total time: 1:00:51	 Eta: 2:15:26 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:31:57,474 - Train: 31.17% [9350/30000]  [31.2/100.0] [batch_t 0.060 (0.471)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.262 (0.272)]
+2025-08-25 11:32:16,840 - Train: 31.33% [9400/30000]  [31.3/100.0] [batch_t 0.060 (0.387)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.258 (0.271)]
+2025-08-25 11:32:36,569 - Train: 31.50% [9450/30000]  [31.5/100.0] [batch_t 0.060 (0.394)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.267 (0.271)]
+2025-08-25 11:32:56,497 - Train: 31.67% [9500/30000]  [31.7/100.0] [batch_t 0.060 (0.398)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.259 (0.270)]
+2025-08-25 11:33:19,243 - Train: 31.83% [9550/30000]  [31.8/100.0] [batch_t 0.060 (0.455)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.278 (0.271)]
+2025-08-25 11:33:37,144 - Train: 32.00% [9600/30000]  [32.0/100.0] [batch_t 0.061 (0.358)] [data_t 0.001] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.268 (0.270)]
+2025-08-25 11:33:37,149 - ==> Total time: 1:02:56	 Eta: 2:13:46 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:34:02,890 - Train: 32.17% [9650/30000]  [32.2/100.0] [batch_t 0.060 (0.464)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.265 (0.270)]
+2025-08-25 11:34:22,563 - Train: 32.33% [9700/30000]  [32.3/100.0] [batch_t 0.061 (0.393)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.275 (0.271)]
+2025-08-25 11:34:42,318 - Train: 32.50% [9750/30000]  [32.5/100.0] [batch_t 0.061 (0.395)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.284 (0.270)]
+2025-08-25 11:35:01,811 - Train: 32.67% [9800/30000]  [32.7/100.0] [batch_t 0.060 (0.390)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.270 (0.272)]
+2025-08-25 11:35:24,378 - Train: 32.83% [9850/30000]  [32.8/100.0] [batch_t 0.059 (0.451)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.264 (0.270)]
+2025-08-25 11:35:42,698 - Train: 33.00% [9900/30000]  [33.0/100.0] [batch_t 0.060 (0.366)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.297 (0.270)]
+2025-08-25 11:35:42,702 - ==> Total time: 1:05:02	 Eta: 2:12:03 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:36:09,369 - Train: 33.17% [9950/30000]  [33.2/100.0] [batch_t 0.066 (0.465)] [data_t 0.007] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.296 (0.269)]
+2025-08-25 11:36:29,285 - Train: 33.33% [10000/30000]  [33.3/100.0] [batch_t 0.060 (0.398)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.266 (0.269)]
+2025-08-25 11:36:49,351 - Train: 33.50% [10050/30000]  [33.5/100.0] [batch_t 0.060 (0.401)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.275 (0.271)]
+2025-08-25 11:37:09,185 - Train: 33.67% [10100/30000]  [33.7/100.0] [batch_t 0.060 (0.397)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.267 (0.271)]
+2025-08-25 11:37:31,988 - Train: 33.83% [10150/30000]  [33.8/100.0] [batch_t 0.060 (0.456)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.264 (0.269)]
+2025-08-25 11:37:50,017 - Train: 34.00% [10200/30000]  [34.0/100.0] [batch_t 0.061 (0.360)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.273 (0.269)]
+2025-08-25 11:37:50,024 - ==> Total time: 1:07:09	 Eta: 2:10:22 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:38:15,866 - Train: 34.17% [10250/30000]  [34.2/100.0] [batch_t 0.060 (0.464)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.256 (0.270)]
+2025-08-25 11:38:35,482 - Train: 34.33% [10300/30000]  [34.3/100.0] [batch_t 0.060 (0.392)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.264 (0.268)]
+2025-08-25 11:38:55,452 - Train: 34.50% [10350/30000]  [34.5/100.0] [batch_t 0.060 (0.399)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.263 (0.270)]
+2025-08-25 11:39:15,226 - Train: 34.67% [10400/30000]  [34.7/100.0] [batch_t 0.061 (0.395)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.257 (0.269)]
+2025-08-25 11:39:37,453 - Train: 34.83% [10450/30000]  [34.8/100.0] [batch_t 0.063 (0.444)] [data_t 0.001] [optim_t 0.062] [lr 0.003750] [inpformer_loss 0.259 (0.269)]
+2025-08-25 11:39:55,391 - Train: 35.00% [10500/30000]  [35.0/100.0] [batch_t 0.059 (0.359)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.262 (0.269)]
+2025-08-25 11:39:55,396 - ==> Total time: 1:09:15	 Eta: 2:08:36 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:40:21,606 - Train: 35.17% [10550/30000]  [35.2/100.0] [batch_t 0.060 (0.476)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.259 (0.269)]
+2025-08-25 11:40:41,963 - Train: 35.33% [10600/30000]  [35.3/100.0] [batch_t 0.060 (0.407)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.271 (0.270)]
+2025-08-25 11:41:01,742 - Train: 35.50% [10650/30000]  [35.5/100.0] [batch_t 0.059 (0.395)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.282 (0.268)]
+2025-08-25 11:41:21,427 - Train: 35.67% [10700/30000]  [35.7/100.0] [batch_t 0.059 (0.394)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.297 (0.270)]
+2025-08-25 11:41:43,965 - Train: 35.83% [10750/30000]  [35.8/100.0] [batch_t 0.060 (0.451)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.323 (0.387)]
+2025-08-25 11:42:02,022 - Train: 36.00% [10800/30000]  [36.0/100.0] [batch_t 0.059 (0.361)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.280 (0.310)]
+2025-08-25 11:42:02,027 - ==> Total time: 1:11:21	 Eta: 2:06:52 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:42:27,762 - Train: 36.17% [10850/30000]  [36.2/100.0] [batch_t 0.061 (0.463)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.267 (0.273)]
+2025-08-25 11:42:47,354 - Train: 36.33% [10900/30000]  [36.3/100.0] [batch_t 0.060 (0.392)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.262 (0.272)]
+2025-08-25 11:43:06,940 - Train: 36.50% [10950/30000]  [36.5/100.0] [batch_t 0.059 (0.392)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.280 (0.275)]
+2025-08-25 11:43:26,380 - Train: 36.67% [11000/30000]  [36.7/100.0] [batch_t 0.061 (0.389)] [data_t 0.001] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.262 (0.272)]
+2025-08-25 11:43:49,043 - Train: 36.83% [11050/30000]  [36.8/100.0] [batch_t 0.073 (0.453)] [data_t 0.001] [optim_t 0.072] [lr 0.003750] [inpformer_loss 0.259 (0.270)]
+2025-08-25 11:44:06,964 - Train: 37.00% [11100/30000]  [37.0/100.0] [batch_t 0.060 (0.358)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.263 (0.271)]
+2025-08-25 11:44:06,969 - ==> Total time: 1:13:26	 Eta: 2:05:03 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:44:32,941 - Train: 37.17% [11150/30000]  [37.2/100.0] [batch_t 0.098 (0.468)] [data_t 0.038] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.278 (0.266)]
+2025-08-25 11:44:52,853 - Train: 37.33% [11200/30000]  [37.3/100.0] [batch_t 0.063 (0.398)] [data_t 0.001] [optim_t 0.063] [lr 0.003750] [inpformer_loss 0.269 (0.276)]
+2025-08-25 11:45:12,479 - Train: 37.50% [11250/30000]  [37.5/100.0] [batch_t 0.060 (0.392)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.261 (0.270)]
+2025-08-25 11:45:32,269 - Train: 37.67% [11300/30000]  [37.7/100.0] [batch_t 0.071 (0.396)] [data_t 0.002] [optim_t 0.069] [lr 0.003750] [inpformer_loss 0.260 (0.266)]
+2025-08-25 11:45:54,514 - Train: 37.83% [11350/30000]  [37.8/100.0] [batch_t 0.120 (0.445)] [data_t 0.052] [optim_t 0.068] [lr 0.003750] [inpformer_loss 0.302 (0.283)]
+2025-08-25 11:46:12,444 - Train: 38.00% [11400/30000]  [38.0/100.0] [batch_t 0.060 (0.358)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.264 (0.304)]
+2025-08-25 11:46:12,452 - ==> Total time: 1:15:32	 Eta: 2:03:14 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:46:38,066 - Train: 38.17% [11450/30000]  [38.2/100.0] [batch_t 0.070 (0.461)] [data_t 0.001] [optim_t 0.070] [lr 0.003750] [inpformer_loss 0.270 (0.267)]
+2025-08-25 11:46:57,855 - Train: 38.33% [11500/30000]  [38.3/100.0] [batch_t 0.060 (0.396)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.291 (0.267)]
+2025-08-25 11:47:17,474 - Train: 38.50% [11550/30000]  [38.5/100.0] [batch_t 0.060 (0.392)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.262 (0.266)]
+2025-08-25 11:47:37,415 - Train: 38.67% [11600/30000]  [38.7/100.0] [batch_t 0.059 (0.399)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.262 (0.270)]
+2025-08-25 11:47:59,656 - Train: 38.83% [11650/30000]  [38.8/100.0] [batch_t 0.060 (0.445)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.265 (0.263)]
+2025-08-25 11:48:17,194 - Train: 39.00% [11700/30000]  [39.0/100.0] [batch_t 0.060 (0.351)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.329 (0.266)]
+2025-08-25 11:48:17,201 - ==> Total time: 1:17:37	 Eta: 2:01:24 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:48:43,158 - Train: 39.17% [11750/30000]  [39.2/100.0] [batch_t 0.066 (0.471)] [data_t 0.001] [optim_t 0.065] [lr 0.003750] [inpformer_loss 0.288 (0.268)]
+2025-08-25 11:49:02,850 - Train: 39.33% [11800/30000]  [39.3/100.0] [batch_t 0.059 (0.394)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.259 (0.264)]
+2025-08-25 11:49:22,939 - Train: 39.50% [11850/30000]  [39.5/100.0] [batch_t 0.060 (0.402)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.256 (0.272)]
+2025-08-25 11:49:42,950 - Train: 39.67% [11900/30000]  [39.7/100.0] [batch_t 0.062 (0.400)] [data_t 0.001] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.251 (0.264)]
+2025-08-25 11:50:05,193 - Train: 39.83% [11950/30000]  [39.8/100.0] [batch_t 0.059 (0.445)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.257 (0.261)]
+2025-08-25 11:50:23,018 - Train: 40.00% [12000/30000]  [40.0/100.0] [batch_t 0.060 (0.356)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.254 (0.263)]
+2025-08-25 11:50:23,022 - ==> Total time: 1:19:42	 Eta: 1:59:34 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:50:49,103 - Train: 40.17% [12050/30000]  [40.2/100.0] [batch_t 0.060 (0.471)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.256 (0.264)]
+2025-08-25 11:51:09,322 - Train: 40.33% [12100/30000]  [40.3/100.0] [batch_t 0.080 (0.404)] [data_t 0.001] [optim_t 0.079] [lr 0.003750] [inpformer_loss 0.253 (0.263)]
+2025-08-25 11:51:28,929 - Train: 40.50% [12150/30000]  [40.5/100.0] [batch_t 0.060 (0.392)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.261 (0.260)]
+2025-08-25 11:51:48,650 - Train: 40.67% [12200/30000]  [40.7/100.0] [batch_t 0.059 (0.394)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.294 (0.262)]
+2025-08-25 11:52:11,117 - Train: 40.83% [12250/30000]  [40.8/100.0] [batch_t 0.073 (0.449)] [data_t 0.001] [optim_t 0.072] [lr 0.003750] [inpformer_loss 0.259 (0.263)]
+2025-08-25 11:52:28,881 - Train: 41.00% [12300/30000]  [41.0/100.0] [batch_t 0.059 (0.355)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.259 (0.263)]
+2025-08-25 11:52:28,885 - ==> Total time: 1:21:48	 Eta: 1:57:43 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:52:54,813 - Train: 41.17% [12350/30000]  [41.2/100.0] [batch_t 0.059 (0.466)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.264 (0.261)]
+2025-08-25 11:53:14,433 - Train: 41.33% [12400/30000]  [41.3/100.0] [batch_t 0.069 (0.392)] [data_t 0.001] [optim_t 0.068] [lr 0.003750] [inpformer_loss 0.273 (0.262)]
+2025-08-25 11:53:34,354 - Train: 41.50% [12450/30000]  [41.5/100.0] [batch_t 0.064 (0.398)] [data_t 0.001] [optim_t 0.063] [lr 0.003750] [inpformer_loss 0.259 (0.264)]
+2025-08-25 11:53:54,215 - Train: 41.67% [12500/30000]  [41.7/100.0] [batch_t 0.060 (0.397)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.259 (0.267)]
+2025-08-25 11:54:16,819 - Train: 41.83% [12550/30000]  [41.8/100.0] [batch_t 0.060 (0.452)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.257 (0.266)]
+2025-08-25 11:54:34,550 - Train: 42.00% [12600/30000]  [42.0/100.0] [batch_t 0.069 (0.354)] [data_t 0.001] [optim_t 0.069] [lr 0.003750] [inpformer_loss 0.289 (0.266)]
+2025-08-25 11:54:34,560 - ==> Total time: 1:23:54	 Eta: 1:55:52 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:55:00,472 - Train: 42.17% [12650/30000]  [42.2/100.0] [batch_t 0.062 (0.468)] [data_t 0.001] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.273 (0.267)]
+2025-08-25 11:55:20,722 - Train: 42.33% [12700/30000]  [42.3/100.0] [batch_t 0.059 (0.405)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.267 (0.266)]
+2025-08-25 11:55:40,599 - Train: 42.50% [12750/30000]  [42.5/100.0] [batch_t 0.059 (0.397)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.257 (0.268)]
+2025-08-25 11:56:00,163 - Train: 42.67% [12800/30000]  [42.7/100.0] [batch_t 0.060 (0.391)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.255 (0.267)]
+2025-08-25 11:56:22,206 - Train: 42.83% [12850/30000]  [42.8/100.0] [batch_t 0.060 (0.441)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.252 (0.267)]
+2025-08-25 11:56:40,088 - Train: 43.00% [12900/30000]  [43.0/100.0] [batch_t 0.059 (0.357)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.253 (0.265)]
+2025-08-25 11:56:40,093 - ==> Total time: 1:25:59	 Eta: 1:53:59 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:57:05,717 - Train: 43.17% [12950/30000]  [43.2/100.0] [batch_t 0.075 (0.460)] [data_t 0.001] [optim_t 0.074] [lr 0.003750] [inpformer_loss 0.255 (0.266)]
+2025-08-25 11:57:25,434 - Train: 43.33% [13000/30000]  [43.3/100.0] [batch_t 0.060 (0.394)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.260 (0.266)]
+2025-08-25 11:57:45,017 - Train: 43.50% [13050/30000]  [43.5/100.0] [batch_t 0.059 (0.392)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.254 (0.266)]
+2025-08-25 11:58:04,556 - Train: 43.67% [13100/30000]  [43.7/100.0] [batch_t 0.059 (0.391)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.264 (0.266)]
+2025-08-25 11:58:26,757 - Train: 43.83% [13150/30000]  [43.8/100.0] [batch_t 0.060 (0.444)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.263 (0.267)]
+2025-08-25 11:58:44,749 - Train: 44.00% [13200/30000]  [44.0/100.0] [batch_t 0.059 (0.360)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.258 (0.265)]
+2025-08-25 11:58:44,756 - ==> Total time: 1:28:04	 Eta: 1:52:05 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 11:59:10,735 - Train: 44.17% [13250/30000]  [44.2/100.0] [batch_t 0.060 (0.467)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.295 (0.266)]
+2025-08-25 11:59:30,479 - Train: 44.33% [13300/30000]  [44.3/100.0] [batch_t 0.060 (0.395)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.256 (0.266)]
+2025-08-25 11:59:50,108 - Train: 44.50% [13350/30000]  [44.5/100.0] [batch_t 0.060 (0.392)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.270 (0.265)]
+2025-08-25 12:00:09,883 - Train: 44.67% [13400/30000]  [44.7/100.0] [batch_t 0.060 (0.395)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.401 (0.297)]
+2025-08-25 12:00:32,304 - Train: 44.83% [13450/30000]  [44.8/100.0] [batch_t 0.060 (0.448)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.278 (0.311)]
+2025-08-25 12:00:50,017 - Train: 45.00% [13500/30000]  [45.0/100.0] [batch_t 0.059 (0.354)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.265 (0.278)]
+2025-08-25 12:00:50,022 - ==> Total time: 1:30:09	 Eta: 1:50:12 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:01:15,875 - Train: 45.17% [13550/30000]  [45.2/100.0] [batch_t 0.059 (0.466)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.259 (0.273)]
+2025-08-25 12:01:35,570 - Train: 45.33% [13600/30000]  [45.3/100.0] [batch_t 0.059 (0.394)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.263 (0.270)]
+2025-08-25 12:01:54,936 - Train: 45.50% [13650/30000]  [45.5/100.0] [batch_t 0.068 (0.387)] [data_t 0.001] [optim_t 0.067] [lr 0.003750] [inpformer_loss 0.264 (0.268)]
+2025-08-25 12:02:14,595 - Train: 45.67% [13700/30000]  [45.7/100.0] [batch_t 0.060 (0.393)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.261 (0.267)]
+2025-08-25 12:02:36,898 - Train: 45.83% [13750/30000]  [45.8/100.0] [batch_t 0.060 (0.446)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.252 (0.267)]
+2025-08-25 12:02:54,752 - Train: 46.00% [13800/30000]  [46.0/100.0] [batch_t 0.060 (0.357)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.257 (0.267)]
+2025-08-25 12:02:54,759 - ==> Total time: 1:32:14	 Eta: 1:48:17 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:03:20,484 - Train: 46.17% [13850/30000]  [46.2/100.0] [batch_t 0.062 (0.463)] [data_t 0.001] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.258 (0.267)]
+2025-08-25 12:03:40,088 - Train: 46.33% [13900/30000]  [46.3/100.0] [batch_t 0.060 (0.392)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.262 (0.267)]
+2025-08-25 12:03:59,616 - Train: 46.50% [13950/30000]  [46.5/100.0] [batch_t 0.059 (0.390)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.258 (0.267)]
+2025-08-25 12:04:18,666 - Train: 46.67% [14000/30000]  [46.7/100.0] [batch_t 0.060 (0.381)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.275 (0.266)]
+2025-08-25 12:04:40,915 - Train: 46.83% [14050/30000]  [46.8/100.0] [batch_t 0.104 (0.445)] [data_t 0.040] [optim_t 0.064] [lr 0.003750] [inpformer_loss 0.301 (0.266)]
+2025-08-25 12:04:58,465 - Train: 47.00% [14100/30000]  [47.0/100.0] [batch_t 0.059 (0.351)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.249 (0.264)]
+2025-08-25 12:04:58,469 - ==> Total time: 1:34:18	 Eta: 1:46:20 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:05:23,935 - Train: 47.17% [14150/30000]  [47.2/100.0] [batch_t 0.068 (0.460)] [data_t 0.001] [optim_t 0.067] [lr 0.003750] [inpformer_loss 0.270 (0.266)]
+2025-08-25 12:05:43,328 - Train: 47.33% [14200/30000]  [47.3/100.0] [batch_t 0.062 (0.388)] [data_t 0.001] [optim_t 0.062] [lr 0.003750] [inpformer_loss 0.289 (0.265)]
+2025-08-25 12:06:03,026 - Train: 47.50% [14250/30000]  [47.5/100.0] [batch_t 0.060 (0.394)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.267 (0.265)]
+2025-08-25 12:06:22,734 - Train: 47.67% [14300/30000]  [47.7/100.0] [batch_t 0.059 (0.394)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.259 (0.266)]
+2025-08-25 12:06:45,665 - Train: 47.83% [14350/30000]  [47.8/100.0] [batch_t 0.059 (0.458)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.254 (0.266)]
+2025-08-25 12:07:03,391 - Train: 48.00% [14400/30000]  [48.0/100.0] [batch_t 0.059 (0.354)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.250 (0.266)]
+2025-08-25 12:07:03,396 - ==> Total time: 1:36:23	 Eta: 1:44:25 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:07:28,915 - Train: 48.17% [14450/30000]  [48.2/100.0] [batch_t 0.259 (0.456)] [data_t 0.178] [optim_t 0.081] [lr 0.003750] [inpformer_loss 0.269 (0.265)]
+2025-08-25 12:07:48,470 - Train: 48.33% [14500/30000]  [48.3/100.0] [batch_t 0.060 (0.391)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.250 (0.265)]
+2025-08-25 12:08:08,078 - Train: 48.50% [14550/30000]  [48.5/100.0] [batch_t 0.060 (0.392)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.259 (0.265)]
+2025-08-25 12:08:27,674 - Train: 48.67% [14600/30000]  [48.7/100.0] [batch_t 0.059 (0.392)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.253 (0.265)]
+2025-08-25 12:08:50,497 - Train: 48.83% [14650/30000]  [48.8/100.0] [batch_t 0.280 (0.456)] [data_t 0.221] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.259 (0.265)]
+2025-08-25 12:09:08,570 - Train: 49.00% [14700/30000]  [49.0/100.0] [batch_t 0.060 (0.361)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.254 (0.266)]
+2025-08-25 12:09:08,575 - ==> Total time: 1:38:28	 Eta: 1:42:29 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:09:34,749 - Train: 49.17% [14750/30000]  [49.2/100.0] [batch_t 0.060 (0.471)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.259 (0.265)]
+2025-08-25 12:09:54,674 - Train: 49.33% [14800/30000]  [49.3/100.0] [batch_t 0.061 (0.398)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.256 (0.264)]
+2025-08-25 12:10:14,806 - Train: 49.50% [14850/30000]  [49.5/100.0] [batch_t 0.060 (0.402)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.261 (0.265)]
+2025-08-25 12:10:34,329 - Train: 49.67% [14900/30000]  [49.7/100.0] [batch_t 0.060 (0.390)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.256 (0.266)]
+2025-08-25 12:10:56,071 - Train: 49.83% [14950/30000]  [49.8/100.0] [batch_t 0.059 (0.435)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.259 (0.263)]
+2025-08-25 12:11:13,651 - Train: 50.00% [15000/30000]  [50.0/100.0] [batch_t 0.059 (0.351)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.300 (0.266)]
+2025-08-25 12:11:31,476 - Test: 7.14% [50/700] [batch_t 0.072 (0.348)]
+2025-08-25 12:11:46,079 - Test: 14.29% [100/700] [batch_t 0.085 (0.320)]
+2025-08-25 12:12:00,839 - Test: 21.43% [150/700] [batch_t 0.077 (0.312)]
+2025-08-25 12:12:15,181 - Test: 28.57% [200/700] [batch_t 0.063 (0.306)]
+2025-08-25 12:12:32,446 - Test: 35.71% [250/700] [batch_t 0.167 (0.314)]
+2025-08-25 12:12:49,447 - Test: 42.86% [300/700] [batch_t 0.074 (0.318)]
+2025-08-25 12:13:05,603 - Test: 50.00% [350/700] [batch_t 0.092 (0.319)]
+2025-08-25 12:13:21,763 - Test: 57.14% [400/700] [batch_t 0.075 (0.319)]
+2025-08-25 12:13:38,983 - Test: 64.29% [450/700] [batch_t 0.494 (0.322)]
+2025-08-25 12:13:55,810 - Test: 71.43% [500/700] [batch_t 0.254 (0.323)]
+2025-08-25 12:14:11,338 - Test: 78.57% [550/700] [batch_t 0.062 (0.322)]
+2025-08-25 12:14:27,452 - Test: 85.71% [600/700] [batch_t 0.079 (0.322)]
+2025-08-25 12:14:43,680 - Test: 92.86% [650/700] [batch_t 0.065 (0.322)]
+2025-08-25 12:14:59,270 - Test: 100.00% [700/700] [batch_t 0.064 (0.322)]
+2025-08-25 12:15:14,889 - 
+ #objects: 70, #view instances: 840
+2025-08-25 12:15:21,220 - ==> Metric Time for Bird           :   0.000 (AUROC_obj_sp)	  0.007 (AUROC_view_sp)	  0.000 (AUROC_view_px)	  0.000 (mF1_obj_sp)	  0.001 (mF1_view_sp)	  4.018 (mF1_view_px)	  0.000 (AP_obj_sp)	  0.001 (AP_view_sp)	  0.000 (AP_view_px)	  0.000 (AUPRO_view)	==> Metric Time for Bird           :   0.002 (AUROC_obj_sp)	  0.000 (AUROC_view_sp)	  0.000 (AUROC_view_px)	  0.001 (mF1_obj_sp)	  0.000 (mF1_view_sp)	  0.000 (mF1_view_px)	  0.001 (AP_obj_sp)	  0.000 (AP_view_sp)	  0.000 (AP_view_px)	  0.000 (AUPRO_view)	
+2025-08-25 12:15:21,222 - 
+|  Name  |  AUROC_obj_sp  |  AUROC_obj_sp (Max)  |  AUROC_view_sp  |  AUROC_view_sp (Max)  |  AUROC_view_px  |  AUROC_view_px (Max)  |  mF1_obj_sp  |  mF1_obj_sp (Max)  |  mF1_view_sp  |  mF1_view_sp (Max)  |  mF1_view_px  |  mF1_view_px (Max)  |  AP_obj_sp  |  AP_obj_sp (Max)   |  AP_view_sp  |  AP_view_sp (Max)  |  AP_view_px  |  AP_view_px (Max)  |  AUPRO_view  |  AUPRO_view (Max)  |
+|:------:|:--------------:|:--------------------:|:---------------:|:---------------------:|:---------------:|:---------------------:|:------------:|:------------------:|:-------------:|:-------------------:|:-------------:|:-------------------:|:-----------:|:------------------:|:------------:|:------------------:|:------------:|:------------------:|:------------:|:------------------:|
+|  Bird  |     87.700     |  87.700 (50  epoch)  |     66.046      |  66.046 (50  epoch)   |     97.579      |  97.579 (50  epoch)   |    88.889    | 88.889 (50  epoch) |    52.453     | 52.453 (50  epoch)  |     0.953     |  0.953 (50  epoch)  |   95.377    | 95.377 (50  epoch) |    45.096    | 45.096 (50  epoch) |    0.426     | 0.426 (50  epoch)  |    88.711    | 88.711 (50  epoch) |
+2025-08-25 12:15:21,836 - ==> Total time: 1:44:41	 Eta: 1:44:41 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:15:49,487 - Train: 50.17% [15050/30000]  [50.2/100.0] [batch_t 0.069 (0.458)] [data_t 0.001] [optim_t 0.068] [lr 0.003750] [inpformer_loss 0.253 (0.264)]
+2025-08-25 12:16:09,279 - Train: 50.33% [15100/30000]  [50.3/100.0] [batch_t 0.059 (0.396)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.292 (0.264)]
+2025-08-25 12:16:28,831 - Train: 50.50% [15150/30000]  [50.5/100.0] [batch_t 0.059 (0.391)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.305 (0.265)]
+2025-08-25 12:16:48,282 - Train: 50.67% [15200/30000]  [50.7/100.0] [batch_t 0.059 (0.389)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.339 (0.370)]
+2025-08-25 12:17:10,483 - Train: 50.83% [15250/30000]  [50.8/100.0] [batch_t 0.068 (0.444)] [data_t 0.001] [optim_t 0.067] [lr 0.003750] [inpformer_loss 0.268 (0.298)]
+2025-08-25 12:17:28,534 - Train: 51.00% [15300/30000]  [51.0/100.0] [batch_t 0.064 (0.361)] [data_t 0.001] [optim_t 0.064] [lr 0.003750] [inpformer_loss 0.266 (0.279)]
+2025-08-25 12:17:28,539 - ==> Total time: 1:46:48	 Eta: 1:42:37 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:17:56,862 - Train: 51.17% [15350/30000]  [51.2/100.0] [batch_t 0.061 (0.438)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.260 (0.271)]
+2025-08-25 12:18:16,684 - Train: 51.33% [15400/30000]  [51.3/100.0] [batch_t 0.063 (0.396)] [data_t 0.001] [optim_t 0.062] [lr 0.003750] [inpformer_loss 0.268 (0.269)]
+2025-08-25 12:18:36,336 - Train: 51.50% [15450/30000]  [51.5/100.0] [batch_t 0.059 (0.393)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.253 (0.268)]
+2025-08-25 12:18:55,903 - Train: 51.67% [15500/30000]  [51.7/100.0] [batch_t 0.062 (0.391)] [data_t 0.001] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.250 (0.267)]
+2025-08-25 12:19:17,686 - Train: 51.83% [15550/30000]  [51.8/100.0] [batch_t 0.066 (0.435)] [data_t 0.001] [optim_t 0.065] [lr 0.003750] [inpformer_loss 0.256 (0.266)]
+2025-08-25 12:19:35,956 - Train: 52.00% [15600/30000]  [52.0/100.0] [batch_t 0.060 (0.365)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.263 (0.266)]
+2025-08-25 12:19:35,964 - ==> Total time: 1:48:55	 Eta: 1:40:33 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:20:04,301 - Train: 52.17% [15650/30000]  [52.2/100.0] [batch_t 0.059 (0.443)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.306 (0.267)]
+2025-08-25 12:20:24,136 - Train: 52.33% [15700/30000]  [52.3/100.0] [batch_t 0.059 (0.397)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.256 (0.265)]
+2025-08-25 12:20:43,443 - Train: 52.50% [15750/30000]  [52.5/100.0] [batch_t 0.059 (0.386)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.259 (0.266)]
+2025-08-25 12:21:03,424 - Train: 52.67% [15800/30000]  [52.7/100.0] [batch_t 0.059 (0.399)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.274 (0.265)]
+2025-08-25 12:21:25,776 - Train: 52.83% [15850/30000]  [52.8/100.0] [batch_t 0.069 (0.447)] [data_t 0.001] [optim_t 0.068] [lr 0.003750] [inpformer_loss 0.309 (0.266)]
+2025-08-25 12:21:43,755 - Train: 53.00% [15900/30000]  [53.0/100.0] [batch_t 0.060 (0.359)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.260 (0.263)]
+2025-08-25 12:21:43,766 - ==> Total time: 1:51:03	 Eta: 1:38:29 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:22:12,447 - Train: 53.17% [15950/30000]  [53.2/100.0] [batch_t 0.059 (0.442)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.255 (0.264)]
+2025-08-25 12:22:32,323 - Train: 53.33% [16000/30000]  [53.3/100.0] [batch_t 0.058 (0.397)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.265 (0.270)]
+2025-08-25 12:22:52,024 - Train: 53.50% [16050/30000]  [53.5/100.0] [batch_t 0.084 (0.394)] [data_t 0.001] [optim_t 0.083] [lr 0.003750] [inpformer_loss 0.253 (0.264)]
+2025-08-25 12:23:11,826 - Train: 53.67% [16100/30000]  [53.7/100.0] [batch_t 0.061 (0.396)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.259 (0.264)]
+2025-08-25 12:23:34,455 - Train: 53.83% [16150/30000]  [53.8/100.0] [batch_t 0.071 (0.452)] [data_t 0.001] [optim_t 0.070] [lr 0.003750] [inpformer_loss 0.254 (0.263)]
+2025-08-25 12:23:52,831 - Train: 54.00% [16200/30000]  [54.0/100.0] [batch_t 0.060 (0.367)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.280 (0.266)]
+2025-08-25 12:23:52,836 - ==> Total time: 1:53:12	 Eta: 1:36:26 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:24:21,497 - Train: 54.17% [16250/30000]  [54.2/100.0] [batch_t 0.059 (0.453)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.326 (0.272)]
+2025-08-25 12:24:41,400 - Train: 54.33% [16300/30000]  [54.3/100.0] [batch_t 0.060 (0.398)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.288 (0.265)]
+2025-08-25 12:25:00,941 - Train: 54.50% [16350/30000]  [54.5/100.0] [batch_t 0.059 (0.391)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.253 (0.264)]
+2025-08-25 12:25:20,376 - Train: 54.67% [16400/30000]  [54.7/100.0] [batch_t 0.068 (0.389)] [data_t 0.001] [optim_t 0.067] [lr 0.003750] [inpformer_loss 0.277 (0.264)]
+2025-08-25 12:25:42,602 - Train: 54.83% [16450/30000]  [54.8/100.0] [batch_t 0.145 (0.444)] [data_t 0.061] [optim_t 0.084] [lr 0.003750] [inpformer_loss 0.260 (0.264)]
+2025-08-25 12:26:00,817 - Train: 55.00% [16500/30000]  [55.0/100.0] [batch_t 0.059 (0.364)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.253 (0.264)]
+2025-08-25 12:26:00,823 - ==> Total time: 1:55:20	 Eta: 1:34:22 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:26:28,875 - Train: 55.17% [16550/30000]  [55.2/100.0] [batch_t 0.060 (0.440)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.259 (0.263)]
+2025-08-25 12:26:49,125 - Train: 55.33% [16600/30000]  [55.3/100.0] [batch_t 0.059 (0.405)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.271 (0.264)]
+2025-08-25 12:27:09,253 - Train: 55.50% [16650/30000]  [55.5/100.0] [batch_t 0.059 (0.402)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.253 (0.264)]
+2025-08-25 12:27:28,779 - Train: 55.67% [16700/30000]  [55.7/100.0] [batch_t 0.059 (0.390)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.260 (0.263)]
+2025-08-25 12:27:50,952 - Train: 55.83% [16750/30000]  [55.8/100.0] [batch_t 0.104 (0.443)] [data_t 0.038] [optim_t 0.066] [lr 0.003750] [inpformer_loss 0.256 (0.264)]
+2025-08-25 12:28:08,518 - Train: 56.00% [16800/30000]  [56.0/100.0] [batch_t 0.059 (0.351)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.266 (0.264)]
+2025-08-25 12:28:08,524 - ==> Total time: 1:57:28	 Eta: 1:32:17 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:28:36,269 - Train: 56.17% [16850/30000]  [56.2/100.0] [batch_t 0.059 (0.438)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.289 (0.265)]
+2025-08-25 12:28:56,143 - Train: 56.33% [16900/30000]  [56.3/100.0] [batch_t 0.060 (0.397)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.276 (0.264)]
+2025-08-25 12:29:15,728 - Train: 56.50% [16950/30000]  [56.5/100.0] [batch_t 0.063 (0.392)] [data_t 0.001] [optim_t 0.062] [lr 0.003750] [inpformer_loss 0.280 (0.263)]
+2025-08-25 12:29:35,616 - Train: 56.67% [17000/30000]  [56.7/100.0] [batch_t 0.059 (0.398)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.265 (0.263)]
+2025-08-25 12:29:58,142 - Train: 56.83% [17050/30000]  [56.8/100.0] [batch_t 0.065 (0.450)] [data_t 0.001] [optim_t 0.064] [lr 0.003750] [inpformer_loss 0.254 (0.265)]
+2025-08-25 12:30:16,008 - Train: 57.00% [17100/30000]  [57.0/100.0] [batch_t 0.059 (0.357)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.250 (0.263)]
+2025-08-25 12:30:16,013 - ==> Total time: 1:59:35	 Eta: 1:30:13 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:30:44,079 - Train: 57.17% [17150/30000]  [57.2/100.0] [batch_t 0.107 (0.439)] [data_t 0.031] [optim_t 0.077] [lr 0.003750] [inpformer_loss 0.319 (0.264)]
+2025-08-25 12:31:04,188 - Train: 57.33% [17200/30000]  [57.3/100.0] [batch_t 0.059 (0.402)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.259 (0.262)]
+2025-08-25 12:31:24,084 - Train: 57.50% [17250/30000]  [57.5/100.0] [batch_t 0.061 (0.398)] [data_t 0.001] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.256 (0.263)]
+2025-08-25 12:31:43,516 - Train: 57.67% [17300/30000]  [57.7/100.0] [batch_t 0.060 (0.388)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.264 (0.264)]
+2025-08-25 12:32:06,482 - Train: 57.83% [17350/30000]  [57.8/100.0] [batch_t 0.059 (0.459)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.273 (0.264)]
+2025-08-25 12:32:24,574 - Train: 58.00% [17400/30000]  [58.0/100.0] [batch_t 0.058 (0.362)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.256 (0.263)]
+2025-08-25 12:32:24,578 - ==> Total time: 2:01:44	 Eta: 1:28:09 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:32:52,696 - Train: 58.17% [17450/30000]  [58.2/100.0] [batch_t 0.071 (0.436)] [data_t 0.001] [optim_t 0.070] [lr 0.003750] [inpformer_loss 0.256 (0.262)]
+2025-08-25 12:33:12,771 - Train: 58.33% [17500/30000]  [58.3/100.0] [batch_t 0.092 (0.401)] [data_t 0.016] [optim_t 0.076] [lr 0.003750] [inpformer_loss 0.273 (0.264)]
+2025-08-25 12:33:32,903 - Train: 58.50% [17550/30000]  [58.5/100.0] [batch_t 0.059 (0.402)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.309 (0.263)]
+2025-08-25 12:33:53,128 - Train: 58.67% [17600/30000]  [58.7/100.0] [batch_t 0.071 (0.404)] [data_t 0.001] [optim_t 0.070] [lr 0.003750] [inpformer_loss 0.261 (0.263)]
+2025-08-25 12:34:15,709 - Train: 58.83% [17650/30000]  [58.8/100.0] [batch_t 0.066 (0.451)] [data_t 0.001] [optim_t 0.065] [lr 0.003750] [inpformer_loss 0.254 (0.263)]
+2025-08-25 12:34:33,443 - Train: 59.00% [17700/30000]  [59.0/100.0] [batch_t 0.059 (0.354)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.257 (0.264)]
+2025-08-25 12:34:33,460 - ==> Total time: 2:03:53	 Eta: 1:26:05 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:35:01,758 - Train: 59.17% [17750/30000]  [59.2/100.0] [batch_t 0.059 (0.449)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.258 (0.263)]
+2025-08-25 12:35:22,410 - Train: 59.33% [17800/30000]  [59.3/100.0] [batch_t 0.060 (0.413)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.277 (0.263)]
+2025-08-25 12:35:42,227 - Train: 59.50% [17850/30000]  [59.5/100.0] [batch_t 0.061 (0.396)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.258 (0.262)]
+2025-08-25 12:36:02,062 - Train: 59.67% [17900/30000]  [59.7/100.0] [batch_t 0.070 (0.397)] [data_t 0.001] [optim_t 0.069] [lr 0.003750] [inpformer_loss 0.317 (0.265)]
+2025-08-25 12:36:24,695 - Train: 59.83% [17950/30000]  [59.8/100.0] [batch_t 0.059 (0.452)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.273 (0.261)]
+2025-08-25 12:36:42,773 - Train: 60.00% [18000/30000]  [60.0/100.0] [batch_t 0.060 (0.361)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.249 (0.261)]
+2025-08-25 12:36:42,776 - ==> Total time: 2:06:02	 Eta: 1:24:01 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:37:11,080 - Train: 60.17% [18050/30000]  [60.2/100.0] [batch_t 0.075 (0.451)] [data_t 0.001] [optim_t 0.074] [lr 0.003750] [inpformer_loss 0.263 (0.263)]
+2025-08-25 12:37:31,080 - Train: 60.33% [18100/30000]  [60.3/100.0] [batch_t 0.063 (0.400)] [data_t 0.001] [optim_t 0.062] [lr 0.003750] [inpformer_loss 0.275 (0.262)]
+2025-08-25 12:37:50,651 - Train: 60.50% [18150/30000]  [60.5/100.0] [batch_t 0.060 (0.391)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.259 (0.262)]
+2025-08-25 12:38:10,558 - Train: 60.67% [18200/30000]  [60.7/100.0] [batch_t 0.059 (0.398)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.270 (0.264)]
+2025-08-25 12:38:33,210 - Train: 60.83% [18250/30000]  [60.8/100.0] [batch_t 0.133 (0.453)] [data_t 0.067] [optim_t 0.066] [lr 0.003750] [inpformer_loss 0.254 (0.264)]
+2025-08-25 12:38:51,629 - Train: 61.00% [18300/30000]  [61.0/100.0] [batch_t 0.060 (0.368)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.268 (0.262)]
+2025-08-25 12:38:51,643 - ==> Total time: 2:08:11	 Eta: 1:21:57 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:39:20,375 - Train: 61.17% [18350/30000]  [61.2/100.0] [batch_t 0.159 (0.444)] [data_t 0.083] [optim_t 0.076] [lr 0.003750] [inpformer_loss 0.265 (0.263)]
+2025-08-25 12:39:40,093 - Train: 61.33% [18400/30000]  [61.3/100.0] [batch_t 0.060 (0.394)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.257 (0.262)]
+2025-08-25 12:40:00,746 - Train: 61.50% [18450/30000]  [61.5/100.0] [batch_t 0.060 (0.412)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.252 (0.262)]
+2025-08-25 12:40:20,262 - Train: 61.67% [18500/30000]  [61.7/100.0] [batch_t 0.060 (0.390)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.253 (0.263)]
+2025-08-25 12:40:43,289 - Train: 61.83% [18550/30000]  [61.8/100.0] [batch_t 0.060 (0.460)] [data_t 0.002] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.253 (0.262)]
+2025-08-25 12:41:00,828 - Train: 62.00% [18600/30000]  [62.0/100.0] [batch_t 0.060 (0.351)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.264 (0.263)]
+2025-08-25 12:41:00,836 - ==> Total time: 2:10:20	 Eta: 1:19:53 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:41:28,218 - Train: 62.17% [18650/30000]  [62.2/100.0] [batch_t 0.060 (0.439)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.265 (0.262)]
+2025-08-25 12:41:48,223 - Train: 62.33% [18700/30000]  [62.3/100.0] [batch_t 0.059 (0.400)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.359 (0.276)]
+2025-08-25 12:42:07,916 - Train: 62.50% [18750/30000]  [62.5/100.0] [batch_t 0.059 (0.394)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.255 (0.273)]
+2025-08-25 12:42:27,638 - Train: 62.67% [18800/30000]  [62.7/100.0] [batch_t 0.059 (0.394)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.248 (0.262)]
+2025-08-25 12:42:50,328 - Train: 62.83% [18850/30000]  [62.8/100.0] [batch_t 0.060 (0.454)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.265 (0.263)]
+2025-08-25 12:43:08,787 - Train: 63.00% [18900/30000]  [63.0/100.0] [batch_t 0.067 (0.369)] [data_t 0.001] [optim_t 0.066] [lr 0.003750] [inpformer_loss 0.259 (0.262)]
+2025-08-25 12:43:08,794 - ==> Total time: 2:12:28	 Eta: 1:17:48 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:43:38,360 - Train: 63.17% [18950/30000]  [63.2/100.0] [batch_t 0.067 (0.446)] [data_t 0.001] [optim_t 0.066] [lr 0.003750] [inpformer_loss 0.257 (0.261)]
+2025-08-25 12:43:58,519 - Train: 63.33% [19000/30000]  [63.3/100.0] [batch_t 0.059 (0.403)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.303 (0.262)]
+2025-08-25 12:44:18,527 - Train: 63.50% [19050/30000]  [63.5/100.0] [batch_t 0.068 (0.400)] [data_t 0.001] [optim_t 0.067] [lr 0.003750] [inpformer_loss 0.252 (0.262)]
+2025-08-25 12:44:38,810 - Train: 63.67% [19100/30000]  [63.7/100.0] [batch_t 0.060 (0.405)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.258 (0.263)]
+2025-08-25 12:45:01,028 - Train: 63.83% [19150/30000]  [63.8/100.0] [batch_t 0.060 (0.444)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.255 (0.264)]
+2025-08-25 12:45:19,547 - Train: 64.00% [19200/30000]  [64.0/100.0] [batch_t 0.060 (0.370)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.257 (0.262)]
+2025-08-25 12:45:19,552 - ==> Total time: 2:14:39	 Eta: 1:15:44 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:45:49,495 - Train: 64.17% [19250/30000]  [64.2/100.0] [batch_t 0.064 (0.462)] [data_t 0.001] [optim_t 0.064] [lr 0.003750] [inpformer_loss 0.248 (0.263)]
+2025-08-25 12:46:09,537 - Train: 64.33% [19300/30000]  [64.3/100.0] [batch_t 0.060 (0.401)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.252 (0.262)]
+2025-08-25 12:46:29,403 - Train: 64.50% [19350/30000]  [64.5/100.0] [batch_t 0.060 (0.397)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.255 (0.262)]
+2025-08-25 12:46:49,306 - Train: 64.67% [19400/30000]  [64.7/100.0] [batch_t 0.060 (0.398)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.259 (0.262)]
+2025-08-25 12:47:11,941 - Train: 64.83% [19450/30000]  [64.8/100.0] [batch_t 0.349 (0.453)] [data_t 0.284] [optim_t 0.066] [lr 0.003750] [inpformer_loss 0.253 (0.263)]
+2025-08-25 12:47:29,778 - Train: 65.00% [19500/30000]  [65.0/100.0] [batch_t 0.060 (0.357)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.274 (0.261)]
+2025-08-25 12:47:29,782 - ==> Total time: 2:16:49	 Eta: 1:13:40 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:47:59,416 - Train: 65.17% [19550/30000]  [65.2/100.0] [batch_t 0.059 (0.454)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.260 (0.263)]
+2025-08-25 12:48:18,947 - Train: 65.33% [19600/30000]  [65.3/100.0] [batch_t 0.059 (0.390)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.269 (0.262)]
+2025-08-25 12:48:38,630 - Train: 65.50% [19650/30000]  [65.5/100.0] [batch_t 0.060 (0.393)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.255 (0.262)]
+2025-08-25 12:48:58,287 - Train: 65.67% [19700/30000]  [65.7/100.0] [batch_t 0.060 (0.393)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.253 (0.263)]
+2025-08-25 12:49:20,759 - Train: 65.83% [19750/30000]  [65.8/100.0] [batch_t 0.060 (0.449)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.249 (0.262)]
+2025-08-25 12:49:37,982 - Train: 66.00% [19800/30000]  [66.0/100.0] [batch_t 0.069 (0.344)] [data_t 0.001] [optim_t 0.068] [lr 0.003750] [inpformer_loss 0.254 (0.262)]
+2025-08-25 12:49:37,990 - ==> Total time: 2:18:57	 Eta: 1:11:35 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:50:06,352 - Train: 66.17% [19850/30000]  [66.2/100.0] [batch_t 0.154 (0.451)] [data_t 0.088] [optim_t 0.066] [lr 0.003750] [inpformer_loss 0.280 (0.263)]
+2025-08-25 12:50:25,981 - Train: 66.33% [19900/30000]  [66.3/100.0] [batch_t 0.065 (0.392)] [data_t 0.001] [optim_t 0.064] [lr 0.003750] [inpformer_loss 0.252 (0.262)]
+2025-08-25 12:50:45,852 - Train: 66.50% [19950/30000]  [66.5/100.0] [batch_t 0.060 (0.397)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.250 (0.262)]
+2025-08-25 12:51:06,004 - Train: 66.67% [20000/30000]  [66.7/100.0] [batch_t 0.060 (0.403)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.249 (0.261)]
+2025-08-25 12:51:28,271 - Train: 66.83% [20050/30000]  [66.8/100.0] [batch_t 0.062 (0.445)] [data_t 0.001] [optim_t 0.062] [lr 0.003750] [inpformer_loss 0.256 (0.262)]
+2025-08-25 12:51:46,075 - Train: 67.00% [20100/30000]  [67.0/100.0] [batch_t 0.059 (0.356)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.263 (0.261)]
+2025-08-25 12:51:46,080 - ==> Total time: 2:21:05	 Eta: 1:09:29 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:52:12,207 - Train: 67.17% [20150/30000]  [67.2/100.0] [batch_t 0.092 (0.381)] [data_t 0.029] [optim_t 0.063] [lr 0.003750] [inpformer_loss 0.256 (0.262)]
+2025-08-25 12:52:31,599 - Train: 67.33% [20200/30000]  [67.3/100.0] [batch_t 0.060 (0.388)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.275 (0.263)]
+2025-08-25 12:52:51,324 - Train: 67.50% [20250/30000]  [67.5/100.0] [batch_t 0.059 (0.394)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.250 (0.261)]
+2025-08-25 12:53:10,984 - Train: 67.67% [20300/30000]  [67.7/100.0] [batch_t 0.062 (0.393)] [data_t 0.001] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.263 (0.288)]
+2025-08-25 12:53:32,884 - Train: 67.83% [20350/30000]  [67.8/100.0] [batch_t 0.060 (0.438)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.249 (0.266)]
+2025-08-25 12:53:50,752 - Train: 68.00% [20400/30000]  [68.0/100.0] [batch_t 0.059 (0.357)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.253 (0.263)]
+2025-08-25 12:53:50,758 - ==> Total time: 2:23:10	 Eta: 1:07:22 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:54:16,036 - Train: 68.17% [20450/30000]  [68.2/100.0] [batch_t 0.060 (0.461)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.273 (0.263)]
+2025-08-25 12:54:35,894 - Train: 68.33% [20500/30000]  [68.3/100.0] [batch_t 0.059 (0.397)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.253 (0.263)]
+2025-08-25 12:54:55,189 - Train: 68.50% [20550/30000]  [68.5/100.0] [batch_t 0.060 (0.386)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.295 (0.262)]
+2025-08-25 12:55:14,546 - Train: 68.67% [20600/30000]  [68.7/100.0] [batch_t 0.059 (0.387)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.262 (0.260)]
+2025-08-25 12:55:36,564 - Train: 68.83% [20650/30000]  [68.8/100.0] [batch_t 0.060 (0.440)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.252 (0.262)]
+2025-08-25 12:55:54,290 - Train: 69.00% [20700/30000]  [69.0/100.0] [batch_t 0.059 (0.354)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.284 (0.262)]
+2025-08-25 12:55:54,294 - ==> Total time: 2:25:14	 Eta: 1:05:15 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:56:19,525 - Train: 69.17% [20750/30000]  [69.2/100.0] [batch_t 0.059 (0.451)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.284 (0.260)]
+2025-08-25 12:56:39,286 - Train: 69.33% [20800/30000]  [69.3/100.0] [batch_t 0.060 (0.395)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.279 (0.262)]
+2025-08-25 12:56:58,802 - Train: 69.50% [20850/30000]  [69.5/100.0] [batch_t 0.061 (0.390)] [data_t 0.001] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.280 (0.261)]
+2025-08-25 12:57:18,355 - Train: 69.67% [20900/30000]  [69.7/100.0] [batch_t 0.059 (0.391)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.249 (0.262)]
+2025-08-25 12:57:40,669 - Train: 69.83% [20950/30000]  [69.8/100.0] [batch_t 0.060 (0.446)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.259 (0.261)]
+2025-08-25 12:57:58,786 - Train: 70.00% [21000/30000]  [70.0/100.0] [batch_t 0.060 (0.362)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.266 (0.262)]
+2025-08-25 12:57:58,790 - ==> Total time: 2:27:18	 Eta: 1:03:07 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 12:58:24,375 - Train: 70.17% [21050/30000]  [70.2/100.0] [batch_t 0.060 (0.457)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.258 (0.260)]
+2025-08-25 12:58:43,455 - Train: 70.33% [21100/30000]  [70.3/100.0] [batch_t 0.061 (0.381)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.249 (0.261)]
+2025-08-25 12:59:03,226 - Train: 70.50% [21150/30000]  [70.5/100.0] [batch_t 0.060 (0.395)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.255 (0.262)]
+2025-08-25 12:59:22,570 - Train: 70.67% [21200/30000]  [70.7/100.0] [batch_t 0.068 (0.387)] [data_t 0.001] [optim_t 0.066] [lr 0.003750] [inpformer_loss 0.254 (0.261)]
+2025-08-25 12:59:44,543 - Train: 70.83% [21250/30000]  [70.8/100.0] [batch_t 0.319 (0.439)] [data_t 0.261] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.253 (0.262)]
+2025-08-25 13:00:02,115 - Train: 71.00% [21300/30000]  [71.0/100.0] [batch_t 0.071 (0.351)] [data_t 0.001] [optim_t 0.070] [lr 0.003750] [inpformer_loss 0.256 (0.262)]
+2025-08-25 13:00:02,123 - ==> Total time: 2:29:21	 Eta: 1:01:00 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:00:27,706 - Train: 71.17% [21350/30000]  [71.2/100.0] [batch_t 0.076 (0.456)] [data_t 0.001] [optim_t 0.076] [lr 0.003750] [inpformer_loss 0.255 (0.260)]
+2025-08-25 13:00:46,896 - Train: 71.33% [21400/30000]  [71.3/100.0] [batch_t 0.077 (0.384)] [data_t 0.001] [optim_t 0.077] [lr 0.003750] [inpformer_loss 0.250 (0.261)]
+2025-08-25 13:01:06,449 - Train: 71.50% [21450/30000]  [71.5/100.0] [batch_t 0.059 (0.391)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.252 (0.261)]
+2025-08-25 13:01:25,777 - Train: 71.67% [21500/30000]  [71.7/100.0] [batch_t 0.065 (0.386)] [data_t 0.001] [optim_t 0.064] [lr 0.003750] [inpformer_loss 0.255 (0.261)]
+2025-08-25 13:01:48,342 - Train: 71.83% [21550/30000]  [71.8/100.0] [batch_t 0.059 (0.451)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.278 (0.261)]
+2025-08-25 13:02:06,602 - Train: 72.00% [21600/30000]  [72.0/100.0] [batch_t 0.059 (0.365)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.296 (0.357)]
+2025-08-25 13:02:06,607 - ==> Total time: 2:31:26	 Eta: 0:58:53 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:02:31,698 - Train: 72.17% [21650/30000]  [72.2/100.0] [batch_t 0.079 (0.448)] [data_t 0.001] [optim_t 0.078] [lr 0.003750] [inpformer_loss 0.303 (0.296)]
+2025-08-25 13:02:50,638 - Train: 72.33% [21700/30000]  [72.3/100.0] [batch_t 0.060 (0.379)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.276 (0.271)]
+2025-08-25 13:03:09,818 - Train: 72.50% [21750/30000]  [72.5/100.0] [batch_t 0.061 (0.383)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.307 (0.272)]
+2025-08-25 13:03:28,953 - Train: 72.67% [21800/30000]  [72.7/100.0] [batch_t 0.059 (0.383)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.285 (0.272)]
+2025-08-25 13:03:50,980 - Train: 72.83% [21850/30000]  [72.8/100.0] [batch_t 0.217 (0.440)] [data_t 0.142] [optim_t 0.076] [lr 0.003750] [inpformer_loss 0.263 (0.269)]
+2025-08-25 13:04:08,223 - Train: 73.00% [21900/30000]  [73.0/100.0] [batch_t 0.060 (0.345)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.261 (0.272)]
+2025-08-25 13:04:08,226 - ==> Total time: 2:33:28	 Eta: 0:56:45 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:04:33,236 - Train: 73.17% [21950/30000]  [73.2/100.0] [batch_t 0.059 (0.449)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.250 (0.260)]
+2025-08-25 13:04:52,724 - Train: 73.33% [22000/30000]  [73.3/100.0] [batch_t 0.059 (0.390)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.264 (0.260)]
+2025-08-25 13:05:12,038 - Train: 73.50% [22050/30000]  [73.5/100.0] [batch_t 0.059 (0.386)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.306 (0.263)]
+2025-08-25 13:05:30,914 - Train: 73.67% [22100/30000]  [73.7/100.0] [batch_t 0.070 (0.377)] [data_t 0.001] [optim_t 0.069] [lr 0.003750] [inpformer_loss 0.259 (0.263)]
+2025-08-25 13:05:52,794 - Train: 73.83% [22150/30000]  [73.8/100.0] [batch_t 0.060 (0.437)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.254 (0.260)]
+2025-08-25 13:06:10,342 - Train: 74.00% [22200/30000]  [74.0/100.0] [batch_t 0.059 (0.351)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.276 (0.264)]
+2025-08-25 13:06:10,350 - ==> Total time: 2:35:30	 Eta: 0:54:38 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:06:35,655 - Train: 74.17% [22250/30000]  [74.2/100.0] [batch_t 0.060 (0.460)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.260 (0.260)]
+2025-08-25 13:06:55,212 - Train: 74.33% [22300/30000]  [74.3/100.0] [batch_t 0.059 (0.391)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.262 (0.259)]
+2025-08-25 13:07:14,415 - Train: 74.50% [22350/30000]  [74.5/100.0] [batch_t 0.060 (0.384)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.302 (0.258)]
+2025-08-25 13:07:33,480 - Train: 74.67% [22400/30000]  [74.7/100.0] [batch_t 0.059 (0.381)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.257 (0.269)]
+2025-08-25 13:07:55,753 - Train: 74.83% [22450/30000]  [74.8/100.0] [batch_t 0.073 (0.445)] [data_t 0.001] [optim_t 0.072] [lr 0.003750] [inpformer_loss 0.268 (0.263)]
+2025-08-25 13:08:13,710 - Train: 75.00% [22500/30000]  [75.0/100.0] [batch_t 0.059 (0.359)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.297 (0.265)]
+2025-08-25 13:08:13,715 - ==> Total time: 2:37:33	 Eta: 0:52:31 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:08:39,119 - Train: 75.17% [22550/30000]  [75.2/100.0] [batch_t 0.059 (0.454)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.256 (0.262)]
+2025-08-25 13:08:58,689 - Train: 75.33% [22600/30000]  [75.3/100.0] [batch_t 0.060 (0.391)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.251 (0.263)]
+2025-08-25 13:09:18,379 - Train: 75.50% [22650/30000]  [75.5/100.0] [batch_t 0.059 (0.394)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.267 (0.261)]
+2025-08-25 13:09:37,803 - Train: 75.67% [22700/30000]  [75.7/100.0] [batch_t 0.060 (0.388)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.255 (0.263)]
+2025-08-25 13:09:59,863 - Train: 75.83% [22750/30000]  [75.8/100.0] [batch_t 0.059 (0.441)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.249 (0.262)]
+2025-08-25 13:10:17,460 - Train: 76.00% [22800/30000]  [76.0/100.0] [batch_t 0.059 (0.352)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.264 (0.262)]
+2025-08-25 13:10:17,465 - ==> Total time: 2:39:37	 Eta: 0:50:24 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:10:43,306 - Train: 76.17% [22850/30000]  [76.2/100.0] [batch_t 0.062 (0.463)] [data_t 0.001] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.259 (0.261)]
+2025-08-25 13:11:02,709 - Train: 76.33% [22900/30000]  [76.3/100.0] [batch_t 0.059 (0.388)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.251 (0.261)]
+2025-08-25 13:11:22,156 - Train: 76.50% [22950/30000]  [76.5/100.0] [batch_t 0.059 (0.389)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.252 (0.261)]
+2025-08-25 13:11:41,972 - Train: 76.67% [23000/30000]  [76.7/100.0] [batch_t 0.059 (0.396)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.255 (0.261)]
+2025-08-25 13:12:04,189 - Train: 76.83% [23050/30000]  [76.8/100.0] [batch_t 0.114 (0.444)] [data_t 0.055] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.254 (0.262)]
+2025-08-25 13:12:21,651 - Train: 77.00% [23100/30000]  [77.0/100.0] [batch_t 0.060 (0.349)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.282 (0.263)]
+2025-08-25 13:12:21,656 - ==> Total time: 2:41:41	 Eta: 0:48:17 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:12:47,402 - Train: 77.17% [23150/30000]  [77.2/100.0] [batch_t 0.061 (0.461)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.251 (0.261)]
+2025-08-25 13:13:06,797 - Train: 77.33% [23200/30000]  [77.3/100.0] [batch_t 0.059 (0.388)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.251 (0.261)]
+2025-08-25 13:13:26,323 - Train: 77.50% [23250/30000]  [77.5/100.0] [batch_t 0.059 (0.390)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.248 (0.262)]
+2025-08-25 13:13:45,960 - Train: 77.67% [23300/30000]  [77.7/100.0] [batch_t 0.061 (0.393)] [data_t 0.001] [optim_t 0.061] [lr 0.003750] [inpformer_loss 0.253 (0.261)]
+2025-08-25 13:14:08,279 - Train: 77.83% [23350/30000]  [77.8/100.0] [batch_t 0.059 (0.446)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.254 (0.261)]
+2025-08-25 13:14:26,295 - Train: 78.00% [23400/30000]  [78.0/100.0] [batch_t 0.060 (0.360)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.254 (0.261)]
+2025-08-25 13:14:26,303 - ==> Total time: 2:43:46	 Eta: 0:46:11 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:14:51,540 - Train: 78.17% [23450/30000]  [78.2/100.0] [batch_t 0.059 (0.452)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.253 (0.260)]
+2025-08-25 13:15:11,047 - Train: 78.33% [23500/30000]  [78.3/100.0] [batch_t 0.060 (0.390)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.253 (0.261)]
+2025-08-25 13:15:30,367 - Train: 78.50% [23550/30000]  [78.5/100.0] [batch_t 0.059 (0.386)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.250 (0.261)]
+2025-08-25 13:15:49,499 - Train: 78.67% [23600/30000]  [78.7/100.0] [batch_t 0.060 (0.383)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.255 (0.260)]
+2025-08-25 13:16:11,711 - Train: 78.83% [23650/30000]  [78.8/100.0] [batch_t 0.246 (0.444)] [data_t 0.180] [optim_t 0.066] [lr 0.003750] [inpformer_loss 0.256 (0.262)]
+2025-08-25 13:16:29,690 - Train: 79.00% [23700/30000]  [79.0/100.0] [batch_t 0.059 (0.359)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.277 (0.261)]
+2025-08-25 13:16:29,695 - ==> Total time: 2:45:49	 Eta: 0:44:04 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:16:55,599 - Train: 79.17% [23750/30000]  [79.2/100.0] [batch_t 0.059 (0.464)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.257 (0.260)]
+2025-08-25 13:17:15,285 - Train: 79.33% [23800/30000]  [79.3/100.0] [batch_t 0.059 (0.394)] [data_t 0.001] [optim_t 0.059] [lr 0.003750] [inpformer_loss 0.257 (0.262)]
+2025-08-25 13:17:34,996 - Train: 79.50% [23850/30000]  [79.5/100.0] [batch_t 0.059 (0.394)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.271 (0.261)]
+2025-08-25 13:17:54,930 - Train: 79.67% [23900/30000]  [79.7/100.0] [batch_t 0.061 (0.398)] [data_t 0.001] [optim_t 0.060] [lr 0.003750] [inpformer_loss 0.265 (0.261)]
+2025-08-25 13:18:16,925 - Train: 79.83% [23950/30000]  [79.8/100.0] [batch_t 0.059 (0.440)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.254 (0.260)]
+2025-08-25 13:18:35,186 - Train: 80.00% [24000/30000]  [80.0/100.0] [batch_t 0.059 (0.365)] [data_t 0.001] [optim_t 0.058] [lr 0.003750] [inpformer_loss 0.252 (0.261)]
+2025-08-25 13:18:35,191 - ==> Total time: 2:47:55	 Eta: 0:41:58 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:19:00,989 - Train: 80.17% [24050/30000]  [80.2/100.0] [batch_t 0.067 (0.457)] [data_t 0.001] [optim_t 0.066] [lr 0.000375] [inpformer_loss 0.254 (0.252)]
+2025-08-25 13:19:20,533 - Train: 80.33% [24100/30000]  [80.3/100.0] [batch_t 0.059 (0.391)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.300 (0.257)]
+2025-08-25 13:19:40,292 - Train: 80.50% [24150/30000]  [80.5/100.0] [batch_t 0.060 (0.395)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.261 (0.259)]
+2025-08-25 13:20:00,201 - Train: 80.67% [24200/30000]  [80.7/100.0] [batch_t 0.060 (0.398)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.254 (0.259)]
+2025-08-25 13:20:23,261 - Train: 80.83% [24250/30000]  [80.8/100.0] [batch_t 0.063 (0.461)] [data_t 0.001] [optim_t 0.062] [lr 0.000375] [inpformer_loss 0.268 (0.260)]
+2025-08-25 13:20:41,046 - Train: 81.00% [24300/30000]  [81.0/100.0] [batch_t 0.059 (0.356)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.259 (0.260)]
+2025-08-25 13:20:41,050 - ==> Total time: 2:50:00	 Eta: 0:39:52 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:21:06,792 - Train: 81.17% [24350/30000]  [81.2/100.0] [batch_t 0.060 (0.466)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.250 (0.259)]
+2025-08-25 13:21:26,186 - Train: 81.33% [24400/30000]  [81.3/100.0] [batch_t 0.059 (0.388)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.251 (0.259)]
+2025-08-25 13:21:46,132 - Train: 81.50% [24450/30000]  [81.5/100.0] [batch_t 0.061 (0.399)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.247 (0.259)]
+2025-08-25 13:22:06,399 - Train: 81.67% [24500/30000]  [81.7/100.0] [batch_t 0.059 (0.405)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.256 (0.259)]
+2025-08-25 13:22:29,419 - Train: 81.83% [24550/30000]  [81.8/100.0] [batch_t 0.074 (0.460)] [data_t 0.001] [optim_t 0.073] [lr 0.000375] [inpformer_loss 0.284 (0.260)]
+2025-08-25 13:22:47,529 - Train: 82.00% [24600/30000]  [82.0/100.0] [batch_t 0.059 (0.362)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.254 (0.259)]
+2025-08-25 13:22:47,535 - ==> Total time: 2:52:07	 Eta: 0:37:46 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:23:13,410 - Train: 82.17% [24650/30000]  [82.2/100.0] [batch_t 0.060 (0.464)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.247 (0.260)]
+2025-08-25 13:23:33,070 - Train: 82.33% [24700/30000]  [82.3/100.0] [batch_t 0.062 (0.393)] [data_t 0.001] [optim_t 0.061] [lr 0.000375] [inpformer_loss 0.262 (0.259)]
+2025-08-25 13:23:52,665 - Train: 82.50% [24750/30000]  [82.5/100.0] [batch_t 0.059 (0.392)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.273 (0.260)]
+2025-08-25 13:24:12,163 - Train: 82.67% [24800/30000]  [82.7/100.0] [batch_t 0.059 (0.390)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.248 (0.260)]
+2025-08-25 13:24:34,288 - Train: 82.83% [24850/30000]  [82.8/100.0] [batch_t 0.080 (0.442)] [data_t 0.016] [optim_t 0.064] [lr 0.000375] [inpformer_loss 0.271 (0.260)]
+2025-08-25 13:24:51,347 - Train: 83.00% [24900/30000]  [83.0/100.0] [batch_t 0.059 (0.341)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.252 (0.260)]
+2025-08-25 13:24:51,352 - ==> Total time: 2:54:11	 Eta: 0:35:40 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:25:16,770 - Train: 83.17% [24950/30000]  [83.2/100.0] [batch_t 0.059 (0.453)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.259 (0.260)]
+2025-08-25 13:25:36,476 - Train: 83.33% [25000/30000]  [83.3/100.0] [batch_t 0.059 (0.394)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.261 (0.260)]
+2025-08-25 13:25:56,270 - Train: 83.50% [25050/30000]  [83.5/100.0] [batch_t 0.060 (0.396)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.257 (0.259)]
+2025-08-25 13:26:15,963 - Train: 83.67% [25100/30000]  [83.7/100.0] [batch_t 0.064 (0.394)] [data_t 0.001] [optim_t 0.063] [lr 0.000375] [inpformer_loss 0.276 (0.259)]
+2025-08-25 13:26:38,342 - Train: 83.83% [25150/30000]  [83.8/100.0] [batch_t 0.059 (0.447)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.274 (0.260)]
+2025-08-25 13:26:55,888 - Train: 84.00% [25200/30000]  [84.0/100.0] [batch_t 0.064 (0.351)] [data_t 0.001] [optim_t 0.063] [lr 0.000375] [inpformer_loss 0.244 (0.259)]
+2025-08-25 13:26:55,893 - ==> Total time: 2:56:15	 Eta: 0:33:34 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:27:21,795 - Train: 84.17% [25250/30000]  [84.2/100.0] [batch_t 0.059 (0.461)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.259 (0.259)]
+2025-08-25 13:27:41,496 - Train: 84.33% [25300/30000]  [84.3/100.0] [batch_t 0.059 (0.394)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.249 (0.260)]
+2025-08-25 13:28:01,554 - Train: 84.50% [25350/30000]  [84.5/100.0] [batch_t 0.066 (0.401)] [data_t 0.001] [optim_t 0.065] [lr 0.000375] [inpformer_loss 0.253 (0.259)]
+2025-08-25 13:28:21,422 - Train: 84.67% [25400/30000]  [84.7/100.0] [batch_t 0.059 (0.397)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.248 (0.260)]
+2025-08-25 13:28:44,170 - Train: 84.83% [25450/30000]  [84.8/100.0] [batch_t 0.059 (0.455)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.256 (0.260)]
+2025-08-25 13:29:02,282 - Train: 85.00% [25500/30000]  [85.0/100.0] [batch_t 0.059 (0.362)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.250 (0.260)]
+2025-08-25 13:29:02,287 - ==> Total time: 2:58:22	 Eta: 0:31:28 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:29:28,056 - Train: 85.17% [25550/30000]  [85.2/100.0] [batch_t 0.117 (0.462)] [data_t 0.038] [optim_t 0.079] [lr 0.000375] [inpformer_loss 0.254 (0.260)]
+2025-08-25 13:29:47,440 - Train: 85.33% [25600/30000]  [85.3/100.0] [batch_t 0.060 (0.387)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.258 (0.259)]
+2025-08-25 13:30:07,042 - Train: 85.50% [25650/30000]  [85.5/100.0] [batch_t 0.064 (0.392)] [data_t 0.001] [optim_t 0.063] [lr 0.000375] [inpformer_loss 0.273 (0.259)]
+2025-08-25 13:30:26,753 - Train: 85.67% [25700/30000]  [85.7/100.0] [batch_t 0.059 (0.394)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.252 (0.259)]
+2025-08-25 13:30:49,502 - Train: 85.83% [25750/30000]  [85.8/100.0] [batch_t 0.304 (0.455)] [data_t 0.240] [optim_t 0.063] [lr 0.000375] [inpformer_loss 0.249 (0.260)]
+2025-08-25 13:31:07,423 - Train: 86.00% [25800/30000]  [86.0/100.0] [batch_t 0.059 (0.358)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.259 (0.260)]
+2025-08-25 13:31:07,432 - ==> Total time: 3:00:27	 Eta: 0:29:22 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:31:33,579 - Train: 86.17% [25850/30000]  [86.2/100.0] [batch_t 0.059 (0.471)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.257 (0.260)]
+2025-08-25 13:31:53,262 - Train: 86.33% [25900/30000]  [86.3/100.0] [batch_t 0.062 (0.394)] [data_t 0.001] [optim_t 0.061] [lr 0.000375] [inpformer_loss 0.282 (0.260)]
+2025-08-25 13:32:12,841 - Train: 86.50% [25950/30000]  [86.5/100.0] [batch_t 0.062 (0.391)] [data_t 0.001] [optim_t 0.061] [lr 0.000375] [inpformer_loss 0.252 (0.259)]
+2025-08-25 13:32:32,543 - Train: 86.67% [26000/30000]  [86.7/100.0] [batch_t 0.059 (0.394)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.253 (0.260)]
+2025-08-25 13:32:55,165 - Train: 86.83% [26050/30000]  [86.8/100.0] [batch_t 0.067 (0.452)] [data_t 0.008] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.269 (0.259)]
+2025-08-25 13:33:13,311 - Train: 87.00% [26100/30000]  [87.0/100.0] [batch_t 0.061 (0.363)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.251 (0.259)]
+2025-08-25 13:33:13,317 - ==> Total time: 3:02:33	 Eta: 0:27:16 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:33:38,606 - Train: 87.17% [26150/30000]  [87.2/100.0] [batch_t 0.059 (0.454)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.269 (0.259)]
+2025-08-25 13:33:58,497 - Train: 87.33% [26200/30000]  [87.3/100.0] [batch_t 0.060 (0.398)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.249 (0.259)]
+2025-08-25 13:34:18,652 - Train: 87.50% [26250/30000]  [87.5/100.0] [batch_t 0.060 (0.403)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.273 (0.259)]
+2025-08-25 13:34:38,835 - Train: 87.67% [26300/30000]  [87.7/100.0] [batch_t 0.065 (0.404)] [data_t 0.001] [optim_t 0.064] [lr 0.000375] [inpformer_loss 0.254 (0.259)]
+2025-08-25 13:35:01,842 - Train: 87.83% [26350/30000]  [87.8/100.0] [batch_t 0.465 (0.460)] [data_t 0.401] [optim_t 0.064] [lr 0.000375] [inpformer_loss 0.261 (0.260)]
+2025-08-25 13:35:20,119 - Train: 88.00% [26400/30000]  [88.0/100.0] [batch_t 0.065 (0.365)] [data_t 0.001] [optim_t 0.065] [lr 0.000375] [inpformer_loss 0.251 (0.260)]
+2025-08-25 13:35:20,126 - ==> Total time: 3:04:39	 Eta: 0:25:10 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:35:46,205 - Train: 88.17% [26450/30000]  [88.2/100.0] [batch_t 0.061 (0.470)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.246 (0.259)]
+2025-08-25 13:36:06,397 - Train: 88.33% [26500/30000]  [88.3/100.0] [batch_t 0.061 (0.404)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.255 (0.259)]
+2025-08-25 13:36:26,545 - Train: 88.50% [26550/30000]  [88.5/100.0] [batch_t 0.059 (0.403)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.252 (0.260)]
+2025-08-25 13:36:46,834 - Train: 88.67% [26600/30000]  [88.7/100.0] [batch_t 0.061 (0.406)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.250 (0.259)]
+2025-08-25 13:37:09,685 - Train: 88.83% [26650/30000]  [88.8/100.0] [batch_t 0.065 (0.457)] [data_t 0.002] [optim_t 0.063] [lr 0.000375] [inpformer_loss 0.247 (0.260)]
+2025-08-25 13:37:28,026 - Train: 89.00% [26700/30000]  [89.0/100.0] [batch_t 0.060 (0.367)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.263 (0.260)]
+2025-08-25 13:37:28,032 - ==> Total time: 3:06:47	 Eta: 0:23:05 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:37:54,632 - Train: 89.17% [26750/30000]  [89.2/100.0] [batch_t 0.060 (0.478)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.252 (0.260)]
+2025-08-25 13:38:14,987 - Train: 89.33% [26800/30000]  [89.3/100.0] [batch_t 0.060 (0.407)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.246 (0.259)]
+2025-08-25 13:38:34,969 - Train: 89.50% [26850/30000]  [89.5/100.0] [batch_t 0.065 (0.399)] [data_t 0.001] [optim_t 0.064] [lr 0.000375] [inpformer_loss 0.250 (0.259)]
+2025-08-25 13:38:55,046 - Train: 89.67% [26900/30000]  [89.7/100.0] [batch_t 0.059 (0.401)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.259 (0.259)]
+2025-08-25 13:39:18,116 - Train: 89.83% [26950/30000]  [89.8/100.0] [batch_t 0.059 (0.461)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.255 (0.259)]
+2025-08-25 13:39:36,602 - Train: 90.00% [27000/30000]  [90.0/100.0] [batch_t 0.059 (0.369)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.263 (0.260)]
+2025-08-25 13:39:36,605 - ==> Total time: 3:08:56	 Eta: 0:20:59 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:40:02,650 - Train: 90.17% [27050/30000]  [90.2/100.0] [batch_t 0.060 (0.465)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.286 (0.260)]
+2025-08-25 13:40:22,380 - Train: 90.33% [27100/30000]  [90.3/100.0] [batch_t 0.060 (0.394)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.253 (0.259)]
+2025-08-25 13:40:42,555 - Train: 90.50% [27150/30000]  [90.5/100.0] [batch_t 0.061 (0.403)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.252 (0.258)]
+2025-08-25 13:41:02,505 - Train: 90.67% [27200/30000]  [90.7/100.0] [batch_t 0.061 (0.399)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.259 (0.259)]
+2025-08-25 13:41:25,492 - Train: 90.83% [27250/30000]  [90.8/100.0] [batch_t 0.060 (0.460)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.248 (0.259)]
+2025-08-25 13:41:43,583 - Train: 91.00% [27300/30000]  [91.0/100.0] [batch_t 0.059 (0.362)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.266 (0.260)]
+2025-08-25 13:41:43,588 - ==> Total time: 3:11:03	 Eta: 0:18:53 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:42:09,764 - Train: 91.17% [27350/30000]  [91.2/100.0] [batch_t 0.070 (0.468)] [data_t 0.001] [optim_t 0.069] [lr 0.000375] [inpformer_loss 0.246 (0.258)]
+2025-08-25 13:42:29,839 - Train: 91.33% [27400/30000]  [91.3/100.0] [batch_t 0.059 (0.401)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.274 (0.259)]
+2025-08-25 13:42:50,230 - Train: 91.50% [27450/30000]  [91.5/100.0] [batch_t 0.059 (0.408)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.256 (0.260)]
+2025-08-25 13:43:10,245 - Train: 91.67% [27500/30000]  [91.7/100.0] [batch_t 0.059 (0.400)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.272 (0.259)]
+2025-08-25 13:43:33,251 - Train: 91.83% [27550/30000]  [91.8/100.0] [batch_t 0.060 (0.460)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.250 (0.258)]
+2025-08-25 13:43:51,408 - Train: 92.00% [27600/30000]  [92.0/100.0] [batch_t 0.060 (0.363)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.250 (0.260)]
+2025-08-25 13:43:51,411 - ==> Total time: 3:13:11	 Eta: 0:16:47 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:44:17,525 - Train: 92.17% [27650/30000]  [92.2/100.0] [batch_t 0.059 (0.468)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.251 (0.260)]
+2025-08-25 13:44:37,614 - Train: 92.33% [27700/30000]  [92.3/100.0] [batch_t 0.060 (0.402)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.263 (0.259)]
+2025-08-25 13:44:57,258 - Train: 92.50% [27750/30000]  [92.5/100.0] [batch_t 0.061 (0.393)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.258 (0.259)]
+2025-08-25 13:45:17,216 - Train: 92.67% [27800/30000]  [92.7/100.0] [batch_t 0.060 (0.399)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.265 (0.260)]
+2025-08-25 13:45:39,594 - Train: 92.83% [27850/30000]  [92.8/100.0] [batch_t 0.152 (0.447)] [data_t 0.093] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.269 (0.259)]
+2025-08-25 13:45:57,911 - Train: 93.00% [27900/30000]  [93.0/100.0] [batch_t 0.060 (0.366)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.271 (0.259)]
+2025-08-25 13:45:57,915 - ==> Total time: 3:15:17	 Eta: 0:14:41 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:46:23,489 - Train: 93.17% [27950/30000]  [93.2/100.0] [batch_t 0.065 (0.458)] [data_t 0.001] [optim_t 0.064] [lr 0.000375] [inpformer_loss 0.252 (0.259)]
+2025-08-25 13:46:43,526 - Train: 93.33% [28000/30000]  [93.3/100.0] [batch_t 0.059 (0.400)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.245 (0.259)]
+2025-08-25 13:47:03,339 - Train: 93.50% [28050/30000]  [93.5/100.0] [batch_t 0.064 (0.396)] [data_t 0.001] [optim_t 0.064] [lr 0.000375] [inpformer_loss 0.251 (0.259)]
+2025-08-25 13:47:23,090 - Train: 93.67% [28100/30000]  [93.7/100.0] [batch_t 0.060 (0.395)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.249 (0.260)]
+2025-08-25 13:47:45,482 - Train: 93.83% [28150/30000]  [93.8/100.0] [batch_t 0.074 (0.448)] [data_t 0.001] [optim_t 0.073] [lr 0.000375] [inpformer_loss 0.246 (0.259)]
+2025-08-25 13:48:03,404 - Train: 94.00% [28200/30000]  [94.0/100.0] [batch_t 0.060 (0.358)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.248 (0.260)]
+2025-08-25 13:48:03,408 - ==> Total time: 3:17:23	 Eta: 0:12:35 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:48:28,811 - Train: 94.17% [28250/30000]  [94.2/100.0] [batch_t 0.061 (0.455)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.270 (0.260)]
+2025-08-25 13:48:47,985 - Train: 94.33% [28300/30000]  [94.3/100.0] [batch_t 0.061 (0.383)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.238 (0.258)]
+2025-08-25 13:49:07,088 - Train: 94.50% [28350/30000]  [94.5/100.0] [batch_t 0.059 (0.382)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.270 (0.260)]
+2025-08-25 13:49:26,457 - Train: 94.67% [28400/30000]  [94.7/100.0] [batch_t 0.061 (0.387)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.258 (0.259)]
+2025-08-25 13:49:48,083 - Train: 94.83% [28450/30000]  [94.8/100.0] [batch_t 0.060 (0.432)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.245 (0.258)]
+2025-08-25 13:50:05,778 - Train: 95.00% [28500/30000]  [95.0/100.0] [batch_t 0.060 (0.354)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.266 (0.259)]
+2025-08-25 13:50:05,782 - ==> Total time: 3:19:25	 Eta: 0:10:29 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:50:30,563 - Train: 95.17% [28550/30000]  [95.2/100.0] [batch_t 0.078 (0.446)] [data_t 0.016] [optim_t 0.062] [lr 0.000375] [inpformer_loss 0.250 (0.259)]
+2025-08-25 13:50:49,949 - Train: 95.33% [28600/30000]  [95.3/100.0] [batch_t 0.059 (0.388)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.253 (0.260)]
+2025-08-25 13:51:09,420 - Train: 95.50% [28650/30000]  [95.5/100.0] [batch_t 0.061 (0.389)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.246 (0.259)]
+2025-08-25 13:51:29,320 - Train: 95.67% [28700/30000]  [95.7/100.0] [batch_t 0.061 (0.398)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.248 (0.259)]
+2025-08-25 13:51:51,385 - Train: 95.83% [28750/30000]  [95.8/100.0] [batch_t 0.369 (0.441)] [data_t 0.304] [optim_t 0.066] [lr 0.000375] [inpformer_loss 0.263 (0.259)]
+2025-08-25 13:52:09,236 - Train: 96.00% [28800/30000]  [96.0/100.0] [batch_t 0.059 (0.357)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.272 (0.259)]
+2025-08-25 13:52:09,241 - ==> Total time: 3:21:29	 Eta: 0:08:23 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:52:34,832 - Train: 96.17% [28850/30000]  [96.2/100.0] [batch_t 0.074 (0.458)] [data_t 0.005] [optim_t 0.069] [lr 0.000375] [inpformer_loss 0.270 (0.258)]
+2025-08-25 13:52:54,672 - Train: 96.33% [28900/30000]  [96.3/100.0] [batch_t 0.059 (0.397)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.275 (0.258)]
+2025-08-25 13:53:14,175 - Train: 96.50% [28950/30000]  [96.5/100.0] [batch_t 0.060 (0.390)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.275 (0.260)]
+2025-08-25 13:53:33,938 - Train: 96.67% [29000/30000]  [96.7/100.0] [batch_t 0.060 (0.395)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.253 (0.260)]
+2025-08-25 13:53:56,128 - Train: 96.83% [29050/30000]  [96.8/100.0] [batch_t 0.059 (0.444)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.249 (0.258)]
+2025-08-25 13:54:14,010 - Train: 97.00% [29100/30000]  [97.0/100.0] [batch_t 0.073 (0.357)] [data_t 0.001] [optim_t 0.072] [lr 0.000375] [inpformer_loss 0.246 (0.258)]
+2025-08-25 13:54:14,020 - ==> Total time: 3:23:33	 Eta: 0:06:17 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:54:40,057 - Train: 97.17% [29150/30000]  [97.2/100.0] [batch_t 0.059 (0.468)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.272 (0.258)]
+2025-08-25 13:54:59,567 - Train: 97.33% [29200/30000]  [97.3/100.0] [batch_t 0.062 (0.390)] [data_t 0.001] [optim_t 0.061] [lr 0.000375] [inpformer_loss 0.249 (0.260)]
+2025-08-25 13:55:19,191 - Train: 97.50% [29250/30000]  [97.5/100.0] [batch_t 0.059 (0.392)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.245 (0.258)]
+2025-08-25 13:55:39,122 - Train: 97.67% [29300/30000]  [97.7/100.0] [batch_t 0.061 (0.398)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.244 (0.259)]
+2025-08-25 13:56:01,971 - Train: 97.83% [29350/30000]  [97.8/100.0] [batch_t 0.061 (0.457)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.264 (0.259)]
+2025-08-25 13:56:20,236 - Train: 98.00% [29400/30000]  [98.0/100.0] [batch_t 0.061 (0.365)] [data_t 0.001] [optim_t 0.060] [lr 0.000375] [inpformer_loss 0.256 (0.259)]
+2025-08-25 13:56:20,241 - ==> Total time: 3:25:40	 Eta: 0:04:11 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:56:46,024 - Train: 98.17% [29450/30000]  [98.2/100.0] [batch_t 0.059 (0.460)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.275 (0.260)]
+2025-08-25 13:57:05,469 - Train: 98.33% [29500/30000]  [98.3/100.0] [batch_t 0.059 (0.389)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.272 (0.260)]
+2025-08-25 13:57:25,214 - Train: 98.50% [29550/30000]  [98.5/100.0] [batch_t 0.059 (0.395)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.243 (0.258)]
+2025-08-25 13:57:44,720 - Train: 98.67% [29600/30000]  [98.7/100.0] [batch_t 0.059 (0.390)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.245 (0.259)]
+2025-08-25 13:58:07,111 - Train: 98.83% [29650/30000]  [98.8/100.0] [batch_t 0.064 (0.448)] [data_t 0.001] [optim_t 0.063] [lr 0.000375] [inpformer_loss 0.246 (0.259)]
+2025-08-25 13:58:25,107 - Train: 99.00% [29700/30000]  [99.0/100.0] [batch_t 0.059 (0.360)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.269 (0.259)]
+2025-08-25 13:58:25,112 - ==> Total time: 3:27:44	 Eta: 0:02:05 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 13:58:50,553 - Train: 99.17% [29750/30000]  [99.2/100.0] [batch_t 0.059 (0.458)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.258 (0.259)]
+2025-08-25 13:59:10,537 - Train: 99.33% [29800/30000]  [99.3/100.0] [batch_t 0.060 (0.399)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.270 (0.260)]
+2025-08-25 13:59:30,367 - Train: 99.50% [29850/30000]  [99.5/100.0] [batch_t 0.064 (0.396)] [data_t 0.001] [optim_t 0.063] [lr 0.000375] [inpformer_loss 0.273 (0.259)]
+2025-08-25 13:59:49,952 - Train: 99.67% [29900/30000]  [99.7/100.0] [batch_t 0.067 (0.392)] [data_t 0.001] [optim_t 0.067] [lr 0.000375] [inpformer_loss 0.251 (0.259)]
+2025-08-25 14:00:12,413 - Train: 99.83% [29950/30000]  [99.8/100.0] [batch_t 0.060 (0.449)] [data_t 0.001] [optim_t 0.059] [lr 0.000375] [inpformer_loss 0.268 (0.259)]
+2025-08-25 14:00:30,815 - Train: 100.00% [30000/30000]  [100.0/100.0] [batch_t 0.059 (0.368)] [data_t 0.001] [optim_t 0.058] [lr 0.000375] [inpformer_loss 0.268 (0.259)]
+2025-08-25 14:01:11,153 - Test: 7.14% [50/700] [batch_t 0.810 (0.797)]
+2025-08-25 14:01:47,922 - Test: 14.29% [100/700] [batch_t 0.738 (0.766)]
+2025-08-25 14:02:25,183 - Test: 21.43% [150/700] [batch_t 0.804 (0.759)]
+2025-08-25 14:03:01,649 - Test: 28.57% [200/700] [batch_t 0.811 (0.752)]
+2025-08-25 14:03:38,445 - Test: 35.71% [250/700] [batch_t 0.761 (0.749)]
+2025-08-25 14:04:13,741 - Test: 42.86% [300/700] [batch_t 0.725 (0.741)]
+2025-08-25 14:04:49,577 - Test: 50.00% [350/700] [batch_t 0.718 (0.738)]
+2025-08-25 14:05:25,461 - Test: 57.14% [400/700] [batch_t 0.783 (0.735)]
+2025-08-25 14:06:01,499 - Test: 64.29% [450/700] [batch_t 0.749 (0.734)]
+2025-08-25 14:06:38,147 - Test: 71.43% [500/700] [batch_t 0.778 (0.734)]
+2025-08-25 14:07:14,937 - Test: 78.57% [550/700] [batch_t 0.821 (0.734)]
+2025-08-25 14:07:52,048 - Test: 85.71% [600/700] [batch_t 0.745 (0.735)]
+2025-08-25 14:08:28,423 - Test: 92.86% [650/700] [batch_t 0.783 (0.734)]
+2025-08-25 14:09:05,828 - Test: 100.00% [700/700] [batch_t 0.778 (0.735)]
+2025-08-25 14:09:21,512 - 
+ #objects: 70, #view instances: 840
+2025-08-25 14:09:27,190 - ==> Metric Time for Bird           :   0.000 (AUROC_obj_sp)	  0.005 (AUROC_view_sp)	  0.000 (AUROC_view_px)	  0.000 (mF1_obj_sp)	  0.001 (mF1_view_sp)	  3.327 (mF1_view_px)	  0.000 (AP_obj_sp)	  0.001 (AP_view_sp)	  0.000 (AP_view_px)	  0.000 (AUPRO_view)	==> Metric Time for Bird           :   0.002 (AUROC_obj_sp)	  0.000 (AUROC_view_sp)	  0.000 (AUROC_view_px)	  0.001 (mF1_obj_sp)	  0.000 (mF1_view_sp)	  0.000 (mF1_view_px)	  0.001 (AP_obj_sp)	  0.000 (AP_view_sp)	  0.000 (AP_view_px)	  0.000 (AUPRO_view)	
+2025-08-25 14:09:27,191 - 
+|  Name  |  AUROC_obj_sp  |  AUROC_obj_sp (Max)  |  AUROC_view_sp  |  AUROC_view_sp (Max)  |  AUROC_view_px  |  AUROC_view_px (Max)  |  mF1_obj_sp  |  mF1_obj_sp (Max)  |  mF1_view_sp  |  mF1_view_sp (Max)  |  mF1_view_px  |  mF1_view_px (Max)  |  AP_obj_sp  |  AP_obj_sp (Max)   |  AP_view_sp  |  AP_view_sp (Max)  |  AP_view_px  |  AP_view_px (Max)  |  AUPRO_view  |  AUPRO_view (Max)  |
+|:------:|:--------------:|:--------------------:|:---------------:|:---------------------:|:---------------:|:---------------------:|:------------:|:------------------:|:-------------:|:-------------------:|:-------------:|:-------------------:|:-----------:|:------------------:|:------------:|:------------------:|:------------:|:------------------:|:------------:|:------------------:|
+|  Bird  |     85.100     |  87.700 (50  epoch)  |     65.914      |  66.046 (50  epoch)   |     97.489      |  97.579 (50  epoch)   |    87.129    | 88.889 (50  epoch) |    50.965     | 52.453 (50  epoch)  |     0.913     |  0.953 (50  epoch)  |   94.451    | 95.377 (50  epoch) |    44.887    | 45.096 (50  epoch) |    0.390     | 0.426 (50  epoch)  |    88.660    | 88.711 (50  epoch) |
+2025-08-25 14:09:27,875 - ==> Total time: 3:38:47	 Eta: 0:00:00 	Logged in 'only_birds_12_base2_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-25 14:09:32,482 - finish training

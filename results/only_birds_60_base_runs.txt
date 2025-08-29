@@ -1,0 +1,365 @@
+2025-08-24 16:37:33,571 - ==> Running Trainer: INPFormerTrainer
+2025-08-24 16:37:33,571 - ==> Loading training dataset: M2AD
+2025-08-24 16:37:33,571 - ==> Loading testing dataset: M2AD
+2025-08-24 16:37:34,276 - ==> Dataset info: Training: True, Class: Bird, #Normal: 3600, #Abnormal: 0, #Total: 3600
+2025-08-24 16:37:34,277 - ==> Dataset info: Training: False, Class: Bird, #Normal: 3850, #Abnormal: 4550, #Total: 8400
+2025-08-24 16:37:34,277 - ==> Using GPU: [0] for Training
+2025-08-24 16:37:34,277 - ==> Building model
+2025-08-24 16:37:35,920 - using MLP layer as FFN
+2025-08-24 16:37:39,490 - ==> Creating optimizer
+2025-08-24 16:37:39,492 - ==> ********** cfg ********** 
+fvcore_is                            : True                                
+fvcore_b                             : 1                                   
+fvcore_c                             : 3                                   
+epoch_full                           : 100                                 
+m2ad_synergy_metrics                 : ['AUROC_obj_sp', 'AUROC_view_sp', 'AUROC_view_px', 'mF1_obj_sp', 'mF1_view_sp', 'mF1_view_px', 'AP_obj_sp', 'AP_view_sp', 'AP_view_px', 'AUPRO_view']
+m2ad_invariant_metrics               : ['AUROC_img_sp', 'AUROC_img_px', 'mF1_img_sp', 'mF1_img_px', 'AP_img_sp', 'AP_img_px', 'AUPRO_img']
+metrics                              : ['AUROC_obj_sp', 'AUROC_view_sp', 'AUROC_view_px', 'mF1_obj_sp', 'mF1_view_sp', 'mF1_view_px', 'AP_obj_sp', 'AP_view_sp', 'AP_view_px', 'AUPRO_view']
+use_adeval                           : True                                
+evaluator.kwargs                     : {'metrics': ['AUROC_obj_sp', 'AUROC_view_sp', 'AUROC_view_px', 'mF1_obj_sp', 'mF1_view_sp', 'mF1_view_px', 'AP_obj_sp', 'AP_view_sp', 'AP_view_px', 'AUPRO_view'], 'pooling_ks': None, 'max_step_aupro': 100, 'use_adeval': True}
+vis                                  : True                                
+vis_dir                              : None                                
+optim.lr                             : 0.01875                             
+optim.kwargs                         : {'name': 'adam', 'betas': (0.5, 0.999)}
+trainer.name                         : INPFormerTrainer                    
+trainer.checkpoint                   : only_birds_48_base_runs             
+trainer.logdir_sub                   : exp1                                
+trainer.resume_dir                   :                                     
+trainer.cuda_deterministic           : False                               
+trainer.epoch_full                   : 100                                 
+trainer.scheduler_kwargs             : {'name': 'step', 'lr_noise': None, 'noise_pct': 0.67, 'noise_std': 1.0, 'noise_seed': 42, 'lr_min': 0.0001875, 'warmup_lr': 1.875e-05, 'warmup_iters': -1, 'cooldown_iters': 0, 'warmup_epochs': 0, 'cooldown_epochs': 0, 'use_iters': True, 'patience_iters': 0, 'patience_epochs': 0, 'decay_iters': 0, 'decay_epochs': 80, 'cycle_decay': 0.1, 'decay_rate': 0.1}
+trainer.test_start_epoch             : 100                                 
+trainer.test_per_epoch               : 50                                  
+trainer.find_unused_parameters       : False                               
+trainer.sync_BN                      : apex                                
+trainer.dist_BN                      :                                     
+trainer.scaler                       : none                                
+trainer.data.batch_size              : 60                                  
+trainer.data.batch_size_per_gpu      : 60                                  
+trainer.data.batch_size_test         : 60                                  
+trainer.data.batch_size_per_gpu_test : 60                                  
+trainer.data.num_workers_per_gpu     : 8                                   
+trainer.data.drop_last               : False                               
+trainer.data.pin_memory              : True                                
+trainer.data.persistent_workers      : False                               
+trainer.data.num_workers             : 8                                   
+trainer.iter                         : 0                                   
+trainer.epoch                        : 0                                   
+trainer.iter_full                    : 6000                                
+trainer.metric_recorder              : {'AUROC_obj_sp_Bird': [], 'AUROC_view_sp_Bird': [], 'AUROC_view_px_Bird': [], 'mF1_obj_sp_Bird': [], 'mF1_view_sp_Bird': [], 'mF1_view_px_Bird': [], 'AP_obj_sp_Bird': [], 'AP_view_sp_Bird': [], 'AP_view_px_Bird': [], 'AUPRO_view_Bird': []}
+loss.loss_terms                      : [{'type': 'INPFormerLoss', 'name': 'inpformer_loss', 'y': 3}]
+loss.clip_grad                       : 5.0                                 
+loss.create_graph                    : False                               
+loss.retain_graph                    : False                               
+adv                                  : False                               
+logging.log_terms_train              : [{'name': 'batch_t', 'fmt': ':>5.3f', 'add_name': 'avg'}, {'name': 'data_t', 'fmt': ':>5.3f'}, {'name': 'optim_t', 'fmt': ':>5.3f'}, {'name': 'lr', 'fmt': ':>7.6f'}, {'name': 'inpformer_loss', 'suffixes': [''], 'fmt': ':>5.3f', 'add_name': 'avg'}]
+logging.log_terms_test               : [{'name': 'batch_t', 'fmt': ':>5.3f', 'add_name': 'avg'}, {'name': 'inpformer_loss', 'suffixes': [''], 'fmt': ':>5.3f', 'add_name': 'avg'}]
+logging.train_reset_log_per          : 50                                  
+logging.train_log_per                : 50                                  
+logging.test_log_per                 : 50                                  
+size                                 : 224                                 
+setup                                : M2AD-Synergy                        
+train_data.anomaly_generator.name    : white_noise                         
+train_data.anomaly_generator.enable  : False                               
+train_data.anomaly_generator.kwargs  : {}                                  
+train_data.sampler.name              : naive                               
+train_data.sampler.kwargs            : {}                                  
+train_data.loader_type               : pil                                 
+train_data.loader_type_target        : pil_L                               
+train_data.type                      : M2AD                                
+train_data.name                      : m2ad                                
+train_data.mode                      : unsupervised                        
+train_data.cls_names                 : Bird                                
+train_data.train_transforms          : [{'type': 'Resize', 'size': (224, 224), 'interpolation': <InterpolationMode.BILINEAR: 'bilinear'>}, {'type': 'CenterCrop', 'size': (224, 224)}, {'type': 'ToTensor'}, {'type': 'Normalize', 'mean': (0.485, 0.456, 0.406), 'std': (0.229, 0.224, 0.225), 'inplace': True}]
+train_data.test_transforms           : [{'type': 'Resize', 'size': (224, 224), 'interpolation': <InterpolationMode.BILINEAR: 'bilinear'>}, {'type': 'CenterCrop', 'size': (224, 224)}, {'type': 'ToTensor'}, {'type': 'Normalize', 'mean': (0.485, 0.456, 0.406), 'std': (0.229, 0.224, 0.225), 'inplace': True}]
+train_data.target_transforms         : [{'type': 'Resize', 'size': (224, 224), 'interpolation': <InterpolationMode.BILINEAR: 'bilinear'>}, {'type': 'CenterCrop', 'size': (224, 224)}, {'type': 'ToTensor'}]
+train_data.train_size                : 60                                  
+train_data.train_length              : 3600                                
+test_data.anomaly_generator.name     : white_noise                         
+test_data.anomaly_generator.enable   : False                               
+test_data.anomaly_generator.kwargs   : {}                                  
+test_data.sampler.name               : naive                               
+test_data.sampler.kwargs             : {}                                  
+test_data.loader_type                : pil                                 
+test_data.loader_type_target         : pil_L                               
+test_data.type                       : M2AD                                
+test_data.name                       : m2ad                                
+test_data.mode                       : unsupervised                        
+test_data.cls_names                  : Bird                                
+test_data.train_transforms           : [{'type': 'Resize', 'size': (224, 224), 'interpolation': <InterpolationMode.BILINEAR: 'bilinear'>}, {'type': 'CenterCrop', 'size': (224, 224)}, {'type': 'ToTensor'}, {'type': 'Normalize', 'mean': (0.485, 0.456, 0.406), 'std': (0.229, 0.224, 0.225), 'inplace': True}]
+test_data.test_transforms            : [{'type': 'Resize', 'size': (224, 224), 'interpolation': <InterpolationMode.BILINEAR: 'bilinear'>}, {'type': 'CenterCrop', 'size': (224, 224)}, {'type': 'ToTensor'}, {'type': 'Normalize', 'mean': (0.485, 0.456, 0.406), 'std': (0.229, 0.224, 0.225), 'inplace': True}]
+test_data.target_transforms          : [{'type': 'Resize', 'size': (224, 224), 'interpolation': <InterpolationMode.BILINEAR: 'bilinear'>}, {'type': 'CenterCrop', 'size': (224, 224)}, {'type': 'ToTensor'}]
+test_data.test_size                  : 140                                 
+test_data.test_length                : 8400                                
+model.name                           : inpformer                           
+model.kwargs                         : {'pretrained': False, 'checkpoint_path': '', 'strict': False, 'encoder_arch': 'dinov2reg_vit_base_14', 'INP_num': 6}
+seed                                 : 42                                  
+warmup_epochs                        : 0                                   
+test_start_epoch                     : 100                                 
+test_per_epoch                       : 50                                  
+batch_train                          : 60                                  
+batch_test_per                       : 60                                  
+lr                                   : 0.01875                             
+weight_decay                         : 0.05                                
+cfg_path                             : configs.benchmark.inpformer.inpformer_100e
+mode                                 : train                               
+sleep                                : -1                                  
+memory                               : -1                                  
+checkpoint                           : only_birds_48_base_runs             
+command                              : python3 -m torch.distributed.launch --nproc_per_node=$nproc_per_node --nnodes=$nnodes --node_rank=$node_rank --master_addr=$master_addr --master_port=$master_port --use_env run.py -c configs.benchmark.inpformer.inpformer_100e -m train --sleep -1 --memory -1
+task_start_time                      : 18948648.642499905                  
+world_size                           : 1                                   
+rank                                 : 0                                   
+local_rank                           : 0                                   
+ngpus_per_node                       : 1                                   
+master                               : True                                
+logdir                               : only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1
+tb_dir                               : only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/20250824-163733
+logger.filters                       : []                                  
+logger.name                          : root                                
+logger.level                         : 20                                  
+logger.parent                        : None                                
+logger.propagate                     : True                                
+logger.disabled                      : False
+2025-08-24 16:37:39,492 - ==> Starting training
+2025-08-24 16:39:27,204 - Train: 0.83% [50/6000]  [0.8/100.0] [batch_t 0.255 (2.150)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.483 (0.564)]
+2025-08-24 16:39:35,144 - ==> Total time: 0:02:01	 Eta: 3:20:39 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 16:40:53,819 - Train: 1.67% [100/6000]  [1.7/100.0] [batch_t 0.256 (1.927)] [data_t 0.002] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.501 (0.462)]
+2025-08-24 16:41:29,972 - ==> Total time: 0:03:56	 Eta: 3:13:05 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 16:42:33,713 - Train: 2.50% [150/6000]  [2.5/100.0] [batch_t 0.258 (2.044)] [data_t 0.003] [optim_t 0.256] [lr 0.018750] [inpformer_loss 0.434 (0.457)]
+2025-08-24 16:43:25,836 - ==> Total time: 0:05:52	 Eta: 3:09:51 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 16:44:13,909 - Train: 3.33% [200/6000]  [3.3/100.0] [batch_t 0.256 (2.308)] [data_t 0.003] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.413 (0.430)]
+2025-08-24 16:45:21,450 - ==> Total time: 0:07:47	 Eta: 3:07:10 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 16:45:54,611 - Train: 4.17% [250/6000]  [4.2/100.0] [batch_t 0.256 (3.075)] [data_t 0.003] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.449 (0.433)]
+2025-08-24 16:47:17,495 - Train: 5.00% [300/6000]  [5.0/100.0] [batch_t 0.256 (1.658)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.409 (0.461)]
+2025-08-24 16:47:17,502 - ==> Total time: 0:09:43	 Eta: 3:04:55 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 16:49:05,528 - Train: 5.83% [350/6000]  [5.8/100.0] [batch_t 0.255 (2.113)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.582 (0.407)]
+2025-08-24 16:49:13,372 - ==> Total time: 0:11:39	 Eta: 3:02:44 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 16:50:33,142 - Train: 6.67% [400/6000]  [6.7/100.0] [batch_t 0.256 (1.934)] [data_t 0.002] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.390 (0.388)]
+2025-08-24 16:51:09,600 - ==> Total time: 0:13:36	 Eta: 3:00:42 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 16:52:14,090 - Train: 7.50% [450/6000]  [7.5/100.0] [batch_t 0.256 (2.066)] [data_t 0.003] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.396 (0.441)]
+2025-08-24 16:53:05,830 - ==> Total time: 0:15:32	 Eta: 2:58:41 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 16:53:54,269 - Train: 8.33% [500/6000]  [8.3/100.0] [batch_t 0.256 (2.301)] [data_t 0.002] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.473 (0.384)]
+2025-08-24 16:55:01,749 - ==> Total time: 0:17:28	 Eta: 2:56:38 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 16:55:35,026 - Train: 9.17% [550/6000]  [9.2/100.0] [batch_t 0.256 (3.078)] [data_t 0.002] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.355 (0.369)]
+2025-08-24 16:56:57,823 - Train: 10.00% [600/6000]  [10.0/100.0] [batch_t 0.257 (1.656)] [data_t 0.002] [optim_t 0.255] [lr 0.018750] [inpformer_loss 0.357 (0.389)]
+2025-08-24 16:56:57,828 - ==> Total time: 0:19:24	 Eta: 2:54:38 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 16:58:45,683 - Train: 10.83% [650/6000]  [10.8/100.0] [batch_t 0.256 (2.110)] [data_t 0.002] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.334 (0.354)]
+2025-08-24 16:58:53,572 - ==> Total time: 0:21:20	 Eta: 2:52:36 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:00:13,315 - Train: 11.67% [700/6000]  [11.7/100.0] [batch_t 0.256 (1.935)] [data_t 0.003] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.449 (0.471)]
+2025-08-24 17:00:49,209 - ==> Total time: 0:23:15	 Eta: 2:50:34 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:01:53,641 - Train: 12.50% [750/6000]  [12.5/100.0] [batch_t 0.256 (2.071)] [data_t 0.002] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.379 (0.415)]
+2025-08-24 17:02:46,180 - ==> Total time: 0:25:12	 Eta: 2:48:43 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:03:35,448 - Train: 13.33% [800/6000]  [13.3/100.0] [batch_t 0.256 (2.340)] [data_t 0.002] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.416 (0.461)]
+2025-08-24 17:04:43,885 - ==> Total time: 0:27:10	 Eta: 2:46:55 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:05:17,657 - Train: 14.17% [850/6000]  [14.2/100.0] [batch_t 0.256 (3.119)] [data_t 0.002] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.375 (0.397)]
+2025-08-24 17:06:41,307 - Train: 15.00% [900/6000]  [15.0/100.0] [batch_t 0.256 (1.673)] [data_t 0.002] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.373 (0.382)]
+2025-08-24 17:06:41,312 - ==> Total time: 0:29:07	 Eta: 2:45:04 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:08:29,193 - Train: 15.83% [950/6000]  [15.8/100.0] [batch_t 0.255 (2.111)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.377 (0.367)]
+2025-08-24 17:08:37,015 - ==> Total time: 0:31:03	 Eta: 2:43:03 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:09:56,295 - Train: 16.67% [1000/6000]  [16.7/100.0] [batch_t 0.257 (1.933)] [data_t 0.003] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.351 (0.364)]
+2025-08-24 17:10:32,476 - ==> Total time: 0:32:58	 Eta: 2:41:01 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:11:36,620 - Train: 17.50% [1050/6000]  [17.5/100.0] [batch_t 0.257 (2.058)] [data_t 0.002] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.487 (0.449)]
+2025-08-24 17:12:28,429 - ==> Total time: 0:34:54	 Eta: 2:39:03 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:13:16,705 - Train: 18.33% [1100/6000]  [18.3/100.0] [batch_t 0.256 (2.297)] [data_t 0.002] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.410 (0.416)]
+2025-08-24 17:14:24,296 - ==> Total time: 0:36:50	 Eta: 2:37:04 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:14:57,124 - Train: 19.17% [1150/6000]  [19.2/100.0] [batch_t 0.255 (3.048)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.356 (0.374)]
+2025-08-24 17:16:19,968 - Train: 20.00% [1200/6000]  [20.0/100.0] [batch_t 0.256 (1.657)] [data_t 0.002] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.378 (0.371)]
+2025-08-24 17:16:19,971 - ==> Total time: 0:38:46	 Eta: 2:35:05 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:18:07,090 - Train: 20.83% [1250/6000]  [20.8/100.0] [batch_t 0.256 (2.095)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.336 (0.362)]
+2025-08-24 17:18:15,399 - ==> Total time: 0:40:41	 Eta: 2:33:06 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:19:35,175 - Train: 21.67% [1300/6000]  [21.7/100.0] [batch_t 0.255 (1.934)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.395 (0.358)]
+2025-08-24 17:20:11,491 - ==> Total time: 0:42:37	 Eta: 2:31:09 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:21:16,122 - Train: 22.50% [1350/6000]  [22.5/100.0] [batch_t 0.255 (2.073)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.337 (0.342)]
+2025-08-24 17:22:08,118 - ==> Total time: 0:44:34	 Eta: 2:29:14 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:22:56,969 - Train: 23.33% [1400/6000]  [23.3/100.0] [batch_t 0.256 (2.318)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.334 (0.355)]
+2025-08-24 17:24:04,285 - ==> Total time: 0:46:30	 Eta: 2:27:17 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:24:37,510 - Train: 24.17% [1450/6000]  [24.2/100.0] [batch_t 0.256 (3.083)] [data_t 0.002] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.371 (0.406)]
+2025-08-24 17:26:01,142 - Train: 25.00% [1500/6000]  [25.0/100.0] [batch_t 0.257 (1.672)] [data_t 0.002] [optim_t 0.255] [lr 0.018750] [inpformer_loss 0.362 (0.357)]
+2025-08-24 17:26:01,146 - ==> Total time: 0:48:27	 Eta: 2:25:22 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:27:49,371 - Train: 25.83% [1550/6000]  [25.8/100.0] [batch_t 0.255 (2.125)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.335 (0.349)]
+2025-08-24 17:27:57,277 - ==> Total time: 0:50:23	 Eta: 2:23:26 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:29:17,155 - Train: 26.67% [1600/6000]  [26.7/100.0] [batch_t 0.256 (1.933)] [data_t 0.003] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.321 (0.334)]
+2025-08-24 17:29:53,924 - ==> Total time: 0:52:20	 Eta: 2:21:30 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:30:57,812 - Train: 27.50% [1650/6000]  [27.5/100.0] [batch_t 0.256 (2.064)] [data_t 0.002] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.332 (0.336)]
+2025-08-24 17:31:50,045 - ==> Total time: 0:54:16	 Eta: 2:19:33 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:32:39,092 - Train: 28.33% [1700/6000]  [28.3/100.0] [batch_t 0.256 (2.328)] [data_t 0.003] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.324 (0.344)]
+2025-08-24 17:33:46,973 - ==> Total time: 0:56:13	 Eta: 2:17:39 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:34:20,509 - Train: 29.17% [1750/6000]  [29.2/100.0] [batch_t 0.256 (3.106)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.315 (0.335)]
+2025-08-24 17:35:43,550 - Train: 30.00% [1800/6000]  [30.0/100.0] [batch_t 0.256 (1.661)] [data_t 0.002] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.318 (0.325)]
+2025-08-24 17:35:43,554 - ==> Total time: 0:58:10	 Eta: 2:15:43 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:37:31,997 - Train: 30.83% [1850/6000]  [30.8/100.0] [batch_t 0.256 (2.117)] [data_t 0.002] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.348 (0.405)]
+2025-08-24 17:37:39,884 - ==> Total time: 1:00:06	 Eta: 2:13:47 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:38:59,779 - Train: 31.67% [1900/6000]  [31.7/100.0] [batch_t 0.255 (1.936)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.310 (0.325)]
+2025-08-24 17:39:35,905 - ==> Total time: 1:02:02	 Eta: 2:11:50 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:40:39,493 - Train: 32.50% [1950/6000]  [32.5/100.0] [batch_t 0.256 (2.055)] [data_t 0.003] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.309 (0.313)]
+2025-08-24 17:41:31,634 - ==> Total time: 1:03:58	 Eta: 2:09:52 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:42:20,309 - Train: 33.33% [2000/6000]  [33.3/100.0] [batch_t 0.256 (2.316)] [data_t 0.003] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.313 (0.312)]
+2025-08-24 17:43:27,800 - ==> Total time: 1:05:54	 Eta: 2:07:55 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:44:00,872 - Train: 34.17% [2050/6000]  [34.2/100.0] [batch_t 0.256 (3.063)] [data_t 0.003] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.311 (0.312)]
+2025-08-24 17:45:24,022 - Train: 35.00% [2100/6000]  [35.0/100.0] [batch_t 0.256 (1.663)] [data_t 0.002] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.315 (0.313)]
+2025-08-24 17:45:24,030 - ==> Total time: 1:07:50	 Eta: 2:05:59 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:47:12,326 - Train: 35.83% [2150/6000]  [35.8/100.0] [batch_t 0.255 (2.118)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.314 (0.349)]
+2025-08-24 17:47:20,232 - ==> Total time: 1:09:46	 Eta: 2:04:03 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:48:40,327 - Train: 36.67% [2200/6000]  [36.7/100.0] [batch_t 0.256 (1.936)] [data_t 0.003] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.306 (0.310)]
+2025-08-24 17:49:16,862 - ==> Total time: 1:11:43	 Eta: 2:02:07 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:50:20,996 - Train: 37.50% [2250/6000]  [37.5/100.0] [batch_t 0.256 (2.053)] [data_t 0.002] [optim_t 0.254] [lr 0.018750] [inpformer_loss 0.299 (0.312)]
+2025-08-24 17:51:12,544 - ==> Total time: 1:13:39	 Eta: 2:00:09 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:52:01,479 - Train: 38.33% [2300/6000]  [38.3/100.0] [batch_t 0.255 (2.322)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.300 (0.314)]
+2025-08-24 17:53:08,907 - ==> Total time: 1:15:35	 Eta: 1:58:13 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:53:41,980 - Train: 39.17% [2350/6000]  [39.2/100.0] [batch_t 0.255 (3.070)] [data_t 0.003] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.415 (0.450)]
+2025-08-24 17:55:04,520 - Train: 40.00% [2400/6000]  [40.0/100.0] [batch_t 0.255 (1.651)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.308 (0.332)]
+2025-08-24 17:55:04,525 - ==> Total time: 1:17:30	 Eta: 1:56:16 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:56:53,228 - Train: 40.83% [2450/6000]  [40.8/100.0] [batch_t 0.255 (2.124)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.297 (0.317)]
+2025-08-24 17:57:01,203 - ==> Total time: 1:19:27	 Eta: 1:54:20 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 17:58:21,077 - Train: 41.67% [2500/6000]  [41.7/100.0] [batch_t 0.255 (1.935)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.318 (0.375)]
+2025-08-24 17:58:57,244 - ==> Total time: 1:21:23	 Eta: 1:52:24 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:00:01,597 - Train: 42.50% [2550/6000]  [42.5/100.0] [batch_t 0.256 (2.061)] [data_t 0.003] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.297 (0.314)]
+2025-08-24 18:00:53,381 - ==> Total time: 1:23:19	 Eta: 1:50:27 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:01:41,986 - Train: 43.33% [2600/6000]  [43.3/100.0] [batch_t 0.256 (2.307)] [data_t 0.003] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.300 (0.303)]
+2025-08-24 18:02:49,537 - ==> Total time: 1:25:16	 Eta: 1:48:31 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:03:22,963 - Train: 44.17% [2650/6000]  [44.2/100.0] [batch_t 0.255 (3.105)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.297 (0.311)]
+2025-08-24 18:04:45,826 - Train: 45.00% [2700/6000]  [45.0/100.0] [batch_t 0.255 (1.657)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.300 (0.304)]
+2025-08-24 18:04:45,833 - ==> Total time: 1:27:12	 Eta: 1:46:35 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:06:34,172 - Train: 45.83% [2750/6000]  [45.8/100.0] [batch_t 0.252 (2.121)] [data_t 0.002] [optim_t 0.249] [lr 0.018750] [inpformer_loss 0.297 (0.312)]
+2025-08-24 18:06:41,983 - ==> Total time: 1:29:08	 Eta: 1:44:38 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:08:01,345 - Train: 46.67% [2800/6000]  [46.7/100.0] [batch_t 0.255 (1.930)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.328 (0.347)]
+2025-08-24 18:08:37,685 - ==> Total time: 1:31:04	 Eta: 1:42:41 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:09:42,139 - Train: 47.50% [2850/6000]  [47.5/100.0] [batch_t 0.257 (2.073)] [data_t 0.002] [optim_t 0.255] [lr 0.018750] [inpformer_loss 0.302 (0.314)]
+2025-08-24 18:10:34,686 - ==> Total time: 1:33:01	 Eta: 1:40:46 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:11:23,697 - Train: 48.33% [2900/6000]  [48.3/100.0] [batch_t 0.255 (2.338)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.307 (0.322)]
+2025-08-24 18:12:32,306 - ==> Total time: 1:34:58	 Eta: 1:38:51 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:13:05,876 - Train: 49.17% [2950/6000]  [49.2/100.0] [batch_t 0.256 (3.122)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.304 (0.309)]
+2025-08-24 18:14:29,431 - Train: 50.00% [3000/6000]  [50.0/100.0] [batch_t 0.254 (1.671)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.295 (0.301)]
+2025-08-24 18:15:50,303 - Test: 35.71% [50/140] [batch_t 0.425 (1.613)]
+2025-08-24 18:17:05,469 - Test: 71.43% [100/140] [batch_t 0.871 (1.558)]
+2025-08-24 18:17:59,610 - Test: 100.00% [140/140] [batch_t 0.313 (1.499)]
+2025-08-24 18:18:13,185 - 
+ #objects: 70, #view instances: 840
+2025-08-24 18:18:19,207 - ==> Metric Time for Bird           :   0.000 (AUROC_obj_sp)	  0.007 (AUROC_view_sp)	  0.000 (AUROC_view_px)	  0.000 (mF1_obj_sp)	  0.002 (mF1_view_sp)	  3.905 (mF1_view_px)	  0.000 (AP_obj_sp)	  0.001 (AP_view_sp)	  0.000 (AP_view_px)	  0.000 (AUPRO_view)	==> Metric Time for Bird           :   0.002 (AUROC_obj_sp)	  0.000 (AUROC_view_sp)	  0.000 (AUROC_view_px)	  0.001 (mF1_obj_sp)	  0.000 (mF1_view_sp)	  0.000 (mF1_view_px)	  0.001 (AP_obj_sp)	  0.000 (AP_view_sp)	  0.000 (AP_view_px)	  0.000 (AUPRO_view)	
+2025-08-24 18:18:19,209 - 
+|  Name  |  AUROC_obj_sp  |  AUROC_obj_sp (Max)  |  AUROC_view_sp  |  AUROC_view_sp (Max)  |  AUROC_view_px  |  AUROC_view_px (Max)  |  mF1_obj_sp  |  mF1_obj_sp (Max)  |  mF1_view_sp  |  mF1_view_sp (Max)  |  mF1_view_px  |  mF1_view_px (Max)  |  AP_obj_sp  |  AP_obj_sp (Max)   |  AP_view_sp  |  AP_view_sp (Max)  |  AP_view_px  |  AP_view_px (Max)  |  AUPRO_view  |  AUPRO_view (Max)  |
+|:------:|:--------------:|:--------------------:|:---------------:|:---------------------:|:---------------:|:---------------------:|:------------:|:------------------:|:-------------:|:-------------------:|:-------------:|:-------------------:|:-----------:|:------------------:|:------------:|:------------------:|:------------:|:------------------:|:------------:|:------------------:|
+|  Bird  |     88.100     |  88.100 (50  epoch)  |     68.266      |  68.266 (50  epoch)   |     97.928      |  97.928 (50  epoch)   |    88.288    | 88.288 (50  epoch) |    55.008     | 55.008 (50  epoch)  |     1.194     |  1.194 (50  epoch)  |   95.573    | 95.573 (50  epoch) |    46.970    | 46.970 (50  epoch) |    0.505     | 0.505 (50  epoch)  |    90.092    | 90.092 (50  epoch) |
+2025-08-24 18:18:19,915 - ==> Total time: 1:40:46	 Eta: 1:40:46 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:20:09,313 - Train: 50.83% [3050/6000]  [50.8/100.0] [batch_t 0.254 (2.133)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.292 (0.304)]
+2025-08-24 18:20:17,064 - ==> Total time: 1:42:43	 Eta: 1:38:41 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:21:37,378 - Train: 51.67% [3100/6000]  [51.7/100.0] [batch_t 0.255 (1.936)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.299 (0.299)]
+2025-08-24 18:22:13,734 - ==> Total time: 1:44:40	 Eta: 1:36:37 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:23:18,801 - Train: 52.50% [3150/6000]  [52.5/100.0] [batch_t 0.256 (2.074)] [data_t 0.003] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.326 (0.297)]
+2025-08-24 18:24:10,514 - ==> Total time: 1:46:36	 Eta: 1:34:32 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:24:59,673 - Train: 53.33% [3200/6000]  [53.3/100.0] [batch_t 0.255 (2.329)] [data_t 0.003] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.310 (0.297)]
+2025-08-24 18:26:07,029 - ==> Total time: 1:48:33	 Eta: 1:32:28 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:26:40,460 - Train: 54.17% [3250/6000]  [54.2/100.0] [batch_t 0.260 (3.071)] [data_t 0.008] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.281 (0.296)]
+2025-08-24 18:28:03,977 - Train: 55.00% [3300/6000]  [55.0/100.0] [batch_t 0.254 (1.670)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.287 (0.297)]
+2025-08-24 18:28:03,981 - ==> Total time: 1:50:30	 Eta: 1:30:24 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:29:52,689 - Train: 55.83% [3350/6000]  [55.8/100.0] [batch_t 0.254 (2.120)] [data_t 0.003] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.298 (0.338)]
+2025-08-24 18:30:00,684 - ==> Total time: 1:52:27	 Eta: 1:28:21 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:31:21,372 - Train: 56.67% [3400/6000]  [56.7/100.0] [batch_t 0.256 (1.944)] [data_t 0.003] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.283 (0.295)]
+2025-08-24 18:31:57,616 - ==> Total time: 1:54:24	 Eta: 1:26:18 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:33:02,885 - Train: 57.50% [3450/6000]  [57.5/100.0] [batch_t 0.255 (2.078)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.286 (0.295)]
+2025-08-24 18:33:54,979 - ==> Total time: 1:56:21	 Eta: 1:24:15 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:34:44,635 - Train: 58.33% [3500/6000]  [58.3/100.0] [batch_t 0.255 (2.340)] [data_t 0.003] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.291 (0.296)]
+2025-08-24 18:35:51,903 - ==> Total time: 1:58:18	 Eta: 1:22:12 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:36:25,661 - Train: 59.17% [3550/6000]  [59.2/100.0] [batch_t 0.256 (3.079)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.305 (0.297)]
+2025-08-24 18:37:48,967 - Train: 60.00% [3600/6000]  [60.0/100.0] [batch_t 0.255 (1.666)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.282 (0.291)]
+2025-08-24 18:37:48,970 - ==> Total time: 2:00:15	 Eta: 1:20:10 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:39:37,947 - Train: 60.83% [3650/6000]  [60.8/100.0] [batch_t 0.255 (2.120)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.296 (0.291)]
+2025-08-24 18:39:45,733 - ==> Total time: 2:02:12	 Eta: 1:18:07 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:41:06,482 - Train: 61.67% [3700/6000]  [61.7/100.0] [batch_t 0.254 (1.945)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.284 (0.291)]
+2025-08-24 18:41:42,895 - ==> Total time: 2:04:09	 Eta: 1:16:05 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:42:47,734 - Train: 62.50% [3750/6000]  [62.5/100.0] [batch_t 0.255 (2.062)] [data_t 0.003] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.287 (0.291)]
+2025-08-24 18:43:39,687 - ==> Total time: 2:06:06	 Eta: 1:14:03 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:44:28,992 - Train: 63.33% [3800/6000]  [63.3/100.0] [batch_t 0.255 (2.316)] [data_t 0.003] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.288 (0.299)]
+2025-08-24 18:45:36,658 - ==> Total time: 2:08:03	 Eta: 1:12:01 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:46:10,323 - Train: 64.17% [3850/6000]  [64.2/100.0] [batch_t 0.255 (3.098)] [data_t 0.003] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.363 (0.293)]
+2025-08-24 18:47:33,382 - Train: 65.00% [3900/6000]  [65.0/100.0] [batch_t 0.254 (1.661)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.305 (0.300)]
+2025-08-24 18:47:33,386 - ==> Total time: 2:09:59	 Eta: 1:09:59 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:49:22,367 - Train: 65.83% [3950/6000]  [65.8/100.0] [batch_t 0.255 (2.125)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.290 (0.296)]
+2025-08-24 18:49:30,263 - ==> Total time: 2:11:56	 Eta: 1:07:58 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:50:50,672 - Train: 66.67% [4000/6000]  [66.7/100.0] [batch_t 0.255 (1.939)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.280 (0.293)]
+2025-08-24 18:51:27,090 - ==> Total time: 2:13:53	 Eta: 1:05:56 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:52:32,050 - Train: 67.50% [4050/6000]  [67.5/100.0] [batch_t 0.255 (2.068)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.283 (0.291)]
+2025-08-24 18:53:23,926 - ==> Total time: 2:15:50	 Eta: 1:03:55 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:54:12,957 - Train: 68.33% [4100/6000]  [68.3/100.0] [batch_t 0.254 (2.305)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.293 (0.293)]
+2025-08-24 18:55:20,346 - ==> Total time: 2:17:46	 Eta: 1:01:54 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:55:54,238 - Train: 69.17% [4150/6000]  [69.2/100.0] [batch_t 0.255 (3.097)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.282 (0.283)]
+2025-08-24 18:57:17,153 - Train: 70.00% [4200/6000]  [70.0/100.0] [batch_t 0.255 (1.658)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.279 (0.290)]
+2025-08-24 18:57:17,158 - ==> Total time: 2:19:43	 Eta: 0:59:52 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 18:59:05,909 - Train: 70.83% [4250/6000]  [70.8/100.0] [batch_t 0.256 (2.116)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.338 (0.291)]
+2025-08-24 18:59:13,817 - ==> Total time: 2:21:40	 Eta: 0:57:51 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:00:34,185 - Train: 71.67% [4300/6000]  [71.7/100.0] [batch_t 0.255 (1.935)] [data_t 0.003] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.283 (0.308)]
+2025-08-24 19:01:10,571 - ==> Total time: 2:23:37	 Eta: 0:55:51 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:02:15,596 - Train: 72.50% [4350/6000]  [72.5/100.0] [batch_t 0.256 (2.070)] [data_t 0.003] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.282 (0.290)]
+2025-08-24 19:03:07,277 - ==> Total time: 2:25:33	 Eta: 0:53:50 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:03:56,532 - Train: 73.33% [4400/6000]  [73.3/100.0] [batch_t 0.254 (2.319)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.305 (0.288)]
+2025-08-24 19:05:04,305 - ==> Total time: 2:27:30	 Eta: 0:51:49 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:05:38,042 - Train: 74.17% [4450/6000]  [74.2/100.0] [batch_t 0.254 (3.078)] [data_t 0.002] [optim_t 0.251] [lr 0.018750] [inpformer_loss 0.291 (0.283)]
+2025-08-24 19:07:01,227 - Train: 75.00% [4500/6000]  [75.0/100.0] [batch_t 0.255 (1.664)] [data_t 0.002] [optim_t 0.253] [lr 0.018750] [inpformer_loss 0.283 (0.290)]
+2025-08-24 19:07:01,232 - ==> Total time: 2:29:27	 Eta: 0:49:49 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:08:49,995 - Train: 75.83% [4550/6000]  [75.8/100.0] [batch_t 0.254 (2.125)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.290 (0.290)]
+2025-08-24 19:08:57,790 - ==> Total time: 2:31:24	 Eta: 0:47:48 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:10:18,210 - Train: 76.67% [4600/6000]  [76.7/100.0] [batch_t 0.255 (1.937)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.297 (0.288)]
+2025-08-24 19:10:54,784 - ==> Total time: 2:33:21	 Eta: 0:45:48 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:11:59,475 - Train: 77.50% [4650/6000]  [77.5/100.0] [batch_t 0.255 (2.056)] [data_t 0.003] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.275 (0.289)]
+2025-08-24 19:12:51,335 - ==> Total time: 2:35:17	 Eta: 0:43:48 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:13:40,620 - Train: 78.33% [4700/6000]  [78.3/100.0] [batch_t 0.254 (2.314)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.284 (0.287)]
+2025-08-24 19:14:48,012 - ==> Total time: 2:37:14	 Eta: 0:41:47 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:15:21,621 - Train: 79.17% [4750/6000]  [79.2/100.0] [batch_t 0.255 (3.060)] [data_t 0.002] [optim_t 0.252] [lr 0.018750] [inpformer_loss 0.277 (0.289)]
+2025-08-24 19:16:45,092 - Train: 80.00% [4800/6000]  [80.0/100.0] [batch_t 0.257 (1.669)] [data_t 0.002] [optim_t 0.255] [lr 0.018750] [inpformer_loss 0.282 (0.288)]
+2025-08-24 19:16:45,097 - ==> Total time: 2:39:11	 Eta: 0:39:47 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:18:35,162 - Train: 80.83% [4850/6000]  [80.8/100.0] [batch_t 0.255 (2.142)] [data_t 0.002] [optim_t 0.253] [lr 0.001875] [inpformer_loss 0.273 (0.274)]
+2025-08-24 19:18:43,094 - ==> Total time: 2:41:09	 Eta: 0:37:48 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:20:04,402 - Train: 81.67% [4900/6000]  [81.7/100.0] [batch_t 0.255 (1.958)] [data_t 0.003] [optim_t 0.253] [lr 0.001875] [inpformer_loss 0.273 (0.317)]
+2025-08-24 19:20:40,923 - ==> Total time: 2:43:07	 Eta: 0:35:48 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:21:45,714 - Train: 82.50% [4950/6000]  [82.5/100.0] [batch_t 0.255 (2.065)] [data_t 0.002] [optim_t 0.253] [lr 0.001875] [inpformer_loss 0.274 (0.281)]
+2025-08-24 19:22:37,900 - ==> Total time: 2:45:04	 Eta: 0:33:48 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:23:27,066 - Train: 83.33% [5000/6000]  [83.3/100.0] [batch_t 0.255 (2.316)] [data_t 0.002] [optim_t 0.252] [lr 0.001875] [inpformer_loss 0.278 (0.282)]
+2025-08-24 19:24:34,392 - ==> Total time: 2:47:00	 Eta: 0:31:48 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:25:08,304 - Train: 84.17% [5050/6000]  [84.2/100.0] [batch_t 0.255 (3.097)] [data_t 0.002] [optim_t 0.253] [lr 0.001875] [inpformer_loss 0.280 (0.286)]
+2025-08-24 19:26:31,317 - Train: 85.00% [5100/6000]  [85.0/100.0] [batch_t 0.256 (1.660)] [data_t 0.002] [optim_t 0.254] [lr 0.001875] [inpformer_loss 0.276 (0.282)]
+2025-08-24 19:26:31,321 - ==> Total time: 2:48:57	 Eta: 0:29:49 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:28:20,473 - Train: 85.83% [5150/6000]  [85.8/100.0] [batch_t 0.255 (2.124)] [data_t 0.002] [optim_t 0.253] [lr 0.001875] [inpformer_loss 0.291 (0.283)]
+2025-08-24 19:28:28,269 - ==> Total time: 2:50:54	 Eta: 0:27:49 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:29:48,693 - Train: 86.67% [5200/6000]  [86.7/100.0] [batch_t 0.255 (1.935)] [data_t 0.002] [optim_t 0.252] [lr 0.001875] [inpformer_loss 0.283 (0.282)]
+2025-08-24 19:30:25,179 - ==> Total time: 2:52:51	 Eta: 0:25:49 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:31:30,002 - Train: 87.50% [5250/6000]  [87.5/100.0] [batch_t 0.255 (2.064)] [data_t 0.002] [optim_t 0.252] [lr 0.001875] [inpformer_loss 0.274 (0.281)]
+2025-08-24 19:32:22,080 - ==> Total time: 2:54:48	 Eta: 0:23:50 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:33:11,569 - Train: 88.33% [5300/6000]  [88.3/100.0] [batch_t 0.255 (2.327)] [data_t 0.002] [optim_t 0.253] [lr 0.001875] [inpformer_loss 0.273 (0.282)]
+2025-08-24 19:34:19,275 - ==> Total time: 2:56:45	 Eta: 0:21:50 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:34:53,156 - Train: 89.17% [5350/6000]  [89.2/100.0] [batch_t 0.255 (3.094)] [data_t 0.003] [optim_t 0.252] [lr 0.001875] [inpformer_loss 0.274 (0.284)]
+2025-08-24 19:36:16,383 - Train: 90.00% [5400/6000]  [90.0/100.0] [batch_t 0.255 (1.664)] [data_t 0.002] [optim_t 0.253] [lr 0.001875] [inpformer_loss 0.275 (0.281)]
+2025-08-24 19:36:16,387 - ==> Total time: 2:58:42	 Eta: 0:19:51 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:38:05,572 - Train: 90.83% [5450/6000]  [90.8/100.0] [batch_t 0.254 (2.124)] [data_t 0.002] [optim_t 0.252] [lr 0.001875] [inpformer_loss 0.276 (0.282)]
+2025-08-24 19:38:13,610 - ==> Total time: 3:00:40	 Eta: 0:17:52 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:39:33,836 - Train: 91.67% [5500/6000]  [91.7/100.0] [batch_t 0.254 (1.930)] [data_t 0.002] [optim_t 0.252] [lr 0.001875] [inpformer_loss 0.272 (0.281)]
+2025-08-24 19:40:10,022 - ==> Total time: 3:02:36	 Eta: 0:15:52 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:41:14,793 - Train: 92.50% [5550/6000]  [92.5/100.0] [batch_t 0.260 (2.064)] [data_t 0.004] [optim_t 0.256] [lr 0.001875] [inpformer_loss 0.274 (0.282)]
+2025-08-24 19:42:07,074 - ==> Total time: 3:04:33	 Eta: 0:13:53 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:42:56,265 - Train: 93.33% [5600/6000]  [93.3/100.0] [batch_t 0.255 (2.316)] [data_t 0.003] [optim_t 0.252] [lr 0.001875] [inpformer_loss 0.271 (0.279)]
+2025-08-24 19:44:03,707 - ==> Total time: 3:06:30	 Eta: 0:11:54 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:44:37,473 - Train: 94.17% [5650/6000]  [94.2/100.0] [batch_t 0.258 (3.094)] [data_t 0.006] [optim_t 0.252] [lr 0.001875] [inpformer_loss 0.273 (0.279)]
+2025-08-24 19:46:00,425 - Train: 95.00% [5700/6000]  [95.0/100.0] [batch_t 0.255 (1.659)] [data_t 0.002] [optim_t 0.252] [lr 0.001875] [inpformer_loss 0.320 (0.283)]
+2025-08-24 19:46:00,430 - ==> Total time: 3:08:26	 Eta: 0:09:55 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:47:49,120 - Train: 95.83% [5750/6000]  [95.8/100.0] [batch_t 0.254 (2.124)] [data_t 0.002] [optim_t 0.252] [lr 0.001875] [inpformer_loss 0.271 (0.282)]
+2025-08-24 19:47:57,085 - ==> Total time: 3:10:23	 Eta: 0:07:55 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:49:17,391 - Train: 96.67% [5800/6000]  [96.7/100.0] [batch_t 0.255 (1.935)] [data_t 0.003] [optim_t 0.252] [lr 0.001875] [inpformer_loss 0.385 (0.283)]
+2025-08-24 19:49:53,750 - ==> Total time: 3:12:20	 Eta: 0:05:56 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:50:58,463 - Train: 97.50% [5850/6000]  [97.5/100.0] [batch_t 0.256 (2.059)] [data_t 0.003] [optim_t 0.253] [lr 0.001875] [inpformer_loss 0.274 (0.282)]
+2025-08-24 19:51:50,320 - ==> Total time: 3:14:16	 Eta: 0:03:57 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:52:39,402 - Train: 98.33% [5900/6000]  [98.3/100.0] [batch_t 0.254 (2.328)] [data_t 0.002] [optim_t 0.252] [lr 0.001875] [inpformer_loss 0.271 (0.279)]
+2025-08-24 19:53:46,521 - ==> Total time: 3:16:12	 Eta: 0:01:58 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 19:54:20,172 - Train: 99.17% [5950/6000]  [99.2/100.0] [batch_t 0.255 (3.085)] [data_t 0.003] [optim_t 0.252] [lr 0.001875] [inpformer_loss 0.293 (0.280)]
+2025-08-24 19:55:42,591 - Train: 100.00% [6000/6000]  [100.0/100.0] [batch_t 0.255 (1.648)] [data_t 0.002] [optim_t 0.252] [lr 0.001875] [inpformer_loss 0.279 (0.282)]
+2025-08-24 19:58:37,958 - Test: 35.71% [50/140] [batch_t 3.199 (3.498)]
+2025-08-24 20:01:20,573 - Test: 71.43% [100/140] [batch_t 3.266 (3.375)]
+2025-08-24 20:03:31,673 - Test: 100.00% [140/140] [batch_t 3.278 (3.347)]
+2025-08-24 20:03:46,032 - 
+ #objects: 70, #view instances: 840
+2025-08-24 20:03:52,070 - ==> Metric Time for Bird           :   0.000 (AUROC_obj_sp)	  0.004 (AUROC_view_sp)	  0.000 (AUROC_view_px)	  0.000 (mF1_obj_sp)	  0.001 (mF1_view_sp)	  3.924 (mF1_view_px)	  0.000 (AP_obj_sp)	  0.001 (AP_view_sp)	  0.000 (AP_view_px)	  0.000 (AUPRO_view)	==> Metric Time for Bird           :   0.001 (AUROC_obj_sp)	  0.000 (AUROC_view_sp)	  0.000 (AUROC_view_px)	  0.001 (mF1_obj_sp)	  0.000 (mF1_view_sp)	  0.000 (mF1_view_px)	  0.001 (AP_obj_sp)	  0.000 (AP_view_sp)	  0.000 (AP_view_px)	  0.000 (AUPRO_view)	
+2025-08-24 20:03:52,071 - 
+|  Name  |  AUROC_obj_sp  |  AUROC_obj_sp (Max)  |  AUROC_view_sp  |  AUROC_view_sp (Max)  |  AUROC_view_px  |  AUROC_view_px (Max)  |  mF1_obj_sp  |  mF1_obj_sp (Max)  |  mF1_view_sp  |  mF1_view_sp (Max)  |  mF1_view_px  |  mF1_view_px (Max)  |  AP_obj_sp  |  AP_obj_sp (Max)   |  AP_view_sp  |  AP_view_sp (Max)  |  AP_view_px  |  AP_view_px (Max)  |  AUPRO_view  |  AUPRO_view (Max)  |
+|:------:|:--------------:|:--------------------:|:---------------:|:---------------------:|:---------------:|:---------------------:|:------------:|:------------------:|:-------------:|:-------------------:|:-------------:|:-------------------:|:-----------:|:------------------:|:------------:|:------------------:|:------------:|:------------------:|:------------:|:------------------:|
+|  Bird  |     85.900     |  88.100 (50  epoch)  |     68.884      |  68.884 (100 epoch)   |     97.798      |  97.928 (50  epoch)   |    88.000    | 88.288 (50  epoch) |    56.838     | 56.838 (100 epoch)  |     1.103     |  1.194 (50  epoch)  |   94.890    | 95.573 (50  epoch) |    47.333    | 47.333 (100 epoch) |    0.462     | 0.505 (50  epoch)  |    89.745    | 90.092 (50  epoch) |
+2025-08-24 20:03:52,972 - ==> Total time: 3:26:19	 Eta: 0:00:00 	Logged in 'only_birds_48_base_runs/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1'
+2025-08-24 20:03:56,849 - finish training
