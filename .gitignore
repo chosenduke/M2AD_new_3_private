@@ -19,6 +19,9 @@ venv/
 env/
 ENV/
 
+# 排除文档文件夹
+docs/
+
 # 排除IDE文件
 .vscode/
 .idea/
