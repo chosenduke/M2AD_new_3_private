@@ -11,7 +11,7 @@ import socket
 import os
 
 
-DATA_ROOT = '/root/autodl-tmp/mydata'
+DATA_ROOT = '/home/duke/playground/side_pro/M2AD_data'
 
 DATA_SUBDIR = {
     # 'm2ad': 'M2AD_256',

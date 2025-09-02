@@ -48,3 +48,4 @@ Thumbs.db
 
 # 排除实验输出文件夹
 only_birds_12_data_augment/
+new_only_birds_v*_runs/

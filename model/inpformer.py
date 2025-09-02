@@ -12,7 +12,11 @@ from functools import partial
 from torch.nn.init import trunc_normal_
 
 class INP_Former_Model(BaseModel):
-    def __init__(self, encoder_arch, INP_num):
+    def __init__(self, encoder_arch, INP_num,
+                 aggregation_depth=1, decoder_depth=8,
+                 drop=0.0, drop_path=0.0,
+                 learnable_fuse=False,
+                 gather_weight=1.0, diversity_weight=0.0):
         super(INP_Former_Model, self).__init__()
 
         assert encoder_arch in ['dinov2reg_vit_base_14', 'dinov2reg_vit_small_14', 'dinov2reg_vit_large_14']
@@ -65,24 +69,26 @@ class INP_Former_Model(BaseModel):
 
         #加深聚合与解码堆叠，并加入轻度正则（dropout/drop_path）
         # INP Extractor
-        for i in range(1):
+        for i in range(aggregation_depth):
             blk = Aggregation_Block(dim=embed_dim, num_heads=num_heads, mlp_ratio=4.,
-                                    qkv_bias=True, norm_layer=partial(nn.LayerNorm, eps=1e-8))
-                                    # drop = 0.1,drop_path = 0.1)
+                                    qkv_bias=True, norm_layer=partial(nn.LayerNorm, eps=1e-8),
+                                    drop=drop, drop_path=drop_path)
             INP_Extractor.append(blk)
         self.INP_Extractor = nn.ModuleList(INP_Extractor)
 
         # INP_Guided_Decoder
-        for i in range(8):
+        for i in range(decoder_depth):
             blk = Prototype_Block(dim=embed_dim, num_heads=num_heads, mlp_ratio=4.,
-                                  qkv_bias=True, norm_layer=partial(nn.LayerNorm, eps=1e-8))
-                                #   drop = 0.1,drop_path = 0.1)
+                                  qkv_bias=True, norm_layer=partial(nn.LayerNorm, eps=1e-8),
+                                  drop=drop, drop_path=drop_path)
             INP_Guided_Decoder.append(blk)
         self.INP_Guided_Decoder = nn.ModuleList(INP_Guided_Decoder)
 
-        self.model = INP_Former(encoder=self.encoder, bottleneck=self.Bottleneck, aggregation=self.INP_Extractor, decoder=self.INP_Guided_Decoder,
+        self.model = INP_Former(encoder=self.encoder, bottleneck=self.Bottleneck,
+                                 aggregation=self.INP_Extractor, decoder=self.INP_Guided_Decoder,
                                  target_layers=target_layers,  remove_class_token=True, fuse_layer_encoder=fuse_layer_encoder,
-                                 fuse_layer_decoder=fuse_layer_decoder, prototype_token=self.INP)
+                                 fuse_layer_decoder=fuse_layer_decoder, prototype_token=self.INP,
+                                 learnable_fuse=learnable_fuse, gather_weight=gather_weight, diversity_weight=diversity_weight)
 
         self.set_frozen_layers(["encoder"])
 

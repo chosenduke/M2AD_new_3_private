@@ -17,6 +17,9 @@ class INP_Former(nn.Module):
             remove_class_token=False,
             encoder_require_grad_layer=[],
             prototype_token=None,
+            learnable_fuse=False,
+            gather_weight=1.0,
+            diversity_weight=0.0,
     ) -> None:
         super(INP_Former, self).__init__()
         self.encoder = encoder
@@ -29,9 +32,24 @@ class INP_Former(nn.Module):
         self.remove_class_token = remove_class_token
         self.encoder_require_grad_layer = encoder_require_grad_layer
         self.prototype_token = prototype_token[0]
+        self.learnable_fuse = learnable_fuse
+        self.gather_weight = gather_weight
+        self.diversity_weight = diversity_weight
 
         if not hasattr(self.encoder, 'num_register_tokens'):
             self.encoder.num_register_tokens = 0
+
+        # learnable fusion weights
+        if self.learnable_fuse:
+            # for fusing all target layer features into x
+            self.enlist_fuse_w = nn.Parameter(torch.ones(len(self.target_layers)))
+            # for encoder/decoder group fuse at output sides
+            self.encoder_fuse_w = nn.ParameterList([
+                nn.Parameter(torch.ones(len(group))) for group in self.fuse_layer_encoder
+            ])
+            self.decoder_fuse_w = nn.ParameterList([
+                nn.Parameter(torch.ones(len(group))) for group in self.fuse_layer_decoder
+            ])
 
 
     def gather_loss(self, query, keys):
@@ -39,6 +57,23 @@ class INP_Former(nn.Module):
         self.distance, self.cluster_index = torch.min(self.distribution, dim=2)
         gather_loss = self.distance.mean()
         return gather_loss
+
+    def diversity_loss(self, prototypes):
+        # prototypes: (B, T, C)
+        if prototypes.dim() != 3:
+            return prototypes.new_zeros(())
+        B, T, C = prototypes.shape
+        if T <= 1:
+            return prototypes.new_zeros(())
+        p = F.normalize(prototypes, dim=-1)
+        # similarity matrix for each batch
+        sim = torch.bmm(p, p.transpose(1, 2))  # (B, T, T)
+        # remove diagonal
+        eye = torch.eye(T, device=sim.device, dtype=sim.dtype).unsqueeze(0)
+        off_diag = sim * (1.0 - eye)
+        # penalize positive similarities (encourage orthogonality)
+        loss = F.relu(off_diag).mean()
+        return loss
 
     def forward(self, x):
         x = self.encoder.prepare_tokens(x)
@@ -60,11 +95,19 @@ class INP_Former(nn.Module):
         if self.remove_class_token:
             en_list = [e[:, 1 + self.encoder.num_register_tokens:, :] for e in en_list]
 
-        x = self.fuse_feature(en_list)
+        # fuse features across all target layers
+        if self.learnable_fuse:
+            x = self.fuse_feature(en_list, weights=self.enlist_fuse_w)
+        else:
+            x = self.fuse_feature(en_list)
 
         agg_prototype = self.prototype_token
         for i, blk in enumerate(self.aggregation):
-            agg_prototype = blk(agg_prototype.unsqueeze(0).repeat((B, 1, 1)), x)
+            if agg_prototype.dim() == 2:  # (T, C) -> (B, T, C) for the first aggregation
+                agg_input = agg_prototype.unsqueeze(0).repeat(B, 1, 1)
+            else:  # already (B, T, C)
+                agg_input = agg_prototype
+            agg_prototype = blk(agg_input, x)
         # for i, blk in enumerate(self.aggregation):
         #     if agg_prototype.dim() == 2:              # (T, C) 第一次聚合
         #         agg_input = agg_prototype.unsqueeze(0).repeat(B, 1, 1)  # → (B, T, C)
@@ -72,7 +115,9 @@ class INP_Former(nn.Module):
         #         agg_input = agg_prototype
         #     agg_prototype = blk(agg_input, x)
 
-        g_loss = self.gather_loss(x, agg_prototype)
+        # losses: patch-to-prototype gather and prototype diversity
+        g_loss = self.gather_loss(x, agg_prototype) * self.gather_weight
+        d_loss = self.diversity_loss(agg_prototype) * self.diversity_weight
 
         for i, blk in enumerate(self.bottleneck):
             x = blk(x)
@@ -83,8 +128,14 @@ class INP_Former(nn.Module):
             de_list.append(x)
         de_list = de_list[::-1]
 
-        en = [self.fuse_feature([en_list[idx] for idx in idxs]) for idxs in self.fuse_layer_encoder]
-        de = [self.fuse_feature([de_list[idx] for idx in idxs]) for idxs in self.fuse_layer_decoder]
+        if self.learnable_fuse:
+            en = [self.fuse_feature([en_list[idx] for idx in idxs], weights=self.encoder_fuse_w[i])
+                  for i, idxs in enumerate(self.fuse_layer_encoder)]
+            de = [self.fuse_feature([de_list[idx] for idx in idxs], weights=self.decoder_fuse_w[i])
+                  for i, idxs in enumerate(self.fuse_layer_decoder)]
+        else:
+            en = [self.fuse_feature([en_list[idx] for idx in idxs]) for idxs in self.fuse_layer_encoder]
+            de = [self.fuse_feature([de_list[idx] for idx in idxs]) for idxs in self.fuse_layer_decoder]
 
         if not self.remove_class_token:  # class tokens have not been removed above
             en = [e[:, 1 + self.encoder.num_register_tokens:, :] for e in en]
@@ -92,10 +143,15 @@ class INP_Former(nn.Module):
 
         en = [e.permute(0, 2, 1).reshape([x.shape[0], -1, side, side]).contiguous() for e in en]
         de = [d.permute(0, 2, 1).reshape([x.shape[0], -1, side, side]).contiguous() for d in de]
-        return en, de, g_loss
+        total_aux_loss = g_loss + d_loss
+        return en, de, total_aux_loss
 
-    def fuse_feature(self, feat_list):
-        return torch.stack(feat_list, dim=1).mean(dim=1)
+    def fuse_feature(self, feat_list, weights=None):
+        x = torch.stack(feat_list, dim=1)  # (B, K, N, C)
+        if weights is None:
+            return x.mean(dim=1)
+        w = torch.softmax(weights, dim=0).view(1, -1, 1, 1)
+        return (x * w).sum(dim=1)
 
     # def fuse_feature(self, feat_list):
     #     x = torch.stack(feat_list, dim=1)                  # (B, K, N, C)
